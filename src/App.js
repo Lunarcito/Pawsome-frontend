@@ -11,6 +11,8 @@ import IsPrivate from './components/IsPrivate';
 import CreatePet from './pages/CreatePet'
 import MyPlaces from './pages/MyPlaces'
 import PhotoUser from './pages/PhotoUser'
+import PlaceForm from './pages/PlaceForm'
+
 
 function App() {
    return (
@@ -25,6 +27,7 @@ function App() {
             <Route path="/pet-profile/create" element={<CreatePet/>}/>
             <Route path="/profile" element={<MyPlaces/>}/>
             <Route path="/user-profile/edit-photo" element={<PhotoUser/>}/>
+            <Route path="/addPlace" element={<PlaceForm />} />
             <Route path="*" element={<ErrorPage />} />
          </Routes>
       </div>
