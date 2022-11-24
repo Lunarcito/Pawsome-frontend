@@ -5,7 +5,8 @@ import axios from 'axios';
 export default function Signup() {
    const [user, setUser] = useState({
       username: '',
-      email: ''
+      email: '',
+      name: '',
    })
    const [password, setPassword] = useState('');
    const [passwordControl, setPasswordControl] = useState('');
@@ -33,7 +34,7 @@ export default function Signup() {
    const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-         await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+         await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { userName: user.username, name: user.name, email: user.email, password });
          navigate('/login');
       } catch (error) {
          setErrorMessage(error.response.data.error)
@@ -45,6 +46,8 @@ export default function Signup() {
          <form onSubmit={handleSubmit}>
             <label>Username</label>
             <input required type="text" name="username" value={user.username} onChange={handleChange} />
+            <label>name</label>
+            <input required type="text" name="name" value={user.name} onChange={handleChange} />
             <label>Email</label>
             <input required type="email" name="email" value={user.email} onChange={handleChange} />
             <label>Password</label>
