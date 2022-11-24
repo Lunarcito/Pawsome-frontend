@@ -8,10 +8,13 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
+import UserProfile from './pages/UserProfile';
+import Favorites from './pages/Favorites';
 import CreatePet from './pages/CreatePet'
 import MyPlaces from './pages/MyPlaces'
 import PhotoUser from './pages/PhotoUser'
 import PlacesForm from './pages/PlacesForm'
+
 
 
 function App() {
@@ -29,6 +32,9 @@ function App() {
             <Route path="/user-profile/edit-photo" element={<PhotoUser/>}/>
             <Route path="/addPlace" element={<PlacesForm />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="/UserProfile" element={<UserProfile/>}/>
+            <Route path="/Favorites" element={<FavoritePlace/>}/>
+
          </Routes>
       </div>
    );
