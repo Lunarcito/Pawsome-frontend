@@ -8,12 +8,14 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
+
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import CreatePet from './pages/CreatePet'
 import MyPlaces from './pages/places/MyPlaces'
 import PhotoUser from './pages/PhotoUser'
 import PlacesForm from './pages/places/PlacesForm'
+
 
 
 function App() {
