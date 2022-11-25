@@ -2,6 +2,12 @@ import { upload } from "@testing-library/user-event/dist/upload";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
+import SecondStepForm from "../../components/placeComponents/SecondStepForm";
+import FirstStepForm from "../../components/placeComponents/FirstStepForm";
+import { NavLink } from "react-router-dom";
+
+
 function PlaceForm() {
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
@@ -12,6 +18,11 @@ function PlaceForm() {
     const [socialMedia1, setSocialMedia1] = useState("")
     const [socialMedia2, setSocialMedia2] = useState("")
     const [typeOther, setTypeOther] = useState("")
+
+    const [error, setError] = useState(null)
+
+    const [step, setStep] = useState(0)
+
     const options = [
         {
             label: "Beach",
@@ -34,8 +45,22 @@ function PlaceForm() {
             value: "Other",
         }
     ];
+
+    const navigate = useNavigate()
+
     const storedToken = localStorage.getItem('authToken');
     const API_ENDPOINT = "http://localhost:8000/api/addPlace"
+
+    const nextStepHandler = () => {
+        setStep((prev) => {
+            return prev += 1
+        })
+    }
+    const prevStepHandler = () => {
+        setStep((prev) => {
+            return prev = prev - 1
+        })
+    }
 
     const submitHandler = async (event) => {
         event.preventDefault()
@@ -65,75 +90,58 @@ function PlaceForm() {
             setSocialMedia2("")
             setFiles(null)
 
+            navigate("/")
+
         } catch (error) {
-            console.log(error.response.data)
+            console.log(error)
+
+            setError(error.response.request.status)
+            navigate("/addPlace")
+            setStep(0)
         }
     }
     return (
         <div>
             <form onSubmit={submitHandler} >
-                <label>Name of the place:</label>
-                <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-                <hr></hr>
-                <label>Address:</label>
-                <input
-                    type="text"
-                    name="address"
-                    value={address}
-                    onChange={(event) => setAddress(event.target.value)}
-                />
-                <hr></hr>
-                <label>Description:</label>
-                <textarea cols="30" rows="10"
-                    type="text"
-                    name="description"
-                    value={description}
-                    onChange={(event) => setDescription(event.target.value)}
-                />
-                <hr></hr>
-                <label>Upload one or more pictures</label>
-                <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
-                <label>Choose a type of place:</label>
-                <select value={type} onChange={(event) => setType(event.target.value)}>
-                    {options.map((option) => (
-                        <option value={option.value}>{option.label}</option>
-                    ))}
-                </select>
-                {type === 'Other' && <input type="text" name="type" value={typeOther} onChange={(event) => setTypeOther(event.target.value)}></input>}
 
-                <label>Social media:</label>
-                <input
-                    type="text"
-                    name="socialMedia"
-                    onChange={(event) =>
-                        setSocialMedia(event.target.value)
-                    }
-                    value={socialMedia}
-                />
-                <input
-                    type="text"
-                    name="socialMedia"
-                    onChange={(event) =>
-                        setSocialMedia1(event.target.value)
-                    }
-                    value={socialMedia1}
-                />
-                <input
-                    type="text"
-                    name="socialMedia"
-                    onChange={(event) =>
-                        setSocialMedia2(event.target.value)
-                    }
-                    value={socialMedia2}
-                />
+                {step === 0 && <FirstStepForm
+                    name={name}
+                    address={address}
+                    type={type}
+                    typeOther={typeOther}
+                    options={options}
+                    onName={setName}
+                    onAddress={setAddress}
+                    onType={setType}
+                    onTypeOther={setTypeOther}
+                />}
 
-                <hr></hr>
-                <button type="submit" className="submitButton">Create</button>
+                {step === 1 && <SecondStepForm
+                    description={description}
+                    onDescription={setDescription}
+                />}
+
+                {step === 2 && <ThirdStepForm
+                    socialmedia={socialMedia}
+                    socialmedia1={socialMedia1}
+                    socialmedia2={socialMedia2}
+                    onSocialmedia={setSocialMedia}
+                    onSocialmedia1={setSocialMedia1}
+                    onSocialmedia2={setSocialMedia2}
+                    onFiles={setFiles}
+                />}
+                {step > 0 && <button onClick={prevStepHandler}>Previous</button>}
+
+                {step < 2 ? (
+                    <svg onClick={nextStepHandler} width="69" height="87" viewBox="0 0 69 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M67.7332 47.3402C69.4178 45.2162 69.4178 41.7668 67.7332 39.6428L50.4832 17.8928C48.7986 15.7688 46.0629 15.7688 44.3783 17.8928C42.6937 20.0168 42.6937 23.4662 44.3783 25.5902L54.2701 38.0625H4.3125C1.92715 38.0625 0 40.4924 0 43.5C0 46.5076 1.92715 48.9375 4.3125 48.9375H54.2701L44.3783 61.4098C42.6937 63.5338 42.6937 66.9832 44.3783 69.1072C46.0629 71.2313 48.7986 71.2313 50.4832 69.1072L67.7332 47.3572V47.3402Z" fill="#EEBC0C" />
+                    </svg>
+                ) : (
+                    <button type="submit" className="submitButton">Create</button>
+                )}
+
+                {error === 500 && <h1>The name and address are mandatory </h1>}
+
             </form>
         </div>
     )
