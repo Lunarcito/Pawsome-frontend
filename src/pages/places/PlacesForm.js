@@ -1,3 +1,4 @@
+import { upload } from "@testing-library/user-event/dist/upload";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,7 +6,7 @@ function PlaceForm() {
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [description, setDescription] = useState("")
-    const [pictures, setPictures] = useState([])
+    const [files, setFiles] = useState(null);
     const [type, setType] = useState('Beach')
     const [socialMedia, setSocialMedia] = useState("")
     const [socialMedia1, setSocialMedia1] = useState("")
@@ -36,22 +37,24 @@ function PlaceForm() {
     const storedToken = localStorage.getItem('authToken');
     const API_ENDPOINT = "http://localhost:8000/api/addPlace"
 
-
-
     const submitHandler = async (event) => {
         event.preventDefault()
-        console.log(socialMedia)
-        const newPlace = {
-            name: name,
-            address: address,
-            description: description,
-            pictures: pictures,
-            type: type,
-            typeOther: typeOther,
-            socialMedia: [socialMedia, socialMedia1, socialMedia2]
+        let formData = new FormData();
+        if (files !== null) {
+            files.forEach(element => {
+                formData.append("pictures", element);
+            })
         }
+        formData.append("name", name);
+        formData.append("address", address);
+        formData.append("description", description);
+        formData.append("typeOther", typeOther);
+        formData.append("type", type);
+        formData.append("socialMedia", socialMedia);
+        console.log({ files, formData })
+
         try {
-            await axios.post(API_ENDPOINT, newPlace, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post(API_ENDPOINT, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
             setName("")
             setAddress("")
             setDescription("")
@@ -60,8 +63,10 @@ function PlaceForm() {
             setSocialMedia("")
             setSocialMedia1("")
             setSocialMedia2("")
+            setFiles(null)
+
         } catch (error) {
-            console.log(error)
+            console.log(error.response.data)
         }
     }
     return (
@@ -92,7 +97,7 @@ function PlaceForm() {
                 />
                 <hr></hr>
                 <label>Upload one or more pictures</label>
-                <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setPictures(event.target.files[0])} />
+                <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
                 <label>Choose a type of place:</label>
                 <select value={type} onChange={(event) => setType(event.target.value)}>
                     {options.map((option) => (

@@ -34,6 +34,7 @@ function App() {
             <Route path="/addPlace" element={<PlacesForm />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/UserProfile" element={<UserProfile/>}/>
+
          </Routes>
       </div>
    );
