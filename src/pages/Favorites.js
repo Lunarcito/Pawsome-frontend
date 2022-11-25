@@ -30,4 +30,4 @@ const apiEndpoint = "http://localhost:8000/api/favorites"
     </div>
  )
 }
-export default FavoritePlace()
+export default FavoritePlace

@@ -1,14 +1,18 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Search from "../components/Search.jsx";
+import Places from "../components/homeComponents/Places";
+import Search from "../components/homeComponents/Search";
+import Filter from "../components/homeComponents/Filter";
 
 const apiEndpoint = "http://localhost:8000/api/places";
-console.log(apiEndpoint);
+
 export default function Home() {
+  const [searchLast, setSearchLast] = useState("");
   const [places, setPlaces] = useState([]);
   const [filterPlaces, setFilterPlaces] = useState([]);
+  const [activePlaces, setActivePlaces] = useState([]);
+  const [activeType, setActiveType] = useState([]);
 
   useEffect(() => {
     const apiCall = async () => {
@@ -18,31 +22,47 @@ export default function Home() {
       console.log(res.data);
     };
     apiCall();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (activeType === "") {
+      const searchThis = places.filter((one) =>
+        one.name.toLowerCase().includes(searchLast.toLowerCase())
+      );
+      setFilterPlaces(searchThis);
+    }
+    const filtered = places.filter((place) => place.type.includes(activeType));
+    setActivePlaces(filtered);
+    const searchThis = filtered.filter((one) =>
+      one.name.toLowerCase().includes(searchLast.toLowerCase())
+    );
+    setFilterPlaces(searchThis);
+  }, [activeType]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const searchHandler = (search) => {
-    const searchThis = places.filter((one) =>
-      one.name.toLowerCase().toUpperCase().includes(search)
+    setSearchLast(search);
+    const searchThis = activePlaces.filter((one) =>
+      one.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilterPlaces(searchThis);
   };
 
   return (
-   <div>
+    <div>
       <h1>list</h1>
       <Search onSearch={searchHandler} />
+      <Filter
+        places={places}
+        setFilterPlaces={setFilterPlaces}
+        activeType={activeType}
+        setActiveType={setActiveType}
+        filterPlaces={filterPlaces}
+      />
       <ul>
         {filterPlaces.map((place) => {
-            return (
-               <li key={place._id}>
-               <h2>{place.name}</h2>
-               <img src={place.pictures} alt="" />
-               <p>{place.address}</p>
-               <p>{place.Review}</p>
-               <Link to={`/places/${place._id}`}>More Details</Link>
-               </li>
-            );
-         })}
+          return <Places key={place._id} place={place} />;
+        })}
       </ul>
-   </div>
+    </div>
   );
 }
