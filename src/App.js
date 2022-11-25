@@ -8,9 +8,9 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
-import CreatePet from './pages/CreatePet'
-import MyPlaces from './pages/MyPlaces'
-import PhotoUser from './pages/PhotoUser'
+import CreatePet from './pages/pet/CreatePet'
+import MyPlaces from './pages/user/MyPlaces'
+import PhotoUser from './pages/user/PhotoUser'
 import PlacesForm from './pages/PlacesForm'
 
 

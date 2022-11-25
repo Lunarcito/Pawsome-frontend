@@ -5,11 +5,12 @@ const apiEndpoint = "http://localhost:8000/api/profile"
 
 function MyPlaces() {
     const[places, setPlaces]= useState([])
+    const storedToken = localStorage.getItem('authToken')
 
     useEffect(() => {
         const apiCall = async () => {
             try{
-            const res = await axios.get(apiEndpoint)
+            const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${storedToken}`}})
             console.log(res)
             setPlaces(res.data)
             }catch(err){
@@ -18,10 +19,13 @@ function MyPlaces() {
         }
         apiCall()
     }, [])
+
+    console.log(places)
+
     return (
         <div>
             <h1>My Places</h1>
-            {places.map(place => {
+            {places.map((place) => {
                 return(
                     <div key={place._id}>
                         <p>{place.name}</p>

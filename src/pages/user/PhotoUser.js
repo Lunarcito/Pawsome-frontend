@@ -7,6 +7,8 @@ const apiEndpoint = "http://localhost:8000/api/user-profile/edit-photo"
 function PhotoUser(){
     const [image, setImage]= useState("")
 
+    const storedToken = localStorage.getItem('authToken')
+
     const navigate = useNavigate()
 
     const imageHandler = (event) => {
@@ -19,10 +21,9 @@ function PhotoUser(){
         const addPhoto = {
             image: image
         }
-
         const apiCall = async () => {
             try {
-                const res = await axios.post(apiEndpoint, addPhoto)
+                const res = await axios.post(apiEndpoint, addPhoto, { headers: { Authorization: `Bearer ${storedToken}`}})
                 console.log(res)
                 setImage("")
                 navigate("/")
