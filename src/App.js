@@ -27,9 +27,9 @@ function App() {
          <Toaster />
          <Navbar />
          <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Login />} />
+            <Route path="home" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="/pet-profile/create" element={<CreatePet/>}/>
             <Route path="/profile" element={<MyPlaces/>}/>
@@ -40,8 +40,6 @@ function App() {
             <Route path="/UserProfile" element={<UserProfile/>}/>
             <Route path="/user-profile/:userId" element={<OtherUser/>}/>
             {/* <Route path="/Favorites" element={<FavoritePlace/>}/> */}
-
-
          </Routes>
       </div>
    );
