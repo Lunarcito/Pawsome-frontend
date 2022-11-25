@@ -10,11 +10,14 @@ import PrivateView from './pages/PrivateView';
 import IsPrivate from './components/IsPrivate';
 
 import UserProfile from './pages/UserProfile';
-import Favorites from './pages/Favorites';
+// import Favorites from './pages/Favorites';
 import CreatePet from './pages/pet/CreatePet'
 import MyPlaces from './pages/user/MyPlaces'
 import PhotoUser from './pages/user/PhotoUser'
 import PlacesForm from './pages/places/PlacesForm'
+import PlaceDetails from './pages/places/PlaceDetails'
+import OtherUser from './pages/user/OtherUser'
+
 
 
 
@@ -32,8 +35,12 @@ function App() {
             <Route path="/profile" element={<MyPlaces/>}/>
             <Route path="/user-profile/edit-photo" element={<PhotoUser/>}/>
             <Route path="/addPlace" element={<PlacesForm />} />
+            <Route path="/places/:placeId" element={<PlaceDetails />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/UserProfile" element={<UserProfile/>}/>
+            <Route path="/user-profile/:userId" element={<OtherUser/>}/>
+            {/* <Route path="/Favorites" element={<FavoritePlace/>}/> */}
+
 
          </Routes>
       </div>
