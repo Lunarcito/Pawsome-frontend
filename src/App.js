@@ -41,6 +41,7 @@ function App() {
             <Route path="/user-profile/:userId" element={<OtherUser/>}/>
             {/* <Route path="/Favorites" element={<FavoritePlace/>}/> */}
 
+
          </Routes>
       </div>
    );
