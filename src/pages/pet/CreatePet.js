@@ -8,29 +8,28 @@ const apiEndpoint = "http://localhost:8000/api/pet-profile/create"
 function CreatePet(){
     // const [name, setName] = useState('')
     // const [image, setImage] = useState('')
-    const[pet, setPet] = useState({
-        name:"",
-        image:""
-    })
+    const [namePet, setName] = useState("")
+    const[file, setFile] = useState(null)
+   
+    
+
     const storedToken = localStorage.getItem('authToken')
     
     const navigate = useNavigate()
 
-    const handleChange = (e) => {
-        setPet(prev => {
-            return {
-                ...prev,
-                [e.target.name]: e.target.value
-            }
-        })
-    }
+
 
     const submitHandler = async (event) => {
         event.preventDefault();
+        let formData = new FormData();
+        formData.append("image", file);
+        formData.append("namePet", namePet);
+
             try {
-                const res = await axios.post(apiEndpoint, pet, { headers: { Authorization: `Bearer ${storedToken}`}})
+                const res = await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
+                setName("")
+                setFile(null)
                 console.log(res.data)
-               
                 navigate("/")
             } catch (error) {
                 console.log(error)
@@ -43,10 +42,10 @@ function CreatePet(){
         <div>
             <form onSubmit={submitHandler}>
                 <label>Name</label>
-                <input type="text" name="name" value={pet.name} onChange={handleChange} />
+                <input type="text" name="namePet" value={namePet} onChange={(event) => setName(event.target.value)} />
                 <br></br>
-                <label>Image</label>
-                <input type="text" name="image" value={pet.image} onChange={handleChange} />
+                <h1>Add Photo</h1>
+                <input type="file" accept="image/png, image/jpeg, image/jpg"  name="image" placeholder="Upload one or more pictures" onChange={event => setFile(event.target.files[0])} />
                 <br></br>
                 <button type="submit">ADD PET</button>
             </form>
