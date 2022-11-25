@@ -13,7 +13,6 @@ function Favorites() {
             try{
                 const res = await axios.get(apiEndpoint + placeId )
                 setFavorites(res.data)
-                console.log(favorites)
             } catch (err){
                 console.log (err)
             }

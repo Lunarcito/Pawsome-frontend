@@ -23,7 +23,8 @@ function App() {
             <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/UserProfile" element={<UserProfile/>}/>
-            <Route path='/favorites' element={<Favorites></Favorites>}  />
+            <Route path='/Favorites' element={<Favorites></Favorites>}  />
+            <Route path='/PetProfile' element={<Favorites></Favorites>}  />
 
          </Routes>
       </div>
