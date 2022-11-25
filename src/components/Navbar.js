@@ -9,13 +9,12 @@ export default function Navbar() {
       <div>
          {user && <p>Hello {user.userName}</p>}
          <ul>
-            <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">Home</NavLink></li>
+            <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="home">Home</NavLink></li>
             {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup">Sign up</NavLink></li>}
             {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login">Login</NavLink></li>}
             {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/UserProfile">User Profile</NavLink></li>}
             {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/Favorites">Favorites</NavLink></li>}
             {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}
-            
          </ul>
       </div>
    )
