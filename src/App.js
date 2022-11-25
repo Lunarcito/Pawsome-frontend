@@ -6,8 +6,8 @@ import Navbar from './components/Navbar';
 import ErrorPage from './pages/ErrorPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
-import PrivateView from './pages/PrivateView';
-import IsPrivate from './components/IsPrivate';
+
+
 
 import UserProfile from './pages/UserProfile';
 
@@ -30,9 +30,8 @@ function App() {
          <Navbar />
          <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="home" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/private" element={<IsPrivate><PrivateView /></IsPrivate>} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />   
             <Route path="/pet-profile/create" element={<CreatePet/>}/>
             <Route path="/profile" element={<MyPlaces/>}/>
             <Route path="/user-profile/edit-photo" element={<PhotoUser/>}/>
@@ -41,8 +40,7 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
             <Route path="/UserProfile" element={<UserProfile/>}/>
             <Route path="/user-profile/:userId" element={<OtherUser/>}/>
-            <Route path="/Favorites" element={<FavoritePlace/>}/>
-            <Route path='/PetProfile' element={<Favorites></Favorites>}  />
+            <Route path="/Favorites" element={<Favorites/>}/>
          </Routes>
       </div>
    );
