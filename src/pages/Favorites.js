@@ -32,18 +32,15 @@ function Favorites() {
     
     const deleteFavorite = async (favoriteID) => { 
         try{
-            console.log("Trying to delete : " + favoriteID)
             const storedToken = localStorage.getItem("authToken");
             const res = await axios.delete(
                 apiEndpoint + "/" + favoriteID,
                 { headers: { Authorization: `Bearer ${storedToken}` }})
-                
                 navigate("/favorites")
-
-        } catch(err){
-            console.log(err)
+            } catch(err){
+                console.log(err)
+            }
         }
-    }
 
   return (
     <div>       
