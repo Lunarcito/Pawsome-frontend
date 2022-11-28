@@ -8,7 +8,7 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 
 
-
+import IsPrivate from './components/IsPrivate'
 
 
 import UserProfile from './pages/UserProfile';
@@ -35,7 +35,6 @@ function App() {
          <Route path="/" element={<Login />} />
          <Route path="home" element={<Home />} />
          <Route path="/signup" element={<Signup />} />
-         <Route path="/private"element={<IsPrivate><PrivateView /></IsPrivate>}/>
          <Route path="/pet-profile/create" element={<IsPrivate><CreatePet /></IsPrivate>} />
          <Route path="/profile" element={<IsPrivate><MyPlaces /></IsPrivate>} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
