@@ -50,6 +50,7 @@ export default function Home() {
   return (
     <div>
       <h1>list</h1>
+      <h2>hello</h2>
       <Search onSearch={searchHandler} />
       <Filter setActiveType={setActiveType}/>
       <ul>
