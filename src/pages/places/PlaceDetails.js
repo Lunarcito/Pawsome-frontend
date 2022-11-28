@@ -12,6 +12,7 @@ const apiEndpoint = "http://localhost:8000/api/places/"
 const apiEndpoint2 ="http://localhost:8000/api/favorite/"
 
 function PlaceDetails() {
+    const storedToken = localStorage.getItem("authToken");
     const { placeId } = useParams()
     const [place, setPlace] = useState(null)
 
@@ -19,14 +20,11 @@ function PlaceDetails() {
 
     const [hideReview, setHideReview] = useState(false)
 
-
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
   
     useEffect(() => {
         const apiCall = async () => {
             try{
-
-                const storedToken = localStorage.getItem("authToken");
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
 
@@ -36,8 +34,6 @@ function PlaceDetails() {
                 }
             });
 
-            console.log(res.data)
-
             }catch(error){
                 console.log(error)
             } 
@@ -46,27 +42,16 @@ function PlaceDetails() {
     }, [user])
 
 
-
-
-
-
-    const addFavoriteHandler = async (event) => { 
-      
+    const addFavoriteHandler = async () => { 
         try{
-            const storedToken = localStorage.getItem("authToken");
-            const res = await axios.post(
-                apiEndpoint2 + placeId,
-                { headers: { Authorization: `Bearer ${storedToken}` }})
-                
-                navigate("/favorites")
+            const res = await axios.post(apiEndpoint2 + placeId,{}, { headers: { Authorization: `Bearer ${storedToken}` }})
+            
+            navigate("/favorites")
 
         } catch(err){
             console.log(err)
         }
     }
-
-
-
     return (
         <div>
             {place && <div>
@@ -80,10 +65,11 @@ function PlaceDetails() {
                 <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
                 <hr></hr>
                 {!hideReview && <Link to={`/addReview/${place._id}`}>Add review</Link>}
-                <button onClick={addFavoriteHandler}>Add to Favorites</button>   
+                <button onClick={ ()=>addFavoriteHandler()}>Add to Favorites</button>   
             </div>}
         </div>
     )
 
 }
 export default PlaceDetails
+
