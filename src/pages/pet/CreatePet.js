@@ -30,7 +30,10 @@ function CreatePet(){
                 setName("")
                 setFile(null)
                 console.log(res.data)
-                navigate("/")
+
+               
+                navigate("/pet-profile")
+
             } catch (error) {
                 console.log(error)
             }
