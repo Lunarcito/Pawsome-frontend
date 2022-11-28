@@ -11,7 +11,7 @@ export default function Navbar() {
          <ul>
             <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="home">Home</NavLink></li>
             {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup">Sign up</NavLink></li>}
-            {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login">Login</NavLink></li>}
+            {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">Login</NavLink></li>}
             {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/UserProfile">User Profile</NavLink></li>}
             {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/Favorites">Favorites</NavLink></li>}
             {isLoggedIn && <li><button onClick={() => logOutUser()}>Log out</button></li>}

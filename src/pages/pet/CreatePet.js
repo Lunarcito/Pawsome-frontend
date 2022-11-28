@@ -31,7 +31,7 @@ function CreatePet(){
                 const res = await axios.post(apiEndpoint, pet, { headers: { Authorization: `Bearer ${storedToken}`}})
                 console.log(res.data)
                
-                navigate("/")
+                navigate("/pet-profile")
             } catch (error) {
                 console.log(error)
             }
