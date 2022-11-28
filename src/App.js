@@ -42,6 +42,8 @@ function App() {
             <Route path="/user-profile/:userId" element={<OtherUser/>}/>
             <Route path="/Favorites" element={<Favorites/>}/>
          </Routes>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkcywzbIz_vlwGJtBK8AmiesinG8aXAIU"></script>
+         <script type="text/javascript" src="/javascripts/main.js"></script>
       </div>
    );
 }
