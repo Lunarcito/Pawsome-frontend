@@ -5,27 +5,24 @@ import { useNavigate } from "react-router-dom";
 const apiEndpoint = "http://localhost:8000/api/user-profile/edit-photo"
 
 function PhotoUser(){
-    const [image, setImage]= useState("")
+    const [file, setFile] = useState("");
 
     const storedToken = localStorage.getItem('authToken')
 
     const navigate = useNavigate()
 
-    const imageHandler = (event) => {
-        setImage(event.target.value)
-    }
-
     const submitHandler = (event) => {
         event.preventDefault()
+        let formData = new FormData();
+       
+        formData.append("image", file);
 
-        const addPhoto = {
-            image: image
-        }
+        
         const apiCall = async () => {
             try {
-                const res = await axios.post(apiEndpoint, addPhoto, { headers: { Authorization: `Bearer ${storedToken}`}})
+                const res = await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
+                setFile("")
                 console.log(res)
-                setImage("")
                 navigate("/")
             } catch (error) {
                 console.log(error)
@@ -40,8 +37,7 @@ function PhotoUser(){
         <div>
                <form onSubmit={submitHandler}>
                 <h1>Add Photo</h1>
-                <label>Image</label>
-                <input type="text" name="image" value={image} onChange={imageHandler} />
+                <input type="file" accept="image/png, image/jpeg, image/jpg"  name="image" placeholder="Upload one or more pictures" onChange={event => setFile(event.target.files)} />
                 <br></br>
                 <button type="submit">ADD PET</button>
             </form>

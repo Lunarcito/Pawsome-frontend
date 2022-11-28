@@ -6,8 +6,11 @@ import Navbar from './components/Navbar';
 import ErrorPage from './pages/ErrorPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
-import PrivateView from './pages/PrivateView';
-import IsPrivate from './components/IsPrivate';
+
+
+
+
+
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import CreatePet from './pages/pet/CreatePet'
@@ -24,6 +27,7 @@ import PetProfile from './pages/PetProfile'
 
 function App() {
    return (
+
      <div className="App">
        <Toaster />
        <Navbar />
@@ -44,6 +48,7 @@ function App() {
          <Route path="/pet-profile" element={<IsPrivate><PetProfile /></IsPrivate>} />
        </Routes>
      </div>
+
    );
 }
 
