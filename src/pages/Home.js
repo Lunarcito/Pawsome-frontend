@@ -20,7 +20,6 @@ export default function Home() {
       setPlaces(res.data);
       setActivePlaces(res.data);
       setFilterPlaces(res.data);
-      console.log(res.data);
     };
     apiCall();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
