@@ -42,7 +42,7 @@ function App() {
          <Route path="home" element={<Home />} />
          <Route path="/signup" element={<Signup />} />
          <Route path="/pet-profile/create" element={<IsPrivate><CreatePet /></IsPrivate>} />
-         <Route path="/profile/myPlaces" element={<IsPrivate><MyPlaces /></IsPrivate>} />
+         <Route path="/profile/myPlaces" element={<MyPlaces />} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
          <Route path="/addPlace" element={<IsPrivate><PlacesForm /></IsPrivate>} />
          <Route path="/places/:placeId" element={<PlaceDetails />} />

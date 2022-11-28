@@ -11,8 +11,7 @@ function MyPlaces() {
         const apiCall = async () => {
             try{
             const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${storedToken}`}})
-            console.log(res)
-            setPlaces(res.data)
+            setPlaces(res.data.createdPlaceId)
             }catch(err){
                 console.log(err)
             }
