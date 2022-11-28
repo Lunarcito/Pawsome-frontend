@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Map from "../../components/Map";
 
 
 const apiEndpoint = "http://localhost:8000/api/places/"
@@ -30,6 +31,7 @@ console.log(place)
                 <h1>{place.name}</h1>
                 <p>{place.address}</p>
                 <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
+                <Map/>
             </div>}
         </div>
     )
