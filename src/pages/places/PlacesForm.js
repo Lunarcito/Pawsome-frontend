@@ -130,8 +130,7 @@ function PlaceForm() {
                     onSocialmedia2={setSocialMedia2}
                     onFiles={setFiles}
                 />}
-                {step > 0 && <button onClick={prevStepHandler}>Previous</button>}
-
+    
                 {step < 2 ? (
                     <svg onClick={nextStepHandler} width="69" height="87" viewBox="0 0 69 87" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M67.7332 47.3402C69.4178 45.2162 69.4178 41.7668 67.7332 39.6428L50.4832 17.8928C48.7986 15.7688 46.0629 15.7688 44.3783 17.8928C42.6937 20.0168 42.6937 23.4662 44.3783 25.5902L54.2701 38.0625H4.3125C1.92715 38.0625 0 40.4924 0 43.5C0 46.5076 1.92715 48.9375 4.3125 48.9375H54.2701L44.3783 61.4098C42.6937 63.5338 42.6937 66.9832 44.3783 69.1072C46.0629 71.2313 48.7986 71.2313 50.4832 69.1072L67.7332 47.3572V47.3402Z" fill="#EEBC0C" />
@@ -143,6 +142,7 @@ function PlaceForm() {
                 {error === 500 && <h1>The name and address are mandatory </h1>}
 
             </form>
+                {step > 0 && <button onClick={prevStepHandler}>Previous</button>}
         </div>
     )
 }
