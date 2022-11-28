@@ -11,12 +11,16 @@ import Login from './pages/auth/Login';
 import IsPrivate from './components/IsPrivate'
 
 
+
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
 import CreatePet from './pages/pet/CreatePet'
 import MyPlaces from './pages/user/MyPlaces'
 import PhotoUser from './pages/user/PhotoUser'
 import PlacesForm from './pages/places/PlacesForm'
+
+import AddReview from './pages/places/AddReview';
+
 import PlaceDetails from './pages/places/PlaceDetails'
 import OtherUser from './pages/user/OtherUser'
 import PetProfile from './pages/PetProfile'
@@ -25,8 +29,10 @@ import PetProfile from './pages/PetProfile'
 
 
 
+
 function App() {
    return (
+
 
      <div className="App">
        <Toaster />
@@ -45,8 +51,10 @@ function App() {
          <Route path="/user-profile/:userId" element={<IsPrivate><OtherUser /></IsPrivate>} />
          <Route path="/Favorites" element={<IsPrivate><Favorites /></IsPrivate>} />
          <Route path="/pet-profile" element={<IsPrivate><PetProfile /></IsPrivate>} />
+         <Route path= "/addReview/:placeId" element= {<IsPrivate><AddReview /></IsPrivate>}/>
        </Routes>
      </div>
+
 
 
    );
