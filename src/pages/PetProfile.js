@@ -9,14 +9,16 @@ import './UserProfile.css';
 const PetProfile =() => {
 
     return (
-        <div className="petprofile">
-
+      <div className="petprofile">
         <ul>
-        <Link to ="/MyPet"><img src ={myPetImg}/>My Pet</Link><br></br>
+          <Link to="/pet-profile/create">
+            <img src={myPetImg} />
+            My Pet
+          </Link>
+          <br></br>
         </ul>
-
-        </div>
-    )
+      </div>
+    );
     
 }
 
