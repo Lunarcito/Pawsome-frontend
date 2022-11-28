@@ -10,7 +10,6 @@ function MyPlaces() {
         const apiCall = async () => {
             try{
             const res = await axios.get(apiEndpoint)
-            console.log(res)
             setPlaces(res.data.createdPlaceId)
             }catch(err){
                 console.log(err)
@@ -21,14 +20,14 @@ function MyPlaces() {
     return (
         <div>
             <h1>My Places</h1>
-            {places.map(place => {
+            {/* {places.map(place => {
                 return(
                     <div key={place._id}>
                         <p>{place.name}</p>
                         <p>{place.address}</p>
                     </div>
                 )
-            })}
+            })} */}
         </div>
     )
 }
