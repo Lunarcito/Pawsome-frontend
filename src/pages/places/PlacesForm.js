@@ -8,6 +8,7 @@ import FirstStepForm from "../../components/placeComponents/FirstStepForm";
 import { NavLink } from "react-router-dom";
 
 
+
 function PlaceForm() {
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
@@ -22,6 +23,7 @@ function PlaceForm() {
     const [error, setError] = useState(null)
 
     const [step, setStep] = useState(0)
+
 
     const options = [
         {
@@ -90,7 +92,7 @@ function PlaceForm() {
             setSocialMedia2("")
             setFiles(null)
 
-            navigate("/")
+            navigate("/home")
 
         } catch (error) {
             console.log(error)

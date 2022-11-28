@@ -1,14 +1,26 @@
 import React from 'react'
-import { GoogleMap, useLoadScript } from '@react-google-maps/api'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
+import {useState} from 'react'
 import './Map.css';
 
+
+
 function Map() {
-    const { isLoaded } = useLoadScript({ 
+    const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     })
-    if(!isLoaded) return <div>Loading ...</div>;
+
+    const [map, setMap] = useState(null)
+    const onLoad = marker => {
+        console.log('marker: ', marker)
+      }
+    if (!isLoaded) return <div>Loading ...</div>;
     return (
-        <GoogleMap zoom={10} center={{lat: 41.3879, lng:2.16992}} mapContainerClassName="map-container"/>
+        <div>
+            <GoogleMap zoom={10} center={{ lat: 41.3879, lng: 2.16992 }} mapContainerClassName="map-container" onLoad={map => setMap(map)}/>
+            <Marker onLoad={onLoad}position={{ lat: 41.3879, lng: 2.16992 }}/>
+
+        </div>
     )
 }
 
