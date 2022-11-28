@@ -11,7 +11,7 @@ function MyPlaces() {
             try{
             const res = await axios.get(apiEndpoint)
             console.log(res)
-            setPlaces(res.data)
+            setPlaces(res.data.createdPlaceId)
             }catch(err){
                 console.log(err)
             }

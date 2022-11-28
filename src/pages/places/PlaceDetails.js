@@ -30,10 +30,6 @@ function PlaceDetails() {
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
 
-            const res = await axios.get((apiEndpoint + placeId))
-            setPlace(res.data)
-            console.log(user)
-
            res.data.Review.forEach(element => {
                 if (element.user === user._id){
                     setHideReview(true)
