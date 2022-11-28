@@ -18,8 +18,8 @@ const UserProfile =() => {
         <ul>
         <Link to ="/UserProfile"><img src ={userProfileImg}/>User Profile</Link> <br></br>
         <Link to ="/Favorites"><img src ={favoriteImg}/>Favorites</Link> <br></br>
-        <Link to ="/MyPlaces"><img src ={myPlacesImg}/> My Places</Link> <br></br>
-        <Link to ="/MyPet"><img src ={myPetImg}/>My Pet</Link><br></br>
+        <Link to ="/profile"><img src ={myPlacesImg}/> My Places</Link> <br></br>
+        <Link to ="/pet-profile"><img src ={myPetImg}/>My Pet</Link><br></br>
         <Link to ="/Logout"><img src ={logoutImg}/> Logout</Link><br></br>
 
         </ul>

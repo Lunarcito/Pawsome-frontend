@@ -2,10 +2,10 @@ import axios from "axios"
 import { useState, useEffect } from "react";
 
 const apiEndpoint = "http://localhost:8000/api/profile"
+const storedToken = localStorage.getItem('authToken')
 
 function MyPlaces() {
     const[places, setPlaces]= useState([])
-    const storedToken = localStorage.getItem('authToken')
 
     useEffect(() => {
         const apiCall = async () => {

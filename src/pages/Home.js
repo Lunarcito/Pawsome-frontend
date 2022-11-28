@@ -8,7 +8,7 @@ import Filter from "../components/homeComponents/Filter";
 const apiEndpoint = "http://localhost:8000/api/places";
 
 export default function Home() {
-  const [searchLast, setSearchLast] = useState("");
+  const [searchLast, setSearchLast] = useState('');
   const [places, setPlaces] = useState([]);
   const [filterPlaces, setFilterPlaces] = useState([]);
   const [activePlaces, setActivePlaces] = useState([]);
@@ -18,6 +18,7 @@ export default function Home() {
     const apiCall = async () => {
       const res = await axios.get(apiEndpoint);
       setPlaces(res.data);
+      setActivePlaces(res.data);
       setFilterPlaces(res.data);
       console.log(res.data);
     };
@@ -51,13 +52,7 @@ export default function Home() {
     <div>
       <h1>list</h1>
       <Search onSearch={searchHandler} />
-      <Filter
-        places={places}
-        setFilterPlaces={setFilterPlaces}
-        activeType={activeType}
-        setActiveType={setActiveType}
-        filterPlaces={filterPlaces}
-      />
+      <Filter setActiveType={setActiveType}/>
       <ul>
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
