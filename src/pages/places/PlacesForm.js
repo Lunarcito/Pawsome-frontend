@@ -90,7 +90,7 @@ function PlaceForm() {
             setSocialMedia2("")
             setFiles(null)
 
-            navigate("/")
+            navigate("/home")
 
         } catch (error) {
             console.log(error)

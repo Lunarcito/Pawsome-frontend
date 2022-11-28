@@ -45,7 +45,7 @@ function App() {
          <Route path="/profile" element={<IsPrivate><MyPlaces /></IsPrivate>} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
          <Route path="/addPlace" element={<IsPrivate><PlacesForm /></IsPrivate>} />
-         <Route path="/places/:placeId" element={<IsPrivate><PlaceDetails /></IsPrivate>} />
+         <Route path="/places/:placeId" element={<PlaceDetails />} />
          <Route path="*" element={<ErrorPage />} />
          <Route path="/UserProfile" element={<IsPrivate><UserProfile /></IsPrivate>} />
          <Route path="/user-profile/:userId" element={<IsPrivate><OtherUser /></IsPrivate>} />
