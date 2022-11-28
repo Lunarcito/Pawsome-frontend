@@ -34,12 +34,10 @@ function PlaceDetails() {
                 }
             });
             */
-                console.log(place)
-                console.log(res.data)
+    
                 setHideReview(res.data.User._id === user._id)
-                console.log("1)"+res.data.User._id)
-                console.log("2)"+user._id)
-                console.log("Es usuario creador? " + (res.data.User._id === user._id))
+                countReviewHandler()
+
             }catch(error){
                 console.log(error)
             } 
@@ -53,6 +51,18 @@ function PlaceDetails() {
             const res = await axios.post(apiEndpoint2 + placeId,{}, { headers: { Authorization: `Bearer ${storedToken}` }})
             
             navigate("/favorites")
+
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+
+    const countReviewHandler = async () => { 
+        try{
+            const res = await axios.get(apiEndpoint + placeId+"/reviews", { headers: { Authorization: `Bearer ${storedToken}` }})
+            console.log(res.data)
+            console.log("Total reviews: " + res.data.length)
 
         } catch(err){
             console.log(err)
