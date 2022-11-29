@@ -12,6 +12,7 @@ const apiEndpoint = "http://localhost:8000/api/places/"
 const apiEndpoint2 ="http://localhost:8000/api/favorite/"
 
 function PlaceDetails() {
+    const storedToken = localStorage.getItem("authToken");
     const { placeId } = useParams()
     const [place, setPlace] = useState(null)
 
@@ -19,24 +20,23 @@ function PlaceDetails() {
 
     const [hideReview, setHideReview] = useState(false)
 
-
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
   
     useEffect(() => {
         const apiCall = async () => {
             try{
-
-                const storedToken = localStorage.getItem("authToken");
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
 
-           res.data.Review.forEach(element => {
+            /*res.data.Review.forEach(element => {
                 if (element.user === user._id){
                     setHideReview(true)
                 }
             });
-
-            console.log(res.data)
+            */
+    
+                setHideReview(res.data.User._id === user._id)
+                countReviewHandler()
 
             }catch(error){
                 console.log(error)
@@ -46,19 +46,11 @@ function PlaceDetails() {
     }, [user])
 
 
-
-
-
-
-    const addFavoriteHandler = async (event) => { 
-      
+    const addFavoriteHandler = async () => { 
         try{
-            const storedToken = localStorage.getItem("authToken");
-            const res = await axios.post(
-                apiEndpoint2 + placeId,
-                { headers: { Authorization: `Bearer ${storedToken}` }})
-                
-                navigate("/favorites")
+            const res = await axios.post(apiEndpoint2 + placeId,{}, { headers: { Authorization: `Bearer ${storedToken}` }})
+            
+            navigate("/favorites")
 
         } catch(err){
             console.log(err)
@@ -66,7 +58,16 @@ function PlaceDetails() {
     }
 
 
+    const countReviewHandler = async () => { 
+        try{
+            const res = await axios.get(apiEndpoint + placeId+"/reviews", { headers: { Authorization: `Bearer ${storedToken}` }})
+            console.log(res.data)
+            console.log("Total reviews: " + res.data.length)
 
+        } catch(err){
+            console.log(err)
+        }
+    }
     return (
         <div>
             {place && <div>
@@ -76,14 +77,18 @@ function PlaceDetails() {
                 <p>Picture:{place.pictures}</p>
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
+                <p>userId:{place.User._id}</p>
+                <p>currentUserId:{user._id}</p>
                 <Map/>
                 <Link to={`/user-profile/${place.User._id}`}>Created by : {place.User.name}</Link>
                 <hr></hr>
-                {!hideReview && <Link to={`/addReview/${place._id}`}>Add review</Link>}
-                <button onClick={addFavoriteHandler}>Add to Favorites</button>   
+
+                {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
+                <button onClick={ ()=>addFavoriteHandler()}>Add to Favorites</button>   
             </div>}
         </div>
     )
 
 }
 export default PlaceDetails
+

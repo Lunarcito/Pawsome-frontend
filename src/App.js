@@ -7,10 +7,7 @@ import ErrorPage from './pages/ErrorPage';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 
-
 import IsPrivate from './components/IsPrivate'
-
-
 
 import UserProfile from './pages/UserProfile';
 import Favorites from './pages/Favorites';
@@ -25,7 +22,11 @@ import PlaceDetails from './pages/places/PlaceDetails'
 import OtherUser from './pages/user/OtherUser'
 import PetProfile from './pages/PetProfile'
 
+
 import EditPlace from './pages/places/EditPlace'
+
+
+import IsLoggedin from './components/IsLoggedin';
 
 
 
@@ -40,9 +41,9 @@ function App() {
        <Toaster />
        <Navbar />
        <Routes>
-         <Route path="/" element={<Login />} />
+         <Route path="/" element={<IsLoggedin><Login /></IsLoggedin>} />
          <Route path="home" element={<Home />} />
-         <Route path="/signup" element={<Signup />} />
+         <Route path="/signup" element={<IsLoggedin><Signup /></IsLoggedin>} />
          <Route path="/pet-profile/create" element={<IsPrivate><CreatePet /></IsPrivate>} />
          <Route path="/profile/myPlaces" element={<IsPrivate><MyPlaces /></IsPrivate>} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
