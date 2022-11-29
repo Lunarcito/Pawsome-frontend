@@ -25,6 +25,8 @@ import PlaceDetails from './pages/places/PlaceDetails'
 import OtherUser from './pages/user/OtherUser'
 import PetProfile from './pages/PetProfile'
 
+import EditPlace from './pages/places/EditPlace'
+
 
 
 
@@ -42,7 +44,7 @@ function App() {
          <Route path="home" element={<Home />} />
          <Route path="/signup" element={<Signup />} />
          <Route path="/pet-profile/create" element={<IsPrivate><CreatePet /></IsPrivate>} />
-         <Route path="/profile/myPlaces" element={<MyPlaces />} />
+         <Route path="/profile/myPlaces" element={<IsPrivate><MyPlaces /></IsPrivate>} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
          <Route path="/addPlace" element={<IsPrivate><PlacesForm /></IsPrivate>} />
          <Route path="/places/:placeId" element={<PlaceDetails />} />
@@ -52,6 +54,7 @@ function App() {
          <Route path="/Favorites" element={<IsPrivate><Favorites /></IsPrivate>} />
          <Route path="/pet-profile" element={<IsPrivate><PetProfile /></IsPrivate>} />
          <Route path= "/addReview/:placeId" element= {<IsPrivate><AddReview /></IsPrivate>}/>
+         <Route path="/profile/MyPlaces/edit-place/:placeId" element={<IsPrivate><EditPlace/></IsPrivate>} />
        </Routes>
      </div>
 

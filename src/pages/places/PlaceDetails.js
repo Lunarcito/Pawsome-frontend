@@ -77,7 +77,7 @@ function PlaceDetails() {
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
                 <Map/>
-                <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
+                <Link to={`/user-profile/${place.User._id}`}>Created by : {place.User.name}</Link>
                 <hr></hr>
                 {!hideReview && <Link to={`/addReview/${place._id}`}>Add review</Link>}
                 <button onClick={addFavoriteHandler}>Add to Favorites</button>   
