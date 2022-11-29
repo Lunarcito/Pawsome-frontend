@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
-import Map from "../../components/Map";
+
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -20,7 +20,8 @@ function PlaceDetails() {
 
     const [hideReview, setHideReview] = useState(false)
 
-    const { user } = useContext(AuthContext);
+
+    const { isLoggedIn, user } = useContext(AuthContext);
   
     useEffect(() => {
         const apiCall = async () => {

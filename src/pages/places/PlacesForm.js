@@ -97,7 +97,7 @@ function PlaceForm() {
         } catch (error) {
             console.log(error)
 
-            setError(error.response.request.status)
+            setError(error.response.data.errorMessage)
             navigate("/addPlace")
             setStep(0)
         }
@@ -141,7 +141,7 @@ function PlaceForm() {
                     <button type="submit" className="submitButton">Create</button>
                 )}
 
-                {error === 500 && <h1>The name and address are mandatory </h1>}
+                {error && <h1>{error} </h1>}
 
             </form>
                 {step > 0 && <button onClick={prevStepHandler}>Previous</button>}
