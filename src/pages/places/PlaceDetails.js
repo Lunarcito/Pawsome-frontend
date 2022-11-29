@@ -28,11 +28,15 @@ function PlaceDetails() {
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
 
-           res.data.Review.forEach(element => {
+            /*res.data.Review.forEach(element => {
                 if (element.user === user._id){
                     setHideReview(true)
                 }
             });
+            */
+    
+                setHideReview(res.data.User._id === user._id)
+                countReviewHandler()
 
             }catch(error){
                 console.log(error)
@@ -52,6 +56,18 @@ function PlaceDetails() {
             console.log(err)
         }
     }
+
+
+    const countReviewHandler = async () => { 
+        try{
+            const res = await axios.get(apiEndpoint + placeId+"/reviews", { headers: { Authorization: `Bearer ${storedToken}` }})
+            console.log(res.data)
+            console.log("Total reviews: " + res.data.length)
+
+        } catch(err){
+            console.log(err)
+        }
+    }
     return (
         <div>
             {place && <div>
@@ -61,10 +77,13 @@ function PlaceDetails() {
                 <p>Picture:{place.pictures}</p>
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
+                <p>userId:{place.User._id}</p>
+                <p>currentUserId:{user._id}</p>
                 <Map/>
                 <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
                 <hr></hr>
-                {!hideReview && <Link to={`/addReview/${place._id}`}>Add review</Link>}
+
+                {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
                 <button onClick={ ()=>addFavoriteHandler()}>Add to Favorites</button>   
             </div>}
         </div>

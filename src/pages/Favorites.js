@@ -14,8 +14,7 @@ function Favorites() {
         
             try{
                 const storedToken = localStorage.getItem("authToken");
-                const res = await axios.
-                get(
+                const res = await axios.get(
                     apiEndpoint, 
                     { headers: { Authorization: `Bearer ${storedToken}` } }
                 )
@@ -24,7 +23,7 @@ function Favorites() {
                 console.log (err)
             }
         }
-
+        
         apiCall()
     }, []);
 
@@ -34,7 +33,12 @@ function Favorites() {
         try{
             const storedToken = localStorage.getItem("authToken");
             const res = await axios.delete( apiEndpoint + "/" + favoriteID, { headers: { Authorization: `Bearer ${storedToken}` }})
-            navigate("/favorites")
+            const response = await axios.get(
+                apiEndpoint, 
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            setFavorites(response.data)
+    
             } catch(err){
                 console.log(err)
             }
