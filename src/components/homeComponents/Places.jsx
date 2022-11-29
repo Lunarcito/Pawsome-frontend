@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"; // updated pictures
+import Map from "../mapComponents/Map";
+
 function Places ({place}) {
     return (
         <div className="search-container">
@@ -8,6 +10,7 @@ function Places ({place}) {
             <p>{place.address}</p>
             <p>{place.Review}</p>
             <Link to={`/places/${place._id}`}>More Details</Link>
+            
             </li>
         </div>
     )

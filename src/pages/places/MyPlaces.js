@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
+import Map from "../../components/mapComponents/Map";
+import { Marker } from "@react-google-maps/api";
 
 const apiEndpoint = "http://localhost:8000/api/profile"
 
@@ -26,9 +28,11 @@ function MyPlaces() {
                     <div key={place._id}>
                         <p>{place.name}</p>
                         <p>{place.address}</p>
+                 
                     </div>
                 )
             })}
+          
         </div>
     )
 }

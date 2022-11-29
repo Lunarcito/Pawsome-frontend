@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Places from "../components/homeComponents/Places";
 import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
+import Map from "../components/mapComponents/Map";
 
 const apiEndpoint = "http://localhost:8000/api/places";
 
@@ -49,6 +50,7 @@ export default function Home() {
 
   return (
     <div>
+      <Map places = {filterPlaces}/>
       <h1>list</h1>
       <Search onSearch={searchHandler} />
       <Filter setActiveType={setActiveType}/>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
-import Map from "../../components/Map";
+
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -29,10 +29,6 @@ function PlaceDetails() {
                 const storedToken = localStorage.getItem("authToken");
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
-
-            const res = await axios.get((apiEndpoint + placeId))
-            setPlace(res.data)
-            console.log(user)
 
            res.data.Review.forEach(element => {
                 if (element.user === user._id){
@@ -80,11 +76,14 @@ function PlaceDetails() {
                 <p>Picture:{place.pictures}</p>
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
-                <Map/>
+                
+                {isLoggedIn && <div>
                 <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
                 <hr></hr>
                 {!hideReview && <Link to={`/addReview/${place._id}`}>Add review</Link>}
                 <button onClick={addFavoriteHandler}>Add to Favorites</button>   
+                </div>
+                }
             </div>}
         </div>
     )
