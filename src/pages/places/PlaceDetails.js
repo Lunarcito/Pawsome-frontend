@@ -80,7 +80,7 @@ function PlaceDetails() {
                 <p>userId:{place.User._id}</p>
                 <p>currentUserId:{user._id}</p>
                 <Map/>
-                <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
+                <Link to={`/user-profile/${place.User._id}`}>Created by : {place.User.name}</Link>
                 <hr></hr>
 
                 {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
