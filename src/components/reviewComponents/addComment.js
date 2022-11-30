@@ -1,4 +1,4 @@
-function addComment(props) {
+function AddComment(props) {
     return (
         <div>
             <label>Comments are appreciated!</label>
@@ -12,4 +12,4 @@ function addComment(props) {
     )
 }
 
-export default addComment
+export default AddComment
