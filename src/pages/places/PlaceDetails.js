@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
+import './PlaceDetails.css'
 import CommentList from "../../components/reviewComponents/CommentList"
 
 import { useContext } from "react";
@@ -15,33 +16,40 @@ const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 function PlaceDetails() {
 
     const storedToken = localStorage.getItem("authToken");
+
+
     const { placeId } = useParams();
+
+
+    const [hideReview, setHideReview] = useState(false)
+
+
+    const [image, setImage] = useState(0)
 
     const navigate = useNavigate();
 
-    const [hideReview, setHideReview] = useState(false)
+    const [goodReviews, setGoodReviews] = useState(0)
+    const [badReviews, setBadReviews] = useState(0)
+
     const[place,setPlace]=useState("")
-    const [goodReviews, setGoodReviews]=useState(0)
-    const [badReviews, setBadReviews]=useState(0)
+    
 
     const [step, setStep] = useState(0)
 
-
-
-    const {  user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const countReviewHandler = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
-                
-               
-                const filteredArray = res.data.filter(review=> review.check === true );
-                setGoodReviews(filteredArray.length/res.data.length*100)
-    
-                setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)          
-    
-    
+
+
+                const filteredArray = res.data.filter(review => review.check === true);
+                setGoodReviews(filteredArray.length / res.data.length * 100)
+
+                setBadReviews((res.data.length - filteredArray.length) / res.data.length * 100)
+
+
             } catch (err) {
                 console.log(err)
             }
@@ -93,30 +101,35 @@ function PlaceDetails() {
         })
     }
     return (
-        <div>
+        <div className= 'placeDetails'>
             {place && <div>
-                <h1>Name:{place.name}</h1>
-                <p>Address:{place.address}</p>
-                <p>Description:{place.description}</p>
-                <p>Picture:{place.pictures}</p>
-                <p>Type:{place.type}</p>
-                <p>SocialMedia:{place.socialMedia}</p>
+                <h1>{place.name}</h1>
+                <h2>{place.address}</h2>
+                {place.description !== null && place.description !== '' && <p>{place.description}</p>}
 
-                <Link to={`/user-profile/${place.User._id}`}>Created by: {place.User.name}</Link>
+                {place.pictures.forEach((element, index) => {
+                    <button onClick={()=>setImage(index)} ></button>
+                })}
+                
+                <img id="place" src={place.pictures[index]}></img>
+
+                <p>Pet friendly {place.type}</p>
+                <a href= '{place.socialMedia}'/>
+            
+                <Link to={`/user-profile/${place.User._id}`}>Posted by: {place.User.name}</Link>
                 <hr></hr>
 
                 <div>
                     <p>Good reviews:{goodReviews}%</p>
                     <p>Bad reviews:{badReviews}%</p>
-                  
                 </div>
 
                 {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
                 <button onClick={() => addFavoriteHandler()}>Add to Favorites</button>
-               {step === 0 && <button onClick={()=>showComments()}>Show Comments</button> }
-               {step === 1 && <div><CommentList comment={place.Review}/>
-               <button onClick={() =>hideComments()}>Hide Comments</button>
-               </div>}
+                {step === 0 && <button onClick={() => showComments()}>Show Comments</button>}
+                {step === 1 && <div><CommentList comment={place.Review} />
+                    <button onClick={() => hideComments()}>Hide Comments</button>
+                </div>}
             </div>
             }
         </div>
