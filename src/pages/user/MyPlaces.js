@@ -7,14 +7,14 @@ const apiEndpoint = "http://localhost:8000/api/profile"
 const storedToken = localStorage.getItem('authToken')
 
 function MyPlaces() {
-    const[places, setPlaces]= useState([])
-    const {placeId} = useParams()
+    const [places, setPlaces] = useState([])
+    const { placeId } = useParams()
 
     const apiCall = async () => {
-        try{
-        const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${storedToken}`}})
-        setPlaces(res.data.createdPlaceId)
-        }catch(err){
+        try {
+            const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${storedToken}` } })
+            setPlaces(res.data.createdPlaceId)
+        } catch (err) {
             console.log(err)
         }
     }
@@ -25,15 +25,16 @@ function MyPlaces() {
 
     const deleteHandler = async (elementId) => {
         const res = await axios.delete(`http://localhost:8000/api/places/${elementId}`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
+            headers: { Authorization: `Bearer ${storedToken}` },
         });
         apiCall()
-      } 
+    }
+    
     return (
         <div>
             <h1>My Places</h1>
             {places.map((place) => {
-                return(
+                return (
                     <div key={place._id}>
                         <p>{place.name}</p>
                         <p>{place.address}</p>

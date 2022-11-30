@@ -25,10 +25,8 @@ function FirstStepForm(props) {
             </select>
             {props.type === 'Other' && <input type="text" name="type" value={props.typeOther} onChange={(event) => props.onTypeOther(event.target.value)}></input>}
             <hr></hr>
-
-        </div>  
+        </div>
     )
-
 }
 
 export default FirstStepForm;

@@ -5,7 +5,6 @@ export default function ErrorPage() {
       <div>
          <h1>Oops! You seem to be lost.</h1>
          <p>try another direction</p>
-         
       </div>
    )
 }

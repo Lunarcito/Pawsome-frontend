@@ -11,6 +11,7 @@ export default function Login() {
       email: '',
       password: ''
    });
+   
    const [errorMessage, setErrorMessage] = useState(undefined);
    const navigate = useNavigate();
 
@@ -48,6 +49,7 @@ export default function Login() {
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button type="submit">Log in </button>
             <Link to={"home"}>Never Mind Take me to the list</Link>
+            <Link to={'/forgotPassword'}>Forgot my password</Link>
          </form>
       </div>
    )

@@ -1,5 +1,5 @@
-function Filter ({ setActiveType }){
-    
+function Filter({ setActiveType }) {
+
     return (
         <div className="filter-container">
             <button onClick={() => setActiveType('')}>All</button>

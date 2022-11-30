@@ -1,6 +1,6 @@
 
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import userProfileImg from "../../assets/user-profile.png"
 import favoriteImg from "../../assets/favorite.png"
 import logoutImg from "../../assets/logout.png"
@@ -13,9 +13,9 @@ import { useState, useEffect } from "react";
 const storedToken = localStorage.getItem("authToken");
 const apiEndpoint = "http://localhost:8000/api/profile";
 
-const UserProfile =() => {
+const UserProfile = () => {
 
-    const [ profile, setProfile] = useState({}) 
+    const [profile, setProfile] = useState({})
     const [pet, setPet] = useState([])
 
     useEffect(() => {
@@ -39,24 +39,20 @@ const UserProfile =() => {
                     return (
                         <div key={element._id}>
                             <h2>Pet name {element.namePet}</h2>
-                            <img className="petProfile" src={element.image} alt=""/>
+                            <img className="petProfile" src={element.image} alt="" />
                         </div>
                     )
                 })}
-              
             </div>
 
-
-        <ul>
-
-        <Link to ="/Favorites"><img src ={favoriteImg}/>Favorites</Link> <br></br>
-        <Link to ="/profile/MyPlaces"><img src ={myPlacesImg}/>Created Places</Link> <br></br>
-        <Link to ="/pet-profile"><img src ={myPetImg}/>My Pets</Link><br></br>
-        <Link to ="/Logout"><img src ={logoutImg}/> Logout</Link><br></br>
-        </ul>
+            <ul>
+                <Link to="/Favorites"><img src={favoriteImg} />Favorites</Link> <br></br>
+                <Link to="/profile/MyPlaces"><img src={myPlacesImg} />Created Places</Link> <br></br>
+                <Link to="/pet-profile"><img src={myPetImg} />My Pets</Link><br></br>
+                <Link to="/Logout"><img src={logoutImg} /> Logout</Link><br></br>
+            </ul>
         </div>
     )
 }
-
 
 export default UserProfile;
