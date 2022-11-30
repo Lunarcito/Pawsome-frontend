@@ -9,9 +9,6 @@ function Map(props) {
 
     const [map, setMap] = useState(null)
 
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    })
 
 
     if (!props.places[0]) return <div>Loading ...</div>;

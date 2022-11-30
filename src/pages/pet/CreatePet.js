@@ -25,26 +25,16 @@ function CreatePet() {
         formData.append("image", file);
         formData.append("namePet", namePet);
 
-<<<<<<< HEAD
-        try {
-            const res = await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
-            setName("")
-            setFile(null)
-            navigate("/pet-profile")
-
-        } catch (error) {
-            console.log(error)
-        }
-=======
             try {
                 await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
                 setName("")
                 setFile(null)            
                 navigate("/pet-profile")
->>>>>>> main
 
+    }catch(err){
+        console.log(err)
     }
-    
+}
 
     return(
         <div className="creation">
