@@ -1,14 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-<<<<<<< HEAD:src/components/homeComponents/Navbar.js
+import '../homeComponents/Navbar.css';
 import { AuthContext } from '../../context/AuthContext';
-
-export default function Navbar() {
-   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-
-=======
-import { AuthContext } from '../context/AuthContext';
-import '../components/Navbar.css'
 import { useState, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
@@ -48,7 +41,6 @@ export default function Navbar() {
       )
    }
    
->>>>>>> main:src/components/Navbar.js
    return (
       <div className='nav-con'>
          <div className='menu-container' ref={menuRef}>
