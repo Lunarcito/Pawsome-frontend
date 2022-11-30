@@ -1,8 +1,11 @@
-import {Link} from "react-router-dom";
-import favoriteImg from "../../assets/favorite.png"
-import logoutImg from "../../assets/logout.png"
-import myPlacesImg from "../../assets/map.png"
-import myPetImg from "../../assets/mypet.png"
+
+
+import { Link } from "react-router-dom";
+//import userProfileImg from "../../assets/user-profile.png"
+//import favoriteImg from "../../assets/favorite.png"
+//import logoutImg from "../../assets/logout.png"
+//import myPlacesImg from "../../assets/map.png"
+//import myPetImg from "../../assets/mypet.png"
 import './UserProfile.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -10,9 +13,9 @@ import { useState, useEffect } from "react";
 const storedToken = localStorage.getItem("authToken");
 const apiEndpoint = "http://localhost:8000/api/profile";
 
-const UserProfile =() => {
+const UserProfile = () => {
 
-    const [ profile, setProfile] = useState({}) 
+    const [profile, setProfile] = useState({})
     const [pet, setPet] = useState([])
 
     useEffect(() => {
@@ -22,7 +25,10 @@ const UserProfile =() => {
             });
             setProfile(result.data)
             setPet(result.data.pet)
+<<<<<<< HEAD
+=======
           
+>>>>>>> main
         };
         apiCall();
     }, []);
@@ -30,19 +36,26 @@ const UserProfile =() => {
     return (
         <div className="userprofile" key={profile._id}>
             <h1>Hello {profile.name}!</h1>
-            <img src={profile.image} alt="profile" />
+            <img src={profile.image} alt="" />
             <div>
                 {pet.map((element) => {
                     return (
                         <div key={element._id}>
                             <h2>Pet name {element.namePet}</h2>
-                            <img className="petProfile" src={element.image} alt="pet"/>
+                            <img className="petProfile" src={element.image} alt=""/>
                         </div>
                     )
                 })}
-              
             </div>
 
+<<<<<<< HEAD
+            <ul>
+                <Link to="/Favorites"><img src={favoriteImg} />Favorites</Link> <br></br>
+                <Link to="/profile/MyPlaces"><img src={myPlacesImg} />Created Places</Link> <br></br>
+                <Link to="/pet-profile"><img src={myPetImg} />My Pets</Link><br></br>
+                <Link to="/Logout"><img src={logoutImg} /> Logout</Link><br></br>
+            </ul>
+=======
 
         <ul>
 
@@ -51,9 +64,9 @@ const UserProfile =() => {
         <Link to ="/pet-profile"><img src ={myPetImg} alt="pet"/>My Pets</Link><br></br>
         <Link to ="/Logout"><img src ={logoutImg} alt="logout"/> Logout</Link><br></br>
         </ul>
+>>>>>>> main
         </div>
     )
 }
-
 
 export default UserProfile;

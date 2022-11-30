@@ -8,15 +8,24 @@ import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-
 const apiEndpoint = "http://localhost:8000/api/places/"
 const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 
 
 function PlaceDetails() {
+
     const storedToken = localStorage.getItem("authToken");
+<<<<<<< HEAD
+    const { placeId } = useParams()
+=======
     const { placeId } = useParams();
     const [place, setPlace] = useState(null);
+
+    const navigate = useNavigate();
+>>>>>>> main
+
+    const [place, setPlace] = useState(null)
+    const [hideReview, setHideReview] = useState(false)
 
     const navigate = useNavigate();
 
@@ -58,11 +67,10 @@ function PlaceDetails() {
                     }
                 });
 
-                if ( res.data.User._id === user._id){
+                if (res.data.User._id === user._id) {
                     setHideReview(true)
                     countReviewHandler()
                 }
-                
 
             } catch (error) {
                 console.log(error)
@@ -78,7 +86,6 @@ function PlaceDetails() {
             await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
 
             navigate("/favorites")
-
         } catch (err) {
             console.log(err)
         }
@@ -95,7 +102,6 @@ function PlaceDetails() {
             return prev -= 1
         })
     }
-
     return (
         <div>
             {place && <div>

@@ -4,7 +4,6 @@ import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddComment from "../../components/reviewComponents/AddComment";
 
-
 import './AddReview.css';
 
 function AddReview(props) {
@@ -19,6 +18,7 @@ function AddReview(props) {
 
     const storedToken = localStorage.getItem('authToken');
     const API_ENDPOINT = "http://localhost:8000/api/addReview/"
+
     const { placeId } = useParams()
 
     const checkBoxHandler1 = (event) => {
@@ -41,7 +41,6 @@ function AddReview(props) {
         } else {
             setCheck(null)
         }
-
     }
 
 
@@ -71,11 +70,10 @@ function AddReview(props) {
             setHideHappy(false)
             setHideSad(false)
 
-            navigate (`/places/${placeId}`)
+            navigate(`/places/${placeId}`)
 
         } catch (error) {
             console.log(error)
-
         }
     }
 
@@ -97,11 +95,9 @@ function AddReview(props) {
                     <button type="submit" className="submitButton">Add review</button>
                 </div>
                 }
-
             </form>
         </div>
     )
 }
-
 
 export default AddReview

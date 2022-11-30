@@ -29,8 +29,6 @@ function ThirdStepForm(props) {
                 }
                 value={props.socialMedia2}
             />
-
-
         </div>
     )
 }

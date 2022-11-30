@@ -13,6 +13,7 @@ function ResetScreen(props) {
     const [error, setError] = useState(null)
 
     const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -28,6 +29,7 @@ function ResetScreen(props) {
             setError(error.response.data.message)
         }
     }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>

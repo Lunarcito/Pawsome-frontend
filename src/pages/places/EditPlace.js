@@ -4,13 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 const apiEndpoint = "http://localhost:8000/api/places/"
 const storedToken = localStorage.getItem('authToken')
 
 function EditPlace() {
-    const {placeId} = useParams()
-   
+    const { placeId } = useParams()
+
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [description, setDescription] = useState("")
@@ -51,6 +50,10 @@ function EditPlace() {
         const apiCall = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId, { headers: { Authorization: `Bearer ${storedToken}` } })
+<<<<<<< HEAD
+             
+=======
+>>>>>>> main
                 setName(res.data.name)
                 setDescription(res.data.description)
                 setAddress(res.data.address)
@@ -83,14 +86,13 @@ function EditPlace() {
             })
         }
 
-        
         formData.append("name", name);
         formData.append("address", address);
         formData.append("description", description);
         formData.append("typeOther", typeOther);
         formData.append("type", type);
         formData.append("socialMedia", socialMedia);
-      
+
         try {
             await axios.put(apiEndpoint + placeId, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
             setName("")
@@ -104,7 +106,7 @@ function EditPlace() {
             setFiles(null)
 
             navigate("/home")
-       
+
         } catch (error) {
             console.log(error)
 
@@ -143,9 +145,9 @@ function EditPlace() {
                 <input type="text" name="socialMedia" onChange={(event) => setSocialMedia2(event.target.value)} value={socialMedia2} placeholder={socialMedia2} />
                 <button type="submit">Save changes</button>
             </form>
-                <Link to = '/profile/MyPlaces'> 
+            <Link to='/profile/MyPlaces'>
                 <button>Cancel</button>
-                </Link>
+            </Link>
         </div>
     )
 }

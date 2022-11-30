@@ -1,4 +1,4 @@
-import React ,{ useState }from "react";
+import React, { useState } from "react";
 import axios from "axios"
 import './CreatePet.css';
 
@@ -9,19 +9,15 @@ import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 const apiEndpoint = "http://localhost:8000/api/pet-profile/create"
 
-function CreatePet(){
+function CreatePet() {
     // const [name, setName] = useState('')
     // const [image, setImage] = useState('')
     const [namePet, setName] = useState("")
-    const[file, setFile] = useState(null)
-   
-    
+    const [file, setFile] = useState(null)
 
     const storedToken = localStorage.getItem('authToken')
-    
+
     const navigate = useNavigate()
-
-
 
     const submitHandler = async (event) => {
         event.preventDefault();
@@ -29,16 +25,24 @@ function CreatePet(){
         formData.append("image", file);
         formData.append("namePet", namePet);
 
+<<<<<<< HEAD
+        try {
+            const res = await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
+            setName("")
+            setFile(null)
+            navigate("/pet-profile")
+
+        } catch (error) {
+            console.log(error)
+        }
+=======
             try {
                 await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
                 setName("")
                 setFile(null)            
                 navigate("/pet-profile")
+>>>>>>> main
 
-            } catch (error) {
-                console.log(error)
-            }
-        
     }
     
 
