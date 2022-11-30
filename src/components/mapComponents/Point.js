@@ -12,9 +12,7 @@ function Point(props) {
     const address = props.address
     const name = props.name
     const placeId = props.id
-    console.log(props)
 
-    console.log(address)
 
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
@@ -35,7 +33,7 @@ function Point(props) {
 
             },
             (error) => {
-                console.error(error);
+                console.error("not proper coordinates");
             }
         );
 
