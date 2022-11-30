@@ -50,10 +50,7 @@ function EditPlace() {
         const apiCall = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId, { headers: { Authorization: `Bearer ${storedToken}` } })
-<<<<<<< HEAD
-             
-=======
->>>>>>> main
+
                 setName(res.data.name)
                 setDescription(res.data.description)
                 setAddress(res.data.address)

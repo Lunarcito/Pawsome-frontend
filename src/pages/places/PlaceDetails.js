@@ -15,22 +15,12 @@ const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 function PlaceDetails() {
 
     const storedToken = localStorage.getItem("authToken");
-<<<<<<< HEAD
-    const { placeId } = useParams()
-=======
     const { placeId } = useParams();
-    const [place, setPlace] = useState(null);
-
-    const navigate = useNavigate();
->>>>>>> main
-
-    const [place, setPlace] = useState(null)
-    const [hideReview, setHideReview] = useState(false)
 
     const navigate = useNavigate();
 
     const [hideReview, setHideReview] = useState(false)
-
+    const[place,setPlace]=useState("")
     const [goodReviews, setGoodReviews]=useState(0)
     const [badReviews, setBadReviews]=useState(0)
 

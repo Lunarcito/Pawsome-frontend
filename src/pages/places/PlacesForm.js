@@ -71,11 +71,6 @@ function PlaceForm() {
         formData.append("typeOther", typeOther);
         formData.append("type", type);
         formData.append("socialMedia", socialMedia);
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> main
         try {
             await axios.post(API_ENDPOINT, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
             setName("")
