@@ -20,7 +20,8 @@ function PlaceDetails() {
     const navigate = useNavigate()
 
     const [hideReview, setHideReview] = useState(false)
-
+    const [goodReviews, setGoodReviews]=useState(0)
+    const [badReviews, setBadReviews]=useState(0)
 
     const { isLoggedIn, user } = useContext(AuthContext);
 
@@ -67,6 +68,14 @@ function PlaceDetails() {
             const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
             console.log(res.data)
             console.log("Total reviews: " + res.data.length)
+            
+            const filteredArray = res.data.filter(review=> review.check === true);
+            setGoodReviews(filteredArray.length/res.data.length*100)
+
+            setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)
+            
+            
+
 
         } catch (err) {
             console.log(err)
@@ -86,6 +95,12 @@ function PlaceDetails() {
 
                 <Link to={`/user-profile/${place.User._id}`}>Created by : {place.User.name}</Link>
                 <hr></hr>
+
+                <div>
+                    <p>Good reviews:{goodReviews}%</p>
+                    <p>Bad reviews:{badReviews}%</p>
+                  
+                </div>
 
                 {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
                 <button onClick={() => addFavoriteHandler()}>Add to Favorites</button>
