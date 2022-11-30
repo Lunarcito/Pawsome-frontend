@@ -15,7 +15,6 @@ function Map(props) {
 
 
     if (!props.places[0]) return <div>Loading ...</div>;
-    console.log(props.places)
 
     return (
         <div>

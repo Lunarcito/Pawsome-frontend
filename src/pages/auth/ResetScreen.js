@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 
-
 const storedToken = localStorage.getItem("authToken");
 const apiEndpoint = "http://localhost:8000/api/setNewPassword";
 
@@ -38,7 +37,6 @@ function ResetScreen(props) {
                 <input required type="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Change password </button>
-
             </form>
         </div>
     )

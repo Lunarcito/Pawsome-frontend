@@ -4,6 +4,7 @@ import axios from 'axios';
 const AuthContext = createContext();
 
 function AuthProviderWrapper(props) {
+   
    // Store the variables we want to share
    const [user, setUser] = useState(null);
    const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +18,7 @@ function AuthProviderWrapper(props) {
    const removeToken = () => {
       localStorage.removeItem('authToken');
    }
-
+   
    // Function to check if the user is already authenticated or not
    const authenticateUser = async () => {
       setLoading(true);

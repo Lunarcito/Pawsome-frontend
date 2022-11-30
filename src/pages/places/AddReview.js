@@ -4,7 +4,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddComment from "../../components/reviewComponents/AddComment";
 
-
 import './AddReview.css';
 
 function AddReview(props) {
@@ -78,7 +77,6 @@ function AddReview(props) {
 
         }
     }
-
 
     return (
         <div>

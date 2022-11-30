@@ -16,7 +16,6 @@ const PetProfile =() => {
         headers: { Authorization: `Bearer ${storedToken}` },
     })
       setPets(res.data)
-      console.log(res.data)
   }
 
   useEffect (() => {

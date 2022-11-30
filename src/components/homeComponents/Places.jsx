@@ -2,8 +2,7 @@ import { Link } from "react-router-dom"; // updated pictures
 import Map from "../mapComponents/Map";
 
 function Places ({place}) {
-    console.log("Place",place)
-    return (
+        return (
         <div className="search-container">
             {place && 
             <li>
