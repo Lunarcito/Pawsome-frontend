@@ -14,7 +14,7 @@ export default function Home() {
   const [filterPlaces, setFilterPlaces] = useState([]);
   const [activePlaces, setActivePlaces] = useState([]);
   const [activeType, setActiveType] = useState([]);
-
+  const [showMap, setShowMap] = useState(false)
   useEffect(() => {
     const apiCall = async () => {
       const res = await axios.get(apiEndpoint);
@@ -38,7 +38,7 @@ export default function Home() {
       one.name.toLowerCase().includes(searchLast.toLowerCase())
     );
     setFilterPlaces(searchThis);
-  }, [activeType]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [activeType]); 
 
   const searchHandler = (search) => {
     setSearchLast(search);
@@ -50,15 +50,17 @@ export default function Home() {
 
   return (
     <div>
-      <Map places={filterPlaces} />
-      <h1>list</h1>
+      {showMap && <Map places={filterPlaces} />}
+      {!showMap && <div><h1>list</h1>
       <Search onSearch={searchHandler} />
       <Filter setActiveType={setActiveType} />
       <ul>
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
         })}
-      </ul>
+      </ul></div>}
+      {!showMap && <button  onClick={()=>setShowMap(true)}>Map</button>}
+      {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
     </div>
   );
 }
