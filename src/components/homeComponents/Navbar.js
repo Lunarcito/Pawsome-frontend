@@ -57,10 +57,7 @@ export default function Navbar() {
             </div>
          </div>
          <div>
-            <ul>
-               <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/home">Home</NavLink></li>
-               {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/addPlace">Add place</NavLink></li>}
-            </ul> 
+            <img className='logoFooter' src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669817485/Pawsome/Logo_Paw_kinagr.png" alt='logo' /> 
          </div>
       </div>
    )
