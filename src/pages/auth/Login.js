@@ -65,8 +65,6 @@ export default function Login() {
 
    return (
       <div>
-        
-            <Container>
             <form onSubmit={handleSubmit}>
 
             <Flex
@@ -85,7 +83,7 @@ export default function Login() {
       >
         <Image
         borderRadius='full'
-        boxSize='100px'
+        boxSize='120px'
         src='../logoPaw.png' 
         alt='LogoPAw'/>
 
@@ -138,21 +136,26 @@ export default function Login() {
                 variant="solid"
                 colorScheme="teal"
                 width="full"
-              >
-                Login
+              >Login
+
               </Button>
             </Stack>
         </Box>
       </Stack>
       <Box>
-        New to us?
+        New to us? 
+        <Link href='/signup' color="teal.500">
+       Sign up
+        </Link>
+      </Box>
+      <Box>
+        Sign Later?
         <Link href='/home' color="teal.500">
-        Skip log in
+          Start searching
         </Link>
       </Box>
     </Flex>
             </form>
-         </Container>
          
       </div>
    )
