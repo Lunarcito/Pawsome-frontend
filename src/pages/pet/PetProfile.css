@@ -17,8 +17,9 @@
     text-align: center;
 }
 .petImage{
-    height: 36px;
-    width: 50px
+    height: 45px;
+    width: 54px;
+    border-radius: 50%
 }
 .petButton{
     

@@ -17,10 +17,12 @@ function PlaceDetails() {
 
     const storedToken = localStorage.getItem("authToken");
 
+
     const { placeId } = useParams();
 
-    const [place, setPlace] = useState(null)
+
     const [hideReview, setHideReview] = useState(false)
+
 
     const [image, setImage] = useState(0)
 
@@ -28,6 +30,9 @@ function PlaceDetails() {
 
     const [goodReviews, setGoodReviews] = useState(0)
     const [badReviews, setBadReviews] = useState(0)
+
+    const[place,setPlace]=useState("")
+    
 
     const [step, setStep] = useState(0)
 
