@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
+
 export default function Login() {
    const { storeToken, authenticateUser } = useContext(AuthContext);
    const [user, setUser] = useState({
@@ -47,6 +48,7 @@ export default function Login() {
             <input required type="password" name="password" value={user.password} onChange={handleChange} />
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button type="submit">Log in </button>
+            <Link to = {"/forgotPassword"}>Forgot my password</Link>
             <Link to={"home"}>Never Mind Take me to the list</Link>
          </form>
       </div>

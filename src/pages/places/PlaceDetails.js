@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
-
+import CommentList from "../../components/reviewComponents/CommentList"
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -20,8 +20,13 @@ function PlaceDetails() {
     const navigate = useNavigate()
 
     const [hideReview, setHideReview] = useState(false)
+
     const [goodReviews, setGoodReviews]=useState(0)
     const [badReviews, setBadReviews]=useState(0)
+
+    const [step, setStep] = useState(0)
+
+
 
     const { isLoggedIn, user } = useContext(AuthContext);
 
@@ -81,6 +86,23 @@ function PlaceDetails() {
             console.log(err)
         }
     }
+    // let num = 0
+    // const showComments =  () => {
+    //     return num++
+    // }
+    // console.log(num)
+    const showComments = () => {
+        setStep((prev) => {
+            return prev += 1
+        })
+    }
+    const hideComments = () => {
+        setStep((prev) => {
+            console.log(prev)
+            return prev -= 1
+        })
+    }
+
     return (
         <div>
             {place && <div>
@@ -104,6 +126,10 @@ function PlaceDetails() {
 
                 {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
                 <button onClick={() => addFavoriteHandler()}>Add to Favorites</button>
+               {step === 0 && <button onClick={()=>showComments()}>Show Comments</button> }
+               {step === 1 && <div><CommentList comment={place.Review}/>
+               <button onClick={() =>hideComments()}>Hide Comments</button>
+               </div>}
             </div>}
         </div>
     )

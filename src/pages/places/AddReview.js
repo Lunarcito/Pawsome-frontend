@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import AddComment from "../../components/reviewComponents/addComment";
+import AddComment from "../../components/reviewComponents/AddComment";
 
 
 import './AddReview.css';
