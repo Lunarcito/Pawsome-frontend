@@ -20,7 +20,9 @@ function FirstStepForm(props) {
             <label>Choose a type of place:</label>
             <select value={props.type} onChange={(event) => props.onType(event.target.value)}>
                 {props.options.map((option) => (
-                    <option value={option.value}>{option.label}</option>
+                    
+                    <option key={option.value} value={option.value}>{option.label}</option>
+                
                 ))}
             </select>
             {props.type === 'Other' && <input type="text" name="type" value={props.typeOther} onChange={(event) => props.onTypeOther(event.target.value)}></input>}

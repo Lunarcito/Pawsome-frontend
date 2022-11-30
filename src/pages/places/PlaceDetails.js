@@ -3,71 +3,99 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 
-import Map from "../../components/Map";
+import CommentList from "../../components/reviewComponents/CommentList"
+
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 
 const apiEndpoint = "http://localhost:8000/api/places/"
-const apiEndpoint2 ="http://localhost:8000/api/favorite/"
+const apiEndpoint2 = "http://localhost:8000/api/favorite/"
+
 
 function PlaceDetails() {
     const storedToken = localStorage.getItem("authToken");
-    const { placeId } = useParams()
-    const [place, setPlace] = useState(null)
+    const { placeId } = useParams();
+    const [place, setPlace] = useState(null);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [hideReview, setHideReview] = useState(false)
 
-    const { user } = useContext(AuthContext);
-  
+    const [goodReviews, setGoodReviews]=useState(0)
+    const [badReviews, setBadReviews]=useState(0)
+
+    const [step, setStep] = useState(0)
+
+
+
+    const {  user } = useContext(AuthContext);
+
     useEffect(() => {
+        const countReviewHandler = async () => {
+            try {
+                const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
+                
+               
+                const filteredArray = res.data.filter(review=> review.check === true );
+                setGoodReviews(filteredArray.length/res.data.length*100)
+    
+                setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)          
+    
+    
+            } catch (err) {
+                console.log(err)
+            }
+        }
         const apiCall = async () => {
-            try{
+            try {
                 const res = await axios.get((apiEndpoint + placeId))
                 setPlace(res.data)
 
-            /*res.data.Review.forEach(element => {
-                if (element.user === user._id){
-                    setHideReview(true)
-                }
-            });
-            */
-    
-                setHideReview(res.data.User._id === user._id)
-                countReviewHandler()
+                res.data.Review.forEach(element => {
+                    if (element.user === user._id) {
+                        setHideReview(true)
+                    }
+                });
 
-            }catch(error){
+                if ( res.data.User._id === user._id){
+                    setHideReview(true)
+                    countReviewHandler()
+                }
+                
+
+            } catch (error) {
                 console.log(error)
-            } 
+            }
         }
         apiCall()
-    }, [user])
+
+    }, [user, storedToken, placeId]);
 
 
-    const addFavoriteHandler = async () => { 
-        try{
-            const res = await axios.post(apiEndpoint2 + placeId,{}, { headers: { Authorization: `Bearer ${storedToken}` }})
-            
+    const addFavoriteHandler = async () => {
+        try {
+            await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+
             navigate("/favorites")
 
-        } catch(err){
+        } catch (err) {
             console.log(err)
         }
     }
 
 
-    const countReviewHandler = async () => { 
-        try{
-            const res = await axios.get(apiEndpoint + placeId+"/reviews", { headers: { Authorization: `Bearer ${storedToken}` }})
-            console.log(res.data)
-            console.log("Total reviews: " + res.data.length)
-
-        } catch(err){
-            console.log(err)
-        }
+    const showComments = () => {
+        setStep((prev) => {
+            return prev += 1
+        })
     }
+    const hideComments = () => {
+        setStep((prev) => {
+            return prev -= 1
+        })
+    }
+
     return (
         <div>
             {place && <div>
@@ -77,15 +105,24 @@ function PlaceDetails() {
                 <p>Picture:{place.pictures}</p>
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
-                <p>userId:{place.User._id}</p>
-                <p>currentUserId:{user._id}</p>
-                <Map/>
-                <Link to={`/user-profile/${place.User._id}`}>UserProfile</Link>
+
+                <Link to={`/user-profile/${place.User._id}`}>Created by: {place.User.name}</Link>
                 <hr></hr>
 
+                <div>
+                    <p>Good reviews:{goodReviews}%</p>
+                    <p>Bad reviews:{badReviews}%</p>
+                  
+                </div>
+
                 {!hideReview ? <Link to={`/addReview/${place._id}`}>Add review</Link> : null}
-                <button onClick={ ()=>addFavoriteHandler()}>Add to Favorites</button>   
-            </div>}
+                <button onClick={() => addFavoriteHandler()}>Add to Favorites</button>
+               {step === 0 && <button onClick={()=>showComments()}>Show Comments</button> }
+               {step === 1 && <div><CommentList comment={place.Review}/>
+               <button onClick={() =>hideComments()}>Hide Comments</button>
+               </div>}
+            </div>
+            }
         </div>
     )
 

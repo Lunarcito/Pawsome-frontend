@@ -20,7 +20,6 @@ function OtherUser () {
         apiCall()
     }, [userId])
 
-console.log(user)
     return (
         <div>
             <div>

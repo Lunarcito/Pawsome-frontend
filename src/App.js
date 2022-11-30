@@ -9,7 +9,7 @@ import Login from './pages/auth/Login';
 
 import IsPrivate from './components/IsPrivate'
 
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/user/UserProfile';
 import Favorites from './pages/Favorites';
 import CreatePet from './pages/pet/CreatePet'
 import MyPlaces from './pages/user/MyPlaces'
@@ -21,7 +21,16 @@ import AddReview from './pages/places/AddReview';
 import PlaceDetails from './pages/places/PlaceDetails'
 import OtherUser from './pages/user/OtherUser'
 import PetProfile from './pages/PetProfile'
+
+import Forgotpassword from './pages/auth/Forgotpassword';
+import ResetScreen from './pages/auth/ResetScreen';
+
+import EditPlace from './pages/places/EditPlace'
+
+
 import IsLoggedin from './components/IsLoggedin';
+
+
 
 
 
@@ -39,7 +48,7 @@ function App() {
          <Route path="home" element={<Home />} />
          <Route path="/signup" element={<IsLoggedin><Signup /></IsLoggedin>} />
          <Route path="/pet-profile/create" element={<IsPrivate><CreatePet /></IsPrivate>} />
-         <Route path="/profile/myPlaces" element={<MyPlaces />} />
+         <Route path="/profile/myPlaces" element={<IsPrivate><MyPlaces /></IsPrivate>} />
          <Route path="/user-profile/edit-photo" element={<IsPrivate><PhotoUser /></IsPrivate>} />
          <Route path="/addPlace" element={<IsPrivate><PlacesForm /></IsPrivate>} />
          <Route path="/places/:placeId" element={<PlaceDetails />} />
@@ -49,6 +58,9 @@ function App() {
          <Route path="/Favorites" element={<IsPrivate><Favorites /></IsPrivate>} />
          <Route path="/pet-profile" element={<IsPrivate><PetProfile /></IsPrivate>} />
          <Route path= "/addReview/:placeId" element= {<IsPrivate><AddReview /></IsPrivate>}/>
+         <Route path= "/forgotPassword" element= {<IsPrivate><Forgotpassword /></IsPrivate>}/>
+         <Route path = "/setNewPassword" element= {<IsPrivate><ResetScreen /></IsPrivate>}/>
+         <Route path="/profile/MyPlaces/edit-place/:placeId" element={<IsPrivate><EditPlace/></IsPrivate>} />
        </Routes>
      </div>
 

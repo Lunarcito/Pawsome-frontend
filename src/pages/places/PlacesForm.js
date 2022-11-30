@@ -1,11 +1,9 @@
-import { upload } from "@testing-library/user-event/dist/upload";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
 import SecondStepForm from "../../components/placeComponents/SecondStepForm";
 import FirstStepForm from "../../components/placeComponents/FirstStepForm";
-import { NavLink } from "react-router-dom";
 
 
 
@@ -78,7 +76,6 @@ function PlaceForm() {
         formData.append("typeOther", typeOther);
         formData.append("type", type);
         formData.append("socialMedia", socialMedia);
-        console.log({ files, formData })
 
         try {
             await axios.post(API_ENDPOINT, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -97,7 +94,7 @@ function PlaceForm() {
         } catch (error) {
             console.log(error)
 
-            setError(error.response.request.status)
+            setError(error.response.data.errorMessage)
             navigate("/addPlace")
             setStep(0)
         }
@@ -141,7 +138,7 @@ function PlaceForm() {
                     <button type="submit" className="submitButton">Create</button>
                 )}
 
-                {error === 500 && <h1>The name and address are mandatory </h1>}
+                {error && <h1>{error} </h1>}
 
             </form>
                 {step > 0 && <button onClick={prevStepHandler}>Previous</button>}

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useState } from "react";
+import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddComment from "../../components/reviewComponents/AddComment";
 
@@ -79,17 +79,16 @@ function AddReview(props) {
         }
     }
 
-
     return (
         <div>
             <form onSubmit={submitHandler} >
                 <label for="veritifaction">Place verified?</label>
                 <br></br>
-                {!hideHappy && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/happy_xdpcvc.png" className="iconVerification" />}
+                {!hideHappy && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/happy_xdpcvc.png" alt="yes"className="iconVerification" />}
                 {!hideHappy && <input type="checkbox" id="verificationPlace" name="verifiedYes" value={true} onChange={checkBoxHandler1} />}
                 <br></br>
 
-                {!hideSad && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/sad-face_lhbvxo.png" className="iconVerification" />}
+                {!hideSad && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/sad-face_lhbvxo.png" alt="no" className="iconVerification" />}
                 {!hideSad && <input type="checkbox" id="verificationPlace" name="verifiedNo" value={false} onChange={checkBoxHandler2} />}
 
 

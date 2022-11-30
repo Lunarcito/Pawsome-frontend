@@ -1,0 +1,35 @@
+.petprofile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.everyPet{
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.petName{
+    text-align: center;
+}
+.petImage{
+    height: 36px;
+    width: 50px
+}
+.petButton{
+    
+}
+.createLink{
+    align-self: center;
+    color:rgb(4, 95, 28);
+    text-decoration: none;
+}
+
+.designIcon{
+    height: 50px;
+    width: 50px;
+}

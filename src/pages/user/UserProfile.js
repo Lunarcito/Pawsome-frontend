@@ -1,11 +1,8 @@
-
-
 import {Link} from "react-router-dom";
-import userProfileImg from "../assets/user-profile.png"
-import favoriteImg from "../assets/favorite.png"
-import logoutImg from "../assets/logout.png"
-import myPlacesImg from "../assets/map.png"
-import myPetImg from "../assets/mypet.png"
+import favoriteImg from "../../assets/favorite.png"
+import logoutImg from "../../assets/logout.png"
+import myPlacesImg from "../../assets/map.png"
+import myPetImg from "../../assets/mypet.png"
 import './UserProfile.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -25,7 +22,7 @@ const UserProfile =() => {
             });
             setProfile(result.data)
             setPet(result.data.pet)
-            console.log(result.data)
+          
         };
         apiCall();
     }, []);
@@ -33,13 +30,13 @@ const UserProfile =() => {
     return (
         <div className="userprofile" key={profile._id}>
             <h1>Hello {profile.name}!</h1>
-            <img src={profile.image} alt="" />
+            <img src={profile.image} alt="profile" />
             <div>
                 {pet.map((element) => {
                     return (
                         <div key={element._id}>
                             <h2>Pet name {element.namePet}</h2>
-                            <img className="petProfile" src={element.image} alt=""/>
+                            <img className="petProfile" src={element.image} alt="pet"/>
                         </div>
                     )
                 })}
@@ -49,10 +46,10 @@ const UserProfile =() => {
 
         <ul>
 
-        <Link to ="/Favorites"><img src ={favoriteImg}/>Favorites</Link> <br></br>
-        <Link to ="/profile/MyPlaces"><img src ={myPlacesImg}/>Created Places</Link> <br></br>
-        <Link to ="/pet-profile"><img src ={myPetImg}/>My Pets</Link><br></br>
-        <Link to ="/Logout"><img src ={logoutImg}/> Logout</Link><br></br>
+        <Link to ="/Favorites"><img src ={favoriteImg} alt="favorite"/>Favorites</Link> <br></br>
+        <Link to ="/profile/MyPlaces"><img src ={myPlacesImg} alt="places"/>Created Places</Link> <br></br>
+        <Link to ="/pet-profile"><img src ={myPetImg} alt="pet"/>My Pets</Link><br></br>
+        <Link to ="/Logout"><img src ={logoutImg} alt="logout"/> Logout</Link><br></br>
         </ul>
         </div>
     )
