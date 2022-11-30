@@ -8,7 +8,7 @@ export default function Navbar() {
 
    
    return (
-      <div className='nav-con'>
+      <div className='footer-con'>
          <div>
             <ul>
                <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/home">Home</NavLink>
