@@ -50,10 +50,10 @@ export default function Home() {
 
   return (
     <div>
-      <Map places = {filterPlaces}/>
+      <Map places={filterPlaces} />
       <h1>list</h1>
       <Search onSearch={searchHandler} />
-      <Filter setActiveType={setActiveType}/>
+      <Filter setActiveType={setActiveType} />
       <ul>
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
