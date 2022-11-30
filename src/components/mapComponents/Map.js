@@ -20,10 +20,10 @@ function Map(props) {
         <div>
             <GoogleMap zoom={13} clickableIcons={true} center={{ lat: 41.3879, lng: 2.16992 }} mapContainerClassName="map-container" onLoad={map => setMap(map)} >
                 {props.places.map(place => {
-                    return <Point address={place.address}
+                    return <div key={place._id}><Point address={place.address}
                     name={place.name}
                     id = {place._id}
-                    />
+                    /></div>
                 })}
               
             </GoogleMap>
