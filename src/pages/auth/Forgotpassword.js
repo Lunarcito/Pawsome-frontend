@@ -36,7 +36,6 @@ function Forgotpassword(props) {
                 <input type="text" name="email" value={email} placeholder={email} onChange={(event) => setEmail(event.target.value)}></input>
                 <button type="submit">Send email to reset the password</button>
             </form>
-
         </div>
     )
 }
