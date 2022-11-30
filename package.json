@@ -22,6 +22,7 @@
     "react-geocode": "^0.2.3",
     "react-google-location": "^1.2.2",
     "react-hot-toast": "^2.4.0",
+    "react-icons": "^4.7.1",
     "react-marker": "^1.0.1",
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^6.4.3",

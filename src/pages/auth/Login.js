@@ -21,10 +21,10 @@ import {
    InputRightElement
  } from "@chakra-ui/react";
  
-//import { FaUserAlt, FaLock } from "react-icons/fa";
+import { FaUserAlt, FaLock } from "react-icons/fa";
  
-//const CFaUserAlt = chakra(FaUserAlt);
-//const CFaLock = chakra(FaLock);
+const CFaUserAlt = chakra(FaUserAlt);
+const CFaLock = chakra(FaLock);
 
 export default function Login() {
    const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -95,7 +95,7 @@ export default function Login() {
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    
+                    children={<CFaUserAlt color="gray.300" />}                  
                   />
                <Input type="email" name="email" placeholder="email address" value={user.name} onChange={handleChange}/>
                 </InputGroup>
@@ -105,7 +105,7 @@ export default function Login() {
                   <InputLeftElement
                     pointerEvents="none"
                     color="gray.300"
-                   
+                    children={<CFaLock color="gray.300" />}                   
                   />
                   <Input
                     name="password" 
@@ -121,7 +121,9 @@ export default function Login() {
                   </InputRightElement>
                 </InputGroup>
                 <FormHelperText textAlign="right">
-                  <Link>forgot password?</Link>
+                  <Link href='/forgotPassword' color="teal.500">
+                  forgot password?
+                    </Link>
                 </FormHelperText>
               </FormControl>
               <Button
@@ -137,8 +139,8 @@ export default function Login() {
         </Box>
       </Stack>
       <Box>
-        New to us?{" "}
-        <Link to={"home"} color="teal.500" href="#">
+        New to us?
+        <Link href='/home' color="teal.500">
         Skip log in
         </Link>
       </Box>
