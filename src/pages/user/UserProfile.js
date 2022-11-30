@@ -1,5 +1,3 @@
-
-
 import {Link} from "react-router-dom";
 import userProfileImg from "../../assets/user-profile.png"
 import favoriteImg from "../../assets/favorite.png"
@@ -25,7 +23,7 @@ const UserProfile =() => {
             });
             setProfile(result.data)
             setPet(result.data.pet)
-            console.log(result.data)
+          
         };
         apiCall();
     }, []);

@@ -71,26 +71,18 @@ function PlaceDetails() {
     const countReviewHandler = async () => {
         try {
             const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
-            console.log(res.data)
-            console.log("Total reviews: " + res.data.length)
-            
-            const filteredArray = res.data.filter(review=> review.check === true);
+            .log(res.data)
+           
+            const filteredArray = res.data.filter(review=> review.check === true );
             setGoodReviews(filteredArray.length/res.data.length*100)
 
-            setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)
-            
-            
+            setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)          
 
 
         } catch (err) {
             console.log(err)
         }
     }
-    // let num = 0
-    // const showComments =  () => {
-    //     return num++
-    // }
-    // console.log(num)
     const showComments = () => {
         setStep((prev) => {
             return prev += 1
@@ -98,7 +90,6 @@ function PlaceDetails() {
     }
     const hideComments = () => {
         setStep((prev) => {
-            console.log(prev)
             return prev -= 1
         })
     }
@@ -113,9 +104,7 @@ function PlaceDetails() {
                 <p>Type:{place.type}</p>
                 <p>SocialMedia:{place.socialMedia}</p>
 
-
-
-                <Link to={`/user-profile/${place.User._id}`}>Created by : {place.User.name}</Link>
+                <Link to={`/user-profile/${place.User._id}`}>Created by: {place.User.name}</Link>
                 <hr></hr>
 
                 <div>
@@ -130,7 +119,8 @@ function PlaceDetails() {
                {step === 1 && <div><CommentList comment={place.Review}/>
                <button onClick={() =>hideComments()}>Hide Comments</button>
                </div>}
-            </div>}
+            </div>
+            }
         </div>
     )
 
