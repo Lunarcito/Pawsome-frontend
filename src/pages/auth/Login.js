@@ -16,6 +16,7 @@ import {
    Box,
    Link,
    Avatar,
+   Image,
    FormControl,
    FormHelperText,
    InputRightElement
@@ -82,7 +83,12 @@ export default function Login() {
         justifyContent="center"
         alignItems="center"
       >
-        <Avatar bg="teal.500" />
+        <Image
+        borderRadius='full'
+        boxSize='100px'
+        src='../logoPaw.png' 
+        alt='LogoPAw'/>
+
         <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
             <Stack
