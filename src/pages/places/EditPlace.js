@@ -2,14 +2,15 @@ import axios from "axios"
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const apiEndpoint = "http://localhost:8000/api/places/"
 const storedToken = localStorage.getItem('authToken')
 
 function EditPlace() {
-    const { placeId } = useParams()
-
+    const {placeId} = useParams()
+   
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [description, setDescription] = useState("")
@@ -49,7 +50,7 @@ function EditPlace() {
 
     useEffect(() => {
         const apiCall = async () => {
-            try {                             
+            try {
                 const res = await axios.get(apiEndpoint + placeId, { headers: { Authorization: `Bearer ${storedToken}` } })
                 console.log(res)
                 setName(res.data.name)
@@ -57,17 +58,17 @@ function EditPlace() {
                 setAddress(res.data.address)
                 setFiles(res.data.pictures)
                 setType(res.data.type)
-                if(res.data.socialMedia[0]){
+                if (res.data.socialMedia[0]) {
                     setSocialMedia(res.data.socialMedia[0])
 
                 }
-                if(res.data.socialMedia[1]){
+                if (res.data.socialMedia[1]) {
                     setSocialMedia1(res.data.socialMedia[1])
                 }
-                if(res.data.socialMedia[2]){
+                if (res.data.socialMedia[2]) {
                     setSocialMedia2(res.data.socialMedia[2])
                 }
-                
+
             } catch (error) {
                 console.log(error)
             }
@@ -83,16 +84,15 @@ function EditPlace() {
                 formData.append("pictures", element);
             })
         }
+
+        
         formData.append("name", name);
         formData.append("address", address);
         formData.append("description", description);
         formData.append("typeOther", typeOther);
         formData.append("type", type);
         formData.append("socialMedia", socialMedia);
-        console.log({ files, formData })
-
-
-
+      
         try {
             await axios.put(apiEndpoint + placeId, formData, { headers: { Authorization: `Bearer ${storedToken}` } })
             setName("")
@@ -106,8 +106,7 @@ function EditPlace() {
             setFiles(null)
 
             navigate("/home")
-            console.log(name)
-
+       
         } catch (error) {
             console.log(error)
 
@@ -142,11 +141,14 @@ function EditPlace() {
                 <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
                 <br></br>
                 <label>Social media:</label>
-                <input type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia}  placeholder={socialMedia}/>
+                <input type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia} placeholder={socialMedia} />
                 <input type="text" name="socialMedia" onChange={(event) => setSocialMedia1(event.target.value)} value={socialMedia1} placeholder={socialMedia1} />
                 <input type="text" name="socialMedia" onChange={(event) => setSocialMedia2(event.target.value)} value={socialMedia2} placeholder={socialMedia2} />
                 <button type="submit">Save changes</button>
-1            </form>
+            </form>
+                <Link to = '/profile/MyPlaces'> 
+                <button>Cancel</button>
+                </Link>
         </div>
     )
 }
