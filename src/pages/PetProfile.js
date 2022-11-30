@@ -4,6 +4,11 @@ import myPetImg from "../assets/mypet.png"
 import './user/UserProfile'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
+import './PetProfile.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
+
 
 const storedToken = localStorage.getItem("authToken");
 const apiEndpoint = "http://localhost:8000/api/pet-profile"
@@ -16,6 +21,7 @@ const PetProfile =() => {
         headers: { Authorization: `Bearer ${storedToken}` },
     })
       setPets(res.data)
+      console.log(res.data)
   }
 
   useEffect (() => {
@@ -28,20 +34,21 @@ const PetProfile =() => {
     });
     apiCall()
   } 
+  
     return (
       <div className="petprofile">
-        <ul>
+        <div className="petInfo">
           {pets.map((e) => {
             return(
-              <div key={e._id}>
-                <li>Pet Name: {e.namePet}</li>
-                <img className="petProfile" src={e.image} alt="pet"/>
-                <button onClick={() => deleteHandler(e._id)}>Remove Me</button>
+              <div className="everyPet "key={e._id}>
+                {e.image !== "" && <img className="petImage" src={e.image} alt="pet"/>}
+                <p className="petName">{e.namePet}</p>
+                <button className="petButton"onClick={() => deleteHandler(e._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
               </div>
             )
           })}
-        </ul>
-          <Link to="/pet-profile/create"><img src={myPetImg} alt="new pet" />Add a pet</Link>
+        </div>
+          <Link className="createLink" to="/pet-profile/create"><FontAwesomeIcon className="designIcon" icon={faSquarePlus} /></Link>
       </div>
     );  
 }

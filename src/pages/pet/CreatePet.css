@@ -1,0 +1,32 @@
+body{
+    margin: 0%
+}
+.info{
+display: flex;
+justify-content: center;
+flex-direction: column;
+margin-left: 50px;
+margin-right: 50px;
+
+}
+.name{
+ display:flex ;
+ flex-direction:column;
+ justify-content:space-between
+}
+.photo{
+display:flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.button{
+align-self: center;
+background-color: white;
+border: 0ch;
+}
+.photoTitle{
+text-align: center;
+}
+.nameTitle{
+text-align: center;
+}
