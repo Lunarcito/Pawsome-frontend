@@ -23,7 +23,7 @@ const PetProfile =() => {
   }, [])
   
   const deleteHandler = async (elementId) => {
-    const res = await axios.delete(`http://localhost:8000/api/pet-profile/${elementId}`, {
+    await axios.delete(`http://localhost:8000/api/pet-profile/${elementId}`, {
       headers: { Authorization: `Bearer ${storedToken}` },
     });
     apiCall()
@@ -35,13 +35,13 @@ const PetProfile =() => {
             return(
               <div key={e._id}>
                 <li>Pet Name: {e.namePet}</li>
-                <img className="petProfile" src={e.image} alt=""/>
+                <img className="petProfile" src={e.image} alt="pet"/>
                 <button onClick={() => deleteHandler(e._id)}>Remove Me</button>
               </div>
             )
           })}
         </ul>
-          <Link to="/pet-profile/create"><img src={myPetImg} />Add a pet</Link>
+          <Link to="/pet-profile/create"><img src={myPetImg} alt="new pet" />Add a pet</Link>
       </div>
     );  
 }

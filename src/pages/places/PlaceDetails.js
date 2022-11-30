@@ -12,12 +12,13 @@ import { AuthContext } from "../../context/AuthContext";
 const apiEndpoint = "http://localhost:8000/api/places/"
 const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 
+
 function PlaceDetails() {
     const storedToken = localStorage.getItem("authToken");
-    const { placeId } = useParams()
-    const [place, setPlace] = useState(null)
+    const { placeId } = useParams();
+    const [place, setPlace] = useState(null);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [hideReview, setHideReview] = useState(false)
 
@@ -28,9 +29,24 @@ function PlaceDetails() {
 
 
 
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const {  user } = useContext(AuthContext);
 
     useEffect(() => {
+        const countReviewHandler = async () => {
+            try {
+                const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
+                
+               
+                const filteredArray = res.data.filter(review=> review.check === true );
+                setGoodReviews(filteredArray.length/res.data.length*100)
+    
+                setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)          
+    
+    
+            } catch (err) {
+                console.log(err)
+            }
+        }
         const apiCall = async () => {
             try {
                 const res = await axios.get((apiEndpoint + placeId))
@@ -53,12 +69,13 @@ function PlaceDetails() {
             }
         }
         apiCall()
-    }, [user])
+
+    }, [user, storedToken, placeId]);
 
 
     const addFavoriteHandler = async () => {
         try {
-            const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
 
             navigate("/favorites")
 
@@ -68,21 +85,6 @@ function PlaceDetails() {
     }
 
 
-    const countReviewHandler = async () => {
-        try {
-            const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
-            .log(res.data)
-           
-            const filteredArray = res.data.filter(review=> review.check === true );
-            setGoodReviews(filteredArray.length/res.data.length*100)
-
-            setBadReviews((res.data.length-filteredArray.length)/res.data.length*100)          
-
-
-        } catch (err) {
-            console.log(err)
-        }
-    }
     const showComments = () => {
         setStep((prev) => {
             return prev += 1

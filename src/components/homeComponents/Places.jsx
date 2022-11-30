@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"; // updated pictures
-import Map from "../mapComponents/Map";
+
 
 function Places ({place}) {
         return (
