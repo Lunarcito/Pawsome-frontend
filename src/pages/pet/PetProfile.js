@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import myPetImg from "../assets/mypet.png"
+//import myPetImg from "../assets/mypet.png"
 import '../user/UserProfile.css'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
@@ -16,7 +16,6 @@ const PetProfile = () => {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
     setPets(res.data)
-    console.log(res.data)
   }
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const PetProfile = () => {
           return (
             <div key={e._id}>
               <li>Pet Name: {e.namePet}</li>
-              <img className="petProfile" src={e.image} alt="" />
+              
               <button onClick={() => deleteHandler(e._id)}>Remove Me</button>
             </div>
           )

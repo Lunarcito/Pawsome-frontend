@@ -13,9 +13,7 @@ function Map(props) {
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     })
 
-
     if (!props.places[0]) return <div>Loading ...</div>;
-
 
     return (
         <div>
@@ -27,8 +25,6 @@ function Map(props) {
                     />
                 })}
             </GoogleMap>
-
-
         </div>
     )
 }
