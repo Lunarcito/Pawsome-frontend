@@ -40,7 +40,7 @@ const PetProfile =() => {
           {pets.map((e) => {
             return(
               <div className="everyPet "key={e._id}>
-                {e.image !== "" && <img className="petImage" src={e.image} alt="pet"/>}
+                <img className="petImage" src={e.image} alt="pet"/>
                 <p className="petName">{e.namePet}</p>
                 <button className="petButton"onClick={() => deleteHandler(e._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
               </div>
