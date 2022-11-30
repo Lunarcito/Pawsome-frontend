@@ -1,11 +1,11 @@
 
 
 import {Link} from "react-router-dom";
-import userProfileImg from "../assets/user-profile.png"
-import favoriteImg from "../assets/favorite.png"
-import logoutImg from "../assets/logout.png"
-import myPlacesImg from "../assets/map.png"
-import myPetImg from "../assets/mypet.png"
+import userProfileImg from "../../assets/user-profile.png"
+import favoriteImg from "../../assets/favorite.png"
+import logoutImg from "../../assets/logout.png"
+import myPlacesImg from "../../assets/map.png"
+import myPetImg from "../../assets/mypet.png"
 import './UserProfile.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";

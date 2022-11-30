@@ -1,7 +1,7 @@
 
 import {Link} from "react-router-dom";
 import myPetImg from "../assets/mypet.png"
-import './UserProfile.css';
+import './user/UserProfile'
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 
