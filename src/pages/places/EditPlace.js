@@ -21,7 +21,6 @@ function EditPlace() {
     const [socialMedia2, setSocialMedia2] = useState("")
     const [typeOther, setTypeOther] = useState("")
 
-    const [error, setError] = useState(null)
 
     const options = [
         {
@@ -109,7 +108,6 @@ function EditPlace() {
         } catch (error) {
             console.log(error)
 
-            setError(error.response.request.status)
             navigate(`/profile/MyPlaces/edit-place/${placeId}`)
         }
     }

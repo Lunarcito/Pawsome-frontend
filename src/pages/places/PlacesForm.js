@@ -1,11 +1,9 @@
-import { upload } from "@testing-library/user-event/dist/upload";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
 import SecondStepForm from "../../components/placeComponents/SecondStepForm";
 import FirstStepForm from "../../components/placeComponents/FirstStepForm";
-import { NavLink } from "react-router-dom";
 
 
 

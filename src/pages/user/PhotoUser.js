@@ -20,7 +20,7 @@ function PhotoUser(){
         
         const apiCall = async () => {
             try {
-                const res = await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
+                await axios.post(apiEndpoint, formData, { headers: { Authorization: `Bearer ${storedToken}`}})
                 setFile("")            
                 navigate("/")
             } catch (error) {
