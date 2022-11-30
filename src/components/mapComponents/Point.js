@@ -27,7 +27,7 @@ function Point(props) {
                 setLng(Number(lng))
             },
             (error) => {
-                console.error(error);
+                console.error("not proper coordinates");
             }
         );
     }, [address])

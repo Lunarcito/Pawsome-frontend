@@ -20,7 +20,6 @@ function EditPlace() {
     const [socialMedia2, setSocialMedia2] = useState("")
     const [typeOther, setTypeOther] = useState("")
 
-    const [error, setError] = useState(null)
 
     const options = [
         {
@@ -51,7 +50,10 @@ function EditPlace() {
         const apiCall = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId, { headers: { Authorization: `Bearer ${storedToken}` } })
+<<<<<<< HEAD
              
+=======
+>>>>>>> main
                 setName(res.data.name)
                 setDescription(res.data.description)
                 setAddress(res.data.address)
@@ -108,7 +110,6 @@ function EditPlace() {
         } catch (error) {
             console.log(error)
 
-            setError(error.response.request.status)
             navigate(`/profile/MyPlaces/edit-place/${placeId}`)
         }
     }

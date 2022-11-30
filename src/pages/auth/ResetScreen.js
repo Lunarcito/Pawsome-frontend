@@ -22,7 +22,7 @@ function ResetScreen(props) {
             password: password
         }
         try {
-            const response = await axios.put(apiEndpoint, user, { headers: { Authorization: `Bearer ${storedToken}` } })
+            await axios.put(apiEndpoint, user, { headers: { Authorization: `Bearer ${storedToken}` } })
             navigate('/')
 
         } catch (error) {

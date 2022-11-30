@@ -42,7 +42,11 @@ const PetProfile = () => {
           )
         })}
       </ul>
+<<<<<<< HEAD
       <Link to="/pet-profile/create"><img src={myPetImg} />Add a pet</Link>
+=======
+      <Link to="/pet-profile/create"> <img src={myPetImg} />Add a pet</Link>
+>>>>>>> main
     </div>
   );
 }

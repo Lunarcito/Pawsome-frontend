@@ -31,7 +31,6 @@ export default function Login() {
          toast.success('Welcome back!')
          storeToken(response.data.authToken);
          authenticateUser();
-
          navigate('home');
 
       } catch (error) {
@@ -48,8 +47,8 @@ export default function Login() {
             <input required type="password" name="password" value={user.password} onChange={handleChange} />
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button type="submit">Log in </button>
-            <Link to={"home"}>Never Mind Take me to the list</Link>
-            <Link to={'/forgotPassword'}>Forgot my password</Link>
+            <Link to = {"/forgotPassword"}>Forgot my password</Link>
+            <Link to={"home"}>Skip log in</Link>
          </form>
       </div>
    )

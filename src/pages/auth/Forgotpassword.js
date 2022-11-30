@@ -8,7 +8,6 @@ const apiEndpoint = "http://localhost:8000/api/forgotPassword";
 function Forgotpassword(props) {
 
     const [email, setEmail] = useState('')
-    const [error, setError] = useState(null)
 
     const emailSend = {
         email: email
@@ -18,9 +17,7 @@ function Forgotpassword(props) {
     const submitHandler = async (event) => {
         event.preventDefault()
         try {
-            if (email === '') {
-                setError('')
-            } else {
+            if (email !== '') {
                 await axios.post(apiEndpoint, emailSend, { headers: { Authorization: `Bearer ${storedToken}` } })
                 navigate('/')
             }
@@ -36,7 +33,6 @@ function Forgotpassword(props) {
                 <input type="text" name="email" value={email} placeholder={email} onChange={(event) => setEmail(event.target.value)}></input>
                 <button type="submit">Send email to reset the password</button>
             </form>
-
         </div>
     )
 }

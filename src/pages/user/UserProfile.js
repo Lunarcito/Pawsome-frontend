@@ -25,6 +25,10 @@ const UserProfile = () => {
             });
             setProfile(result.data)
             setPet(result.data.pet)
+<<<<<<< HEAD
+=======
+          
+>>>>>>> main
         };
         apiCall();
     }, []);
@@ -38,18 +42,29 @@ const UserProfile = () => {
                     return (
                         <div key={element._id}>
                             <h2>Pet name {element.namePet}</h2>
-                            <img className="petProfile" src={element.image} alt="" />
+                            <img className="petProfile" src={element.image} alt=""/>
                         </div>
                     )
                 })}
             </div>
 
+<<<<<<< HEAD
             <ul>
                 <Link to="/Favorites"><img src={favoriteImg} />Favorites</Link> <br></br>
                 <Link to="/profile/MyPlaces"><img src={myPlacesImg} />Created Places</Link> <br></br>
                 <Link to="/pet-profile"><img src={myPetImg} />My Pets</Link><br></br>
                 <Link to="/Logout"><img src={logoutImg} /> Logout</Link><br></br>
             </ul>
+=======
+
+        <ul>
+
+        <Link to ="/Favorites"><img src ={favoriteImg} alt="favorite"/>Favorites</Link> <br></br>
+        <Link to ="/profile/MyPlaces"><img src ={myPlacesImg} alt="places"/>Created Places</Link> <br></br>
+        <Link to ="/pet-profile"><img src ={myPetImg} alt="pet"/>My Pets</Link><br></br>
+        <Link to ="/Logout"><img src ={logoutImg} alt="logout"/> Logout</Link><br></br>
+        </ul>
+>>>>>>> main
         </div>
     )
 }
