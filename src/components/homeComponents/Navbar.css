@@ -1,6 +1,6 @@
 :root {
     --primary-bg: #242526;
-    --secondary-bg: grey;
+    --secondary-bg: #C3A05C;
     --primary-text-color: #555;
     --secondary-text-color: #cecece;
     --border-radius: 8px;
@@ -41,12 +41,15 @@ a{
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
+    color: #C3A05C;
+    margin-right: 19px;
+    margin-top: 7px;
 }
 .dropdown-menu{
     position: absolute;
     top:80px;
-    right: 20px;
-    background-color: grey;
+    right: 19px;
+    background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
     padding: 5px;
     width: 170px;
@@ -66,6 +69,7 @@ a{
     visibility: visible;
     transform: translateY(0);
     transition: var(--speed) ease;
+    
 }
 .dropdown-menu.inactive{
     opacity: 0;
@@ -80,7 +84,7 @@ a{
     
 }
 .dropdown-menu ul li:hover a{
-    color: rgb(255, 0, 0);
+    color: #E45A51;
     cursor: pointer;
     
 }
@@ -97,7 +101,17 @@ a{
 .logoFooter{
     height: 70px;
     width: 80px;
-  
-
-    cursor: pointer;
+    margin: 10px;
+}
+.linkCon{
+    width: 100%;
+}
+.positionLink{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
 }
