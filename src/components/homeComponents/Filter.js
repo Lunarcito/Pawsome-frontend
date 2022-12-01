@@ -6,6 +6,8 @@ import { faBuildingColumns } from '@fortawesome/free-solid-svg-icons'
 import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
 
+
+
 import './Filter.css'
 
 <i class="fa-solid fa-utensils"></i>

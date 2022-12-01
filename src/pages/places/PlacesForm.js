@@ -1,14 +1,15 @@
-import {
-    Button,
-    Stack,
-} from "@chakra-ui/react";
-
+import './PlacesForm.css';
 import axios from "axios";
 import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
 import SecondStepForm from "../../components/placeComponents/SecondStepForm";
 import FirstStepForm from "../../components/placeComponents/FirstStepForm";
+
+import {
+    Button,
+    Stack,
+} from "@chakra-ui/react";
 
 function PlaceForm() {
     const [name, setName] = useState("")
@@ -134,18 +135,16 @@ function PlaceForm() {
                         </Button>
                     </Stack>
                             ) : (
-                    <button type="submit" className="submitButton">Create</button>
-                )}
-                {error && <h1>{error} </h1>}
+                                <Stack direction='row' spacing={4}>
+                                <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
+                                    Create
+                                </Button>
+                            </Stack>             
+                )} {error && <p className ="error">{error}</p>}
+               
 
             </form>
-            {step > 0 && 
-            <Stack direction='row' spacing={4}>
-                <Button onClick={prevStepHandler} colorScheme='teal' variant='outline'>
-                    Previous
-                </Button>
-            </Stack>
-}
+          
             
     
         </div>
