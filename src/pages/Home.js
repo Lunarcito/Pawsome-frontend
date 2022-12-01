@@ -8,6 +8,7 @@ import Map from "../components/mapComponents/Map";
 
 import {
   Flex,
+  Stack,
 } from "@chakra-ui/react";
 
 
