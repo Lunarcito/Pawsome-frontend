@@ -37,12 +37,12 @@ function Places({ place }) {
             {place &&
                 <Link to={`/places/${place._id}`}><div className="pplaces">
                     <h2 className="Placename">{place.name}</h2>
-                    {main1 && <img className="Placeimage" src={place.pictures} />}
-                    {!main && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' />}
-                    {!main2 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735.jpg' />}
-                    {!main3 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg' />}
-                    {!main4 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836393/Pawsome/adorable-pomeranian-spitz-dog-having-fun-running-beach_1_a2m3j3.jpg' />}
-                    {!main5 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/adorable-french-bulldog-with-colorful-shopping-bags-isolated-white-background_fnkp7p.jpg' />}
+                    {main1 && <img className="Placeimage" src={place.pictures[0]} />}
+                    {!main && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' alt="place"/>}
+                    {!main2 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735.jpg' alt="place"/>}
+                    {!main3 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg' alt="place"/>}
+                    {!main4 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836393/Pawsome/adorable-pomeranian-spitz-dog-having-fun-running-beach_1_a2m3j3.jpg' alt="place"/>}
+                    {!main5 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/adorable-french-bulldog-with-colorful-shopping-bags-isolated-white-background_fnkp7p.jpg' alt="place"/>}
                 </div></Link>
             }
         </div>
