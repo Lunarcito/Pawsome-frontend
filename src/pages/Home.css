@@ -10,3 +10,11 @@ left: 140px;
 .space{
     margin-top: -255px;
 }
+
+.buttonList{
+    position: fixed;
+    bottom: 100px;
+
+    font-size: 50px;
+left: 180px;
+}
