@@ -77,20 +77,20 @@ export default function Signup() {
       backgroundColor="gray.100"
       justifyContent="center"
       alignItems="center"
-    >
+    >/
       <Stack
         flexDir="column"
         mb="2"
         justifyContent="center"
         alignItems="center"
       >
-        <Image
+        <Image className='logo'
         borderRadius='full'
         boxSize='130px'
         src='../logoPaw.png' 
-        alt='LogoPAw'/>
+        alt='LogoPaw'/>
 
-        <Heading color="teal.400">Sign in</Heading>
+        <Heading color="teal.400"> <h6>Sign in</h6></Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
             <Stack
               spacing={4}
@@ -176,9 +176,7 @@ export default function Signup() {
         </Box>
       </Stack>
       <Box>
-        <Link href="/" color="teal.500">        
-         Log in
-        </Link>
+      <Link href="/" color="teal.500">Log in</Link>
       </Box>
     </Flex>
          </form>

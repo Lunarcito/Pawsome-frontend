@@ -1,14 +1,33 @@
+import {
+    Flex,
+    Heading,
+    Input,
+    Button,
+    InputGroup,
+    Stack,
+    InputLeftElement,
+    chakra,
+    Container,
+    Box,
+    Link,
+    Image,
+    FormControl,
+    FormHelperText,
+    InputRightElement
+  } from "@chakra-ui/react";
+
 function SecondStepForm(props) {
 
     return (
         <div>
-            <label>Description:</label>
-            <textarea cols="30" rows="10"
-                type="text"
-                name="description"
-                value={props.description}
-                onChange={(event) => props.onDescription(event.target.value)}
-            />
+            <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"                  
+                  />
+               <Input type="text" name="description" placeholder="Add a place's description" size="lg" value={props.description} onChange={(event) => props.onDescription(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
         </div>
     )
 }
