@@ -10,13 +10,10 @@ import {
    InputGroup,
    Stack,
    InputLeftElement,
-   chakra,
-   Container,
    Box,
    Link,
    Image,
    FormControl,
-   FormHelperText,
    InputRightElement
  } from "@chakra-ui/react";
 
@@ -78,6 +75,8 @@ export default function Signup() {
       justifyContent="center"
       alignItems="center"
     >/
+    
+
       <Stack
         flexDir="column"
         mb="2"

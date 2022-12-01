@@ -6,15 +6,10 @@ import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
 
-
 import {
   Flex,
   Stack,
 } from "@chakra-ui/react";
-
-
-
-
 import './Home.css'
 
 

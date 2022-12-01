@@ -12,7 +12,6 @@ import {
    Stack,
    InputLeftElement,
    chakra,
-   Container,
    Box,
    Link,
    Image,
