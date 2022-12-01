@@ -7,7 +7,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-export default function Navbar() {
+export default function Footer() {
    const { isLoggedIn, } = useContext(AuthContext);
 
    
