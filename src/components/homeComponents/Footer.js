@@ -13,9 +13,9 @@ export default function Navbar() {
    
    return (
       <div className='fixed-bottom'>
-               <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/home"><FontAwesomeIcon icon={ faMagnifyingGlass } /></NavLink>
-               {isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/addPlace"><FontAwesomeIcon icon={ faPlus } /></NavLink>}
-               {<NavLink className={(element) => element.isActive ? 'selected' : ''} to="/Favorites"><FontAwesomeIcon icon={ faHeart } /></NavLink>}
+               <NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/home"><FontAwesomeIcon icon={ faMagnifyingGlass } /></NavLink>
+               {isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/addPlace"><FontAwesomeIcon icon={ faPlus } /></NavLink>}
+               {<NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/Favorites"><FontAwesomeIcon icon={ faHeart } /></NavLink>}
       </div>
    )
 }

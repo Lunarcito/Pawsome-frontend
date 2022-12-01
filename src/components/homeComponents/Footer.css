@@ -19,4 +19,8 @@ header {
     z-index: 999;
     align-items: center;
     justify-content: space-around;
+    color: #C3A05C
+}
+.iconSize{
+    font-size: 30px
 }
