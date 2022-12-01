@@ -14,7 +14,6 @@ import {
    Container,
    Box,
    Link,
-   Avatar,
    Image,
    FormControl,
    FormHelperText,
