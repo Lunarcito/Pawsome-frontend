@@ -50,7 +50,7 @@ export default function Home() {
       one.name.toLowerCase().includes(searchLast.toLowerCase())
     );
     setFilterPlaces(searchThis);
-  }, [activeType]); 
+  }, [activeType, places, searchLast]); 
 
   const searchHandler = (search) => {
     setSearchLast(search);

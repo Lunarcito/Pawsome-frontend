@@ -37,7 +37,7 @@ function Places({ place }) {
             {place &&
                 <Link to={`/places/${place._id}`}><div className="pplaces">
                     <h2 className="Placename">{place.name}</h2>
-                    {main1 && <img className="Placeimage" src={place.pictures[0]} />}
+                    {main1 && <img className="Placeimage" src={place.pictures[0]} alt="" />}
                     {!main && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' alt="place"/>}
                     {!main2 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735.jpg' alt="place"/>}
                     {!main3 && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg' alt="place"/>}

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './PlaceDetails.css'
 import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
@@ -14,8 +14,6 @@ function PlaceDetails() {
     const { placeId } = useParams();
     const [hideReview, setHideReview] = useState(false)
     const [image, setImage] = useState(0)
-    const [isActive, setIsActive] = useState(false);
-    const navigate = useNavigate();
     const [goodReviews, setGoodReviews] = useState(0)
     const [badReviews, setBadReviews] = useState(0)
     const [selectedHeart, setSelectedHeart] = useState(false)
@@ -76,7 +74,7 @@ function PlaceDetails() {
             }
         }
         apiCall()
-    }, []);
+    }, [placeId]);
     const addFavoriteHandler = async () => {
         try {
             if (!selectedHeart) {
@@ -94,7 +92,6 @@ function PlaceDetails() {
     }
     const buttonImagesHandler = (index) => {
         setImage(index)
-        setIsActive(current => !current);
     }
     const showComments = () => {
         setStep((prev) => {
@@ -113,14 +110,14 @@ function PlaceDetails() {
                 <h2>{place.address}</h2>
                 {place.description !== null && place.description !== '' && <p>{place.description}</p>}
                 <div className='imagesDetails'>
-                    <img id="place" src={place.pictures[image]}></img>
+                    <img id="place" src={place.pictures[image]} alt=""></img>
                     <button className="heartButton" onClick={() => addFavoriteHandler()}>
-                        {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' />}
-                        {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' />}
+                        {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' alt=""/>}
+                        {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' alt=""/>}
                     </button>
                 </div>
                 <div className="buttonImages">
-                    {place.pictures.map((element, index) => {
+                    {place.pictures && place.pictures.map((element, index) => {
                         return (
                             <div key={element}>
                                 <button className={index === image ? 'button-green ' : 'button-grey'} onClick={() => buttonImagesHandler(index)} ></button>
@@ -129,17 +126,17 @@ function PlaceDetails() {
                     })}
                 </div>
                 <p>Pet friendly {place.type}</p>
-                <a href='{place.socialMedia}' />
+                <h1>{place.socialMedia} </h1>
                 <div className="posted">
-                    <Link to={`/user-profile/${place.User._id}`}><h3>Posted by:</h3> {place.User.name} </Link>
+                    {place.User && <Link to={`/user-profile/${place.User._id}`}><h3>Posted by:</h3> {place.User.name} </Link>}
                 </div>
                 <div className="verification">
                     <div className="verificationYes">
-                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/sad_iukrsb.png' />
+                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/sad_iukrsb.png' alt="" />
                         <p>{goodReviews} %</p>
                     </div>
                     <div className="verificationNo">
-                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' />
+                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' alt=""/>
                         <p>{badReviews} %</p>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 const apiEndpoint = "http://localhost:8000/api/profile"
 const storedToken = localStorage.getItem('authToken')
@@ -16,7 +15,6 @@ const images = [image1, image2, image3, image4, image5]
 
 function MyPlaces() {
     const [places, setPlaces] = useState([])
-    const { placeId } = useParams()
 
     const apiCall = async () => {
         try {
@@ -33,7 +31,7 @@ function MyPlaces() {
     }, [])
 
     const deleteHandler = async (elementId) => {
-        const res = await axios.delete(`http://localhost:8000/api/places/${elementId}`, {
+        await axios.delete(`http://localhost:8000/api/places/${elementId}`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         });
         apiCall()
