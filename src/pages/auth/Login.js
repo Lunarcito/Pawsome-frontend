@@ -15,7 +15,6 @@ import {
    Container,
    Box,
    Link,
-   Avatar,
    Image,
    FormControl,
    FormHelperText,
@@ -83,11 +82,11 @@ export default function Login() {
       >
         <Image
         borderRadius='full'
-        boxSize='120px'
+        boxSize='130px'
         src='../logoPaw.png' 
         alt='LogoPAw'/>
 
-        <Heading color="teal.400">Welcome</Heading>
+        <Heading className="Pawsome" color="teal.400">PAWSOME</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
             <Stack
               spacing={4}

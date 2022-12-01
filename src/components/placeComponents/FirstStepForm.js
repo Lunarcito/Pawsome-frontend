@@ -1,21 +1,60 @@
+import {
+    Flex,
+    Heading,
+    Input,
+    Button,
+    InputGroup,
+    Stack,
+    InputLeftElement,
+    chakra,
+    Container,
+    Box,
+    Link,
+    Avatar,
+    Image,
+    FormControl,
+    FormHelperText,
+    InputRightElement
+  } from "@chakra-ui/react";
+
+
+  import { FaUserAlt, FaLock } from "react-icons/fa";
+ 
+  const CFaUserAlt = chakra(FaUserAlt);
+
 function FirstStepForm(props) {
     return (
-        <div>
-            <label>Name of the place:</label>
-            <input
-                type="text"
-                name="name"
-                value={props.name}
-                onChange={(event) => props.onName(event.target.value)}
-            />
-            <hr></hr>
-            <label>Address:</label>
-            <input
-                type="text"
-                name="address"
-                value={props.address}
-                onChange={(event) => props.onAddress(event.target.value)}
-            />
+        <div className="addplace-container">
+          
+          <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaUserAlt color="gray.300" />}                  
+                  />
+               <Input type="text" name="name" placeholder="Place's name" value={props.name} onChange={(event) => props.onName(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"                    
+                  />
+               <Input type="text" name="address" placeholder="Address" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"                    
+                  />
+               <Input type="text" name="address" placeholder="Type of Place" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+
+            
             <hr></hr>
             <label>Choose a type of place:</label>
             <select value={props.type} onChange={(event) => props.onType(event.target.value)}>

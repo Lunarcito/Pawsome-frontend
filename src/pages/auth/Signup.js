@@ -1,3 +1,4 @@
+import './Signup.css';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +14,7 @@ import {
    Container,
    Box,
    Link,
-   Avatar,
+   Image,
    FormControl,
    FormHelperText,
    InputRightElement
@@ -67,7 +68,7 @@ export default function Signup() {
 
    return (
 
-   <div>
+   <div className="sign-in">
        <form onSubmit={handleSubmit}>         
          <Flex
       flexDirection="column"
@@ -83,7 +84,12 @@ export default function Signup() {
         justifyContent="center"
         alignItems="center"
       >
-        <Avatar bg="teal.500" />
+        <Image
+        borderRadius='full'
+        boxSize='130px'
+        src='../logoPaw.png' 
+        alt='LogoPAw'/>
+
         <Heading color="teal.400">Sign in</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
             <Stack
@@ -105,17 +111,16 @@ export default function Signup() {
                   <InputLeftElement
                     pointerEvents="none"
                     color="gray.300"
-                  />
-                  
+                  />                  
                   <Input type="text" name="name" placeholder="name" value={user.name} onChange={handleChange}/>
                 </InputGroup>
               </FormControl>
+              
               <FormControl>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
                     color="gray.300"
-                   
                   />
                   
                   <Input type="email" name="email" placeholder="email address" value={user.email} onChange={handleChange}/>
@@ -149,8 +154,6 @@ export default function Signup() {
                     value={passwordControl} 
                     onChange={(e) => setPasswordControl(e.target.value)} 
                   />
-
-                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                   
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm" onClick={handleShowClick}> 
@@ -159,6 +162,7 @@ export default function Signup() {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
+              {errorMessage && <p>{errorMessage}</p>}
               <Button
                 borderRadius={0}
                 type="submit"
