@@ -6,6 +6,9 @@ import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
 
+
+import './Home.css'
+
 const apiEndpoint = "http://localhost:8000/api/places";
 
 export default function Home() {
@@ -59,7 +62,7 @@ export default function Home() {
           return <Places key={place._id} place={place} />;
         })}
       </div></div>}
-      {!showMap && <button  onClick={()=>setShowMap(true)}>Map</button>}
+      {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
       {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
     </div>
   );
