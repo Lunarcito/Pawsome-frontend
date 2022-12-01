@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
+
 import './PlaceDetails.css'
 import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
@@ -11,7 +12,10 @@ const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 const apiEndpoint3 = "http://localhost:8000/api/favorites/"
 function PlaceDetails() {
     const storedToken = localStorage.getItem("authToken");
+
+
     const { placeId } = useParams();
+
     const [hideReview, setHideReview] = useState(false)
     const [image, setImage] = useState(0)
     const [isActive, setIsActive] = useState(false);
@@ -41,10 +45,12 @@ function PlaceDetails() {
         }
         apiCall()
     }, [selectedHeart]);
+
     useEffect(() => {
         const countReviewHandler = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
+
                 const filteredArray = res.data.filter(review => review.check === true);
                 if (res.data.length === 0) {
                     setGoodReviews(0)
@@ -53,6 +59,7 @@ function PlaceDetails() {
                     setGoodReviews(filteredArray.length / res.data.length * 100)
                     setBadReviews((res.data.length - filteredArray.length) / res.data.length * 100)
                 }
+
             } catch (err) {
                 console.log(err)
             }
@@ -104,6 +111,7 @@ function PlaceDetails() {
         })
     }
     return (
+
         <div className='placeDetails'>
             {place && <div className="placeDetails">
                 <h1>{place.name}</h1>
@@ -141,6 +149,7 @@ function PlaceDetails() {
                     </div>
                 </div>
                 {!hideReview ? <Link to={`/addReview/${place._id}`}><button>Add review</button></Link> : null}
+
                 {step === 0 && <button onClick={() => showComments()}>Show Comments</button>}
                 {step === 1 && <div><CommentList comment={place.Review} />
                     <button onClick={() => hideComments()}>Hide Comments</button>
