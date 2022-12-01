@@ -33,19 +33,8 @@ function FirstStepForm(props) {
                <Input type="text" name="address" placeholder="Address" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
                 </InputGroup>
               </FormControl>
-
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"                    
-                  />
-               <Input type="text" name="address" placeholder="Type of Place" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
-                </InputGroup>
-              </FormControl>
-
             
             <hr></hr>
-            <label>Choose a type of place:</label>
             <select value={props.type} onChange={(event) => props.onType(event.target.value)}>
                 {props.options.map((option) => (
                     
