@@ -24,6 +24,7 @@ import EditPlace from './pages/places/EditPlace'
 import IsLoggedin from './components/authComponents/IsLoggedin';
 
 import { ChakraProvider } from '@chakra-ui/react'
+import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 
 import Footer from './components/homeComponents/Footer'
 

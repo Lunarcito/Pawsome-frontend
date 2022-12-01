@@ -63,7 +63,7 @@ export default function Navbar() {
             </div>}
          </div>
          <div>
-            <img className='logoFooter' src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669817485/Pawsome/Logo_Paw_kinagr.png" alt='logo' /> 
+            <img className='logoFooter' src='../logoPaw.png'  alt='logo' /> 
          </div>
       </div>
    )

@@ -7,7 +7,15 @@ import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
 
 
+import {
+  Flex,
+} from "@chakra-ui/react";
+
+
+
+
 import './Home.css'
+
 
 const apiEndpoint = "http://localhost:8000/api/places";
 
@@ -53,8 +61,23 @@ export default function Home() {
 
   return (
     <div>
+
+<Flex
+      flexDirection="column"
+      width="100wh"
+      height="100vh"
+      backgroundColor="gray.100"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Stack
+        flexDir="column"
+        mb="2"
+        justifyContent="center"
+        alignItems="center"
+      >
       {showMap && <Map places={filterPlaces} />}
-      {!showMap && <div><h1>list</h1>
+      {!showMap && <div>
       <Search onSearch={searchHandler} />
       <Filter setActiveType={setActiveType} />
       <div className= "space">
@@ -64,6 +87,10 @@ export default function Home() {
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
       {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
+      </Stack>
+   </Flex>
+  
+   
     </div>
   );
 }

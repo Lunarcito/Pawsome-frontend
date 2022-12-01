@@ -1,6 +1,5 @@
 
 .fixed-bottom{
-    border: #242526 1px solid;
     display: flex;
     position:sticky; bottom:0; left:0px;
     width:100%;
@@ -10,8 +9,8 @@
     z-index: 999;
     align-items: center;
     justify-content: space-around;
-    color: #C3A05C
+    color: rgb(21, 128, 124);
 }
 .iconSize{
-    font-size: 30px
+    font-size: 25px
 }
