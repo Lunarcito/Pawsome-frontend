@@ -1,3 +1,8 @@
+import {
+    Stack,
+    Button,
+  } from "@chakra-ui/react";
+
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
@@ -6,9 +11,13 @@ import './PlaceDetails.css'
 import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+
+
 const apiEndpoint = "http://localhost:8000/api/places/"
 const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 const apiEndpoint3 = "http://localhost:8000/api/favorites/"
+
+
 function PlaceDetails() {
     const storedToken = localStorage.getItem("authToken");
     const { placeId } = useParams();
@@ -54,13 +63,13 @@ function PlaceDetails() {
                 });
                 if (res.data.User._id === user._id) {
                     setHideReview(true)
-                    countReviewHandler()
                 }
             } catch (error) {
                 console.log(error)
             }
         }
         apiCall()
+        countReviewHandler()
     }, [user, storedToken, placeId]);
     useEffect(() => {
         const apiCall = async () => {
@@ -172,18 +181,29 @@ function PlaceDetails() {
                 </div>
                 <div className="verification">
                     <div className="verificationYes">
-                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/sad_iukrsb.png' alt="" />
+                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' alt="" />
                         <p>{goodReviews} %</p>
                     </div>
                     <div className="verificationNo">
-                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' alt="" />
+                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/sad_iukrsb.png' alt="" />
                         <p>{badReviews} %</p>
                     </div>
                 </div>
                 {!hideReview ? <Link to={`/addReview/${place._id}`}><button>Add review</button></Link> : null}
-                {step === 0 && <button onClick={() => showComments()}>Show Comments</button>}
+                {step === 0 && 
+                
+                <Stack direction='row' spacing={3}>
+                <Button onClick={() => showComments()} colorScheme='teal' variant='outline'>
+                Show Comments
+                </Button>
+                </Stack>
+                }
                 {step === 1 && <div><CommentList comment={place.Review} />
-                    <button onClick={() => hideComments()}>Hide Comments</button>
+                <Stack direction='row' spacing={3}>
+                <Button onClick={() => hideComments()} colorScheme='teal' variant='outline'>
+                Hide Comments
+                </Button>
+            </Stack>
                 </div>}
             </div>
             }

@@ -176,7 +176,8 @@ function EditPlace() {
                 <button className="editbox" type="submit">Save changes</button>
             </form>
             <Link to='/profile/MyPlaces'>
-                <button>Cancel</button>
+
+            <button type="submit" className="submitButton">Cancel</button>
             </Link>
         </div>
     )
