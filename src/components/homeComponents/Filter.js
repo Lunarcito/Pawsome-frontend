@@ -13,12 +13,12 @@ function Filter({ setActiveType }) {
 
     return (
         <div className="filter-container">
-            <button onClick={() => setActiveType('')}><FontAwesomeIcon className="designIcon" icon={faFilter} /></button>
-            <button onClick={() => setActiveType('Beach')}><FontAwesomeIcon className="designIcon" icon={faUmbrellaBeach} /></button>
-            <button onClick={() => setActiveType('Restaurant')}><FontAwesomeIcon className="designIcon" icon={faUtensils} /></button>
-            <button onClick={() => setActiveType('Cafeteria')}><FontAwesomeIcon className="designIcon" icon={faMugSaucer} /></button>
-            <button onClick={() => setActiveType('Museum')}><FontAwesomeIcon className="designIcon" icon={faBuildingColumns} /></button>
-            <button onClick={() => setActiveType('Other')}><FontAwesomeIcon className="designIcon" icon={faBagShopping} /></button>
+            <button onClick={() => setActiveType('')}><FontAwesomeIcon className="filterIcon" icon={faFilter} /></button>
+            <button onClick={() => setActiveType('Beach')}><FontAwesomeIcon className="filterIcon" icon={faUmbrellaBeach} /></button>
+            <button onClick={() => setActiveType('Restaurant')}><FontAwesomeIcon className="filterIcon" icon={faUtensils} /></button>
+            <button onClick={() => setActiveType('Cafeteria')}><FontAwesomeIcon className="filterIcon" icon={faMugSaucer} /></button>
+            <button onClick={() => setActiveType('Museum')}><FontAwesomeIcon className="filterIcon" icon={faBuildingColumns} /></button>
+            <button onClick={() => setActiveType('Other')}><FontAwesomeIcon className="filterIcon" icon={faBagShopping} /></button>
         </div>
     )
 }

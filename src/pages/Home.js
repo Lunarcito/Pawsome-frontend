@@ -6,10 +6,7 @@ import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
 
-import {
-  Flex,
-  Stack,
-} from "@chakra-ui/react";
+
 import './Home.css'
 
 
@@ -56,26 +53,16 @@ export default function Home() {
   };
 
   return (
-    <div>
-
-<Flex
-      flexDirection="column"
-      width="100wh"
-      height="100vh"
-      backgroundColor="gray.100"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Stack
-        flexDir="column"
-        mb="2"
-        justifyContent="center"
-        alignItems="center"
-      >
+    <div className= "containerAll">
+   
+      
       {showMap && <Map places={filterPlaces} />}
       {!showMap && <div>
       <Search onSearch={searchHandler} />
+      <div className="filter">
       <Filter setActiveType={setActiveType} />
+      </div>
+ 
       <div className= "space">
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
@@ -83,9 +70,8 @@ export default function Home() {
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
       {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
-      </Stack>
-   </Flex>
-  
+   
+
    
     </div>
   );

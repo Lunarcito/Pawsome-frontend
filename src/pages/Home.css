@@ -1,7 +1,10 @@
 .buttonMap{
-    position: sticky;
-    bottom: 70px;
+    position: fixed;
+    bottom: 100px;
     height: 100px;
     width: 100px;
-    align-self: center;
+left: 140px;
+}
+.space{
+    margin-top: -255px;
 }
