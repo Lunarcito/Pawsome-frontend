@@ -54,11 +54,11 @@ export default function Home() {
       {!showMap && <div><h1>list</h1>
       <Search onSearch={searchHandler} />
       <Filter setActiveType={setActiveType} />
-      <ul>
+      <div className= "space">
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
         })}
-      </ul></div>}
+      </div></div>}
       {!showMap && <button  onClick={()=>setShowMap(true)}>Map</button>}
       {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
     </div>

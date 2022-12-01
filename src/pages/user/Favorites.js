@@ -2,6 +2,10 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Places from "../../components/homeComponents/Places";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+
+import './Favorites.css'
 
 function Favorites() {
     const [favorites, setFavorites] = useState([])
@@ -51,8 +55,8 @@ function Favorites() {
             {favorites && favorites.map((fav) => {
                 return (
                     <div key={fav._id}>
+                        <button className="buittoni"onClick={event => deleteFavorite(fav._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
                         <Places key={fav._id} place={fav.place} />
-                        <button onClick={event => deleteFavorite(fav._id)}>Delete</button>
                     </div>
                 )
             })}

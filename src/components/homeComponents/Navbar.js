@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faUser as farUser } from '@fortawesome/free-regular-svg-icons'
+// import { faUser as farUser } from '@fortawesome/free-regular-svg-icons'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
@@ -45,7 +45,7 @@ export default function Navbar() {
       <div className='nav-con'>
          <div className='menu-container' ref={menuRef}>
             <div onClick={() =>{setOpen(!open)}}>
-            <FontAwesomeIcon icon={isLoggedIn? faUser : farUser} className='menu-trigger' />
+            <FontAwesomeIcon icon={isLoggedIn? faUser : faUser} className='menu-trigger' />
             </div>
             {open &&<div className={`dropdown-menu ${open? 'active' : 'inactive'}`}>
                <ul>

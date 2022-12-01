@@ -29,15 +29,19 @@ function MyPlaces() {
         });
         apiCall()
     }
+
     
+    console.log(places)
     return (
         <div>
             <h1>My Places</h1>
-            {places.map((place) => {
+            {places && places.map((place) => {
                 return (
-                    <div key={place._id}>
-                        <p>{place.name}</p>
-                        <p>{place.address}</p>
+                    <div key={place._id}><div className="pplaces">
+                        <h2 className="Placename">{place.name}</h2>
+                        <img className="Placeimage" src={place.pictures} alt="place" />
+                        
+                        </div>
                         <Link to={`edit-place/${place._id}`}>Edit</Link>
                         <button onClick={() => deleteHandler(place._id)}>Remove Me</button>
                     </div>
