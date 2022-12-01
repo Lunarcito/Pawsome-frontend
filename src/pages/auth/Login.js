@@ -35,7 +35,6 @@ export default function Login() {
    const [showPassword, setShowPassword] = useState(false);
    const handleShowClick = () => setShowPassword(!showPassword);
 
-   const [errorMessage, setErrorMessage] = useState(undefined);
    const navigate = useNavigate();
 
    const handleChange = (e) => {
@@ -57,7 +56,7 @@ export default function Login() {
          navigate('home');
 
       } catch (error) {
-         setErrorMessage(error.response.data.message)
+        console.log(error)
       }
    }
 

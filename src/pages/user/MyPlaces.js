@@ -2,6 +2,8 @@ import './MyPlaces.css';
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 import {
     Button,
@@ -60,10 +62,12 @@ function MyPlaces() {
                         <div>
                             <Link className= "edit" to={`edit-place/${place._id}`}>Edit</Link>
                         </div>
+
                         <Button h="1.75rem" size="sm" onClick={() => deleteHandler(place._id)}>
                             Remove Me
                         </Button>
                         </div>
+
 
                     </div>
                 )
