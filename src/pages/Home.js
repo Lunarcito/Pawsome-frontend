@@ -72,7 +72,7 @@ export default function Home() {
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
 
-      {showMap && <button  onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/>t</button>}
+      {showMap && <button className="buttonList" onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/></button>}
    
 
 

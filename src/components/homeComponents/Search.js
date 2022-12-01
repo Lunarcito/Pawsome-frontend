@@ -5,7 +5,7 @@ const Search = (props) => {
         props.onSearch(event.target.value)
     }
     return (
-        <div>
+        <div className='filterBox'>
             <input className="filterSearch" type="text" onChange={searchChangeHandler}></input>
         </div>
     )

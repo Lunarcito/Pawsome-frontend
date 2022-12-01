@@ -24,13 +24,19 @@
     font-size: 14px;
     height: 36px;
     margin-left: 54px;
-    position: fixed;
-    margin-top: -43px;
-    z-index: 99;
     border-style: solid 5px;
     border-color: black ;
     border-width: 3px;
-  
+}
+
+.filterBox{
+    position: fixed;
+    z-index: 99;
+    background-color: white; 
+    height: 100px;
+    width: 100vw;
+    margin-top: -70px;
+    padding-top: 32px;
 }
    
 .filterSearch input{
