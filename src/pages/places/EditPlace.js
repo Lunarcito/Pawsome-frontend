@@ -3,7 +3,20 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import './EditPlace.css'
+
+import './EditPlaces.css';
+
+import {
+    Input,
+    InputGroup,
+    InputLeftElement,
+    chakra,
+    FormControl,
+  } from "@chakra-ui/react";
+
+
+//import './EditPlace.css'
+
 const apiEndpoint = "http://localhost:8000/api/places/"
 const storedToken = localStorage.getItem('authToken')
 
@@ -113,12 +126,29 @@ function EditPlace() {
     return (
         <div>
             <form onSubmit={submitHandler}>
-                <input className="editbox" type="text" name="name" value={name} placeholder={name} onChange={(event) => setName(event.target.value)} />
-                <br></br>
-                <input className="editbox" type="text" name="address" value={address} placeholder={address} onChange={(event) => setAddress(event.target.value)}
-                />
-                <br></br>
-                <label>Choose a type of place:</label>
+
+                <h3>Edit a Place</h3>
+
+                <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"              
+                  />
+               <Input type="text" name="name" placeholder="Name" value={name} onChange={(event) => setName(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+
+
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"                    
+                  />
+               <Input type="text" name="address" placeholder="Address" value={address}  onChange={(event) => setAddress(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+
+
                 <select value={type} onChange={(event) => setType(event.target.value)}>
                     {options.map((option) => (
                         <option key={Math.random()} value={option.value} placeholder={type}>{option.label}</option>
@@ -126,9 +156,17 @@ function EditPlace() {
                 </select>
                 {type === 'Other' && <input type="text" name="type" value={typeOther} onChange={(event) => setTypeOther(event.target.value)}></input>}
                 <br></br>
-                <textarea className="editbox" cols="30" rows="10" type="text" name="description" value={description} placeholder={description} onChange={(event) => setDescription(event.target.value)}
-                />
-                <br></br>
+
+                <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"                  
+                  />
+               <Input type="text" name="description" placeholder="Add a place's description" size="lg" value={description} onChange={(event) => setDescription(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+    
+
                 <label>Upload one or more pictures</label>
                 <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
                 <br></br>
