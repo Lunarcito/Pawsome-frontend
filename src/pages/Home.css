@@ -1,15 +1,12 @@
 .buttonMap{
-    position: sticky;
-    bottom: 90px;
-    height: 100px;
-    width: 100px;
-    align-self: center;
-}
 
-.buttonList{
-    position: sticky;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 100px;
+
     height: 100px;
     width: 100px;
-    align-self: center;
+left: 140px;
+}
+.space{
+    margin-top: -255px;
 }

@@ -8,10 +8,7 @@ import Map from "../components/mapComponents/Map";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-import {
-  Flex,
-  Stack,
-} from "@chakra-ui/react";
+
 import './Home.css'
 
 
@@ -58,36 +55,27 @@ export default function Home() {
   };
 
   return (
-    <div>
-
-<Flex
-      flexDirection="column"
-      width="100wh"
-      height="100vh"
-      backgroundColor="gray.100"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Stack
-        flexDir="column"
-        mb="2"
-        justifyContent="center"
-        alignItems="center"
-      >
+    <div className= "containerAll">
+   
+      
       {showMap && <Map places={filterPlaces} />}
       {!showMap && <div>
       <Search onSearch={searchHandler} />
+      <div className="filter">
       <Filter setActiveType={setActiveType} />
+      </div>
+ 
       <div className= "space">
         {filterPlaces.map((place) => {
           return <Places key={place._id} place={place} />;
         })}
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
-      {showMap && <button className="buttonList" onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/></button>}
-      </Stack>
-   </Flex>
-  
+
+      {showMap && <button  onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/>t</button>}
+   
+
+
    
     </div>
   );
