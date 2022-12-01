@@ -21,7 +21,8 @@ function MyPlaces() {
     const apiCall = async () => {
         try {
             const res = await axios.get(apiEndpoint, { headers: { Authorization: `Bearer ${storedToken}` } })
-            setPlaces(res.data.createdPlaceId)
+            setPlaces(res.data.createdPlaceId) //here
+            console.log(res)
         } catch (err) {
             console.log(err)
         }
@@ -43,7 +44,8 @@ function MyPlaces() {
     return (
         <div>
             <h1>My Places</h1>
-            {places && places.map((place) => {
+            
+            {places[0] && places.map((place) => {
                 return (
                     <div key={place._id}><div className="pplaces">
                         <h2 className="Placename">{place.name}</h2>

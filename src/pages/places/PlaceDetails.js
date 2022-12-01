@@ -2,7 +2,6 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
-
 import './PlaceDetails.css'
 import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
@@ -12,10 +11,7 @@ const apiEndpoint2 = "http://localhost:8000/api/favorite/"
 const apiEndpoint3 = "http://localhost:8000/api/favorites/"
 function PlaceDetails() {
     const storedToken = localStorage.getItem("authToken");
-
-
     const { placeId } = useParams();
-
     const [hideReview, setHideReview] = useState(false)
     const [image, setImage] = useState(0)
     const [isActive, setIsActive] = useState(false);
@@ -26,31 +22,11 @@ function PlaceDetails() {
     const [place, setPlace] = useState("")
     const [step, setStep] = useState(0)
     const { user } = useContext(AuthContext);
-    const [favorites, setFavorites] = useState([])
-    useEffect(() => {
-        const apiCall = async () => {
-            try {
-                const storedToken = localStorage.getItem("authToken");
-                const res = await axios.get(
-                    apiEndpoint3,
-                    { headers: { Authorization: `Bearer ${storedToken}` } }
-                )
-                res.data.forEach(element => {
-                    if (element.place._id === placeId)
-                        setFavorites(element)
-                })
-            } catch (err) {
-                console.log(err)
-            }
-        }
-        apiCall()
-    }, [selectedHeart]);
-
+    const [favorites, setFavorites] = useState(false)
     useEffect(() => {
         const countReviewHandler = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
-
                 const filteredArray = res.data.filter(review => review.check === true);
                 if (res.data.length === 0) {
                     setGoodReviews(0)
@@ -59,7 +35,6 @@ function PlaceDetails() {
                     setGoodReviews(filteredArray.length / res.data.length * 100)
                     setBadReviews((res.data.length - filteredArray.length) / res.data.length * 100)
                 }
-
             } catch (err) {
                 console.log(err)
             }
@@ -73,7 +48,6 @@ function PlaceDetails() {
                         setHideReview(true)
                     }
                 });
-                console.log(res.data)
                 if (res.data.User._id === user._id) {
                     setHideReview(true)
                     countReviewHandler()
@@ -84,13 +58,35 @@ function PlaceDetails() {
         }
         apiCall()
     }, [user, storedToken, placeId]);
+    useEffect(() => {
+        const apiCall = async () => {
+            try {
+                const storedToken = localStorage.getItem("authToken");
+                const res = await axios.get(
+                    apiEndpoint3,
+                    { headers: { Authorization: `Bearer ${storedToken}` } }
+                )
+                res.data.forEach(element => {
+                    if (element.place._id === placeId)
+                        setFavorites(element)
+                    setSelectedHeart(true)
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        apiCall()
+    }, []);
     const addFavoriteHandler = async () => {
-        setSelectedHeart(!selectedHeart)
         try {
-            if (selectedHeart) {
-                await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+            if (!selectedHeart) {
+                const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+                setFavorites(res.data)
+                setSelectedHeart(!selectedHeart)
             } else {
                 await axios.delete(apiEndpoint3 + favorites._id, { headers: { Authorization: `Bearer ${storedToken}` } })
+                setFavorites(false)
+                setSelectedHeart(!selectedHeart)
             }
         } catch (err) {
             console.log(err)
@@ -111,7 +107,6 @@ function PlaceDetails() {
         })
     }
     return (
-
         <div className='placeDetails'>
             {place && <div className="placeDetails">
                 <h1>{place.name}</h1>
@@ -120,14 +115,14 @@ function PlaceDetails() {
                 <div className='imagesDetails'>
                     <img id="place" src={place.pictures[image]}></img>
                     <button className="heartButton" onClick={() => addFavoriteHandler()}>
-                        {!selectedHeart && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' />}
-                        {selectedHeart && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' />}
+                        {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' />}
+                        {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' />}
                     </button>
                 </div>
                 <div className="buttonImages">
                     {place.pictures.map((element, index) => {
                         return (
-                            <div key="arrayPictures">
+                            <div key={element}>
                                 <button className={index === image ? 'button-green ' : 'button-grey'} onClick={() => buttonImagesHandler(index)} ></button>
                             </div>
                         )
@@ -149,7 +144,6 @@ function PlaceDetails() {
                     </div>
                 </div>
                 {!hideReview ? <Link to={`/addReview/${place._id}`}><button>Add review</button></Link> : null}
-
                 {step === 0 && <button onClick={() => showComments()}>Show Comments</button>}
                 {step === 1 && <div><CommentList comment={place.Review} />
                     <button onClick={() => hideComments()}>Hide Comments</button>
