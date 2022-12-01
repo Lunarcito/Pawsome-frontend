@@ -1,23 +1,13 @@
 import {
-    Flex,
-    Heading,
     Input,
-    Button,
     InputGroup,
-    Stack,
     InputLeftElement,
     chakra,
-    Container,
-    Box,
-    Link,
-    Image,
     FormControl,
-    FormHelperText,
-    InputRightElement
   } from "@chakra-ui/react";
 
 
-  import { FaUserAlt, FaLock } from "react-icons/fa";
+  import { FaUserAlt} from "react-icons/fa";
  
   const CFaUserAlt = chakra(FaUserAlt);
 

@@ -36,7 +36,7 @@ a{
 }
 .menu-trigger{
     height: 35px;
-    width: 35px;
+    width: 45px;
     border-radius: 30%;
     overflow: hidden;
     cursor: pointer;
@@ -51,7 +51,7 @@ a{
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
     padding: 4px;
-    width: 120px;
+    width: 150px;
     color:aliceblue;
     font-size: 14px;
     font-weight: bold;   

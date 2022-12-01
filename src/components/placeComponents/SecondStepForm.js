@@ -1,19 +1,8 @@
 import {
-    Flex,
-    Heading,
     Input,
-    Button,
     InputGroup,
-    Stack,
     InputLeftElement,
-    chakra,
-    Container,
-    Box,
-    Link,
-    Image,
     FormControl,
-    FormHelperText,
-    InputRightElement
   } from "@chakra-ui/react";
 
 function SecondStepForm(props) {

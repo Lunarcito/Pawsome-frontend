@@ -1,21 +1,7 @@
 import {
-    Flex,
-    Heading,
-    Input,
     Button,
-    InputGroup,
     Stack,
-    InputLeftElement,
-    chakra,
-    Container,
-    Box,
-    Link,
-    Image,
-    FormControl,
-    FormHelperText,
-    InputRightElement,
-    ArrowForwardIcon
-  } from "@chakra-ui/react";
+} from "@chakra-ui/react";
 
 import axios from "axios";
 import {  useState } from "react";

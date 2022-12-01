@@ -1,14 +1,5 @@
 function CommentList (props) {
-    console.log(props.comment)
     let data = props.comment
-    
-    // const day = data.createdAt.getUTCDate()
-    // const month = data.createdAt.getUTCMonth()
-    // const year = data.createdAt.getUTCFullYear()
-    // const hour = data.createdAt.getUTCHours()
-    // const minute = data.createdAt.getUTCMinutes()
-    // console.log(day)
-
 
     return(
         <div>
