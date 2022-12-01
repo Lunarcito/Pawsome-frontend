@@ -29,11 +29,10 @@
     text-align: center;
 }
 
-.placeImage{
+.Imaginepet{
     height: 120px;
-    width: 380px;
-    object-fit: cover;
-    border-radius: 25%;
+    width: 400px;
+    object-fit: cover; 
 
 }
 .name{

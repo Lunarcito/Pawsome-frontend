@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import './EditPlace.css'
 const apiEndpoint = "http://localhost:8000/api/places/"
 const storedToken = localStorage.getItem('authToken')
 
@@ -112,13 +112,10 @@ function EditPlace() {
     }
     return (
         <div>
-            <h1>Hello</h1>
             <form onSubmit={submitHandler}>
-                <label>Name</label>
-                <input type="text" name="name" value={name} placeholder={name} onChange={(event) => setName(event.target.value)} />
+                <input className="editbox" type="text" name="name" value={name} placeholder={name} onChange={(event) => setName(event.target.value)} />
                 <br></br>
-                <label>Address:</label>
-                <input type="text" name="address" value={address} placeholder={address} onChange={(event) => setAddress(event.target.value)}
+                <input className="editbox" type="text" name="address" value={address} placeholder={address} onChange={(event) => setAddress(event.target.value)}
                 />
                 <br></br>
                 <label>Choose a type of place:</label>
@@ -129,18 +126,16 @@ function EditPlace() {
                 </select>
                 {type === 'Other' && <input type="text" name="type" value={typeOther} onChange={(event) => setTypeOther(event.target.value)}></input>}
                 <br></br>
-                <label>Description</label>
-                <textarea cols="30" rows="10" type="text" name="description" value={description} placeholder={description} onChange={(event) => setDescription(event.target.value)}
+                <textarea className="editbox" cols="30" rows="10" type="text" name="description" value={description} placeholder={description} onChange={(event) => setDescription(event.target.value)}
                 />
                 <br></br>
                 <label>Upload one or more pictures</label>
                 <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
                 <br></br>
-                <label>Social media:</label>
-                <input type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia} placeholder={socialMedia} />
-                <input type="text" name="socialMedia" onChange={(event) => setSocialMedia1(event.target.value)} value={socialMedia1} placeholder={socialMedia1} />
-                <input type="text" name="socialMedia" onChange={(event) => setSocialMedia2(event.target.value)} value={socialMedia2} placeholder={socialMedia2} />
-                <button type="submit">Save changes</button>
+                <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia} placeholder={socialMedia} />
+                <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia1(event.target.value)} value={socialMedia1} placeholder={socialMedia1} />
+                <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia2(event.target.value)} value={socialMedia2} placeholder={socialMedia2} />
+                <button className="editbox" type="submit">Save changes</button>
             </form>
             <Link to='/profile/MyPlaces'>
                 <button>Cancel</button>
