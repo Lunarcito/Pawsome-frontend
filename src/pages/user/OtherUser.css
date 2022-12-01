@@ -1,0 +1,53 @@
+.titleName {
+    color: #999999;
+    font-family: arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    }
+
+.petImage{
+    height: 45px;
+    width: 54px;
+    border-radius: 50%
+}
+
+.petInfo{
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 170px;
+    padding-bottom: 10px;
+}
+.petName{
+    text-align: center;
+}
+
+.placeImage{
+    height: 120px;
+    width: 380px;
+    object-fit: cover;
+    border-radius: 25%;
+
+}
+.name{
+    position: absolute;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.placeBox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+

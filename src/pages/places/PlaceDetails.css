@@ -1,28 +1,94 @@
 .placeDetails {
     width: 100vw;
-}
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .placeDetails h1 {
+    font-size: 28px;
+}
+.placeDetails h2 {
+    font-size: 14px;
+}
+.placeDetails h3 {
     font-size: 12px;
 }
-
-.placeDetails h2 {
-    font-size: 10px;
-}
-
 .placeDetails p {
-    font-size: 10px;
+    font-size: 14px;
 }
-
-.scroll-container {
-    width: 100vw;
-
-    overflow-y: hidden;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
+.placeDetails button {
+    border-radius: 20px;
+    margin: 10px;
+}
+.button-green {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #5c9666;
+}
+.button-grey {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #b4b8b5;
+}
+.buttonImages{
     display: flex;
 }
+#place {
+    width: 300px;
+    height: 200px;
+}
+.imagesDetails {
+    display: flex;
+    align-items: flex-start;
+    margin-right: -31px;
+}
+.placeDetails a {
+    display: flex;
+    width: 100vw;
+    justify-content: flex-end;
+    margin-left: -35px;
+    align-items: center;
+}
+.verification {
+    display: flex;
+    border-color: #1D733A;
+    box-shadow: 0.5rem 0.5rem #C3A05C, -0.5rem -0.5rem #ccc;
+    border-style: solid;
+    border-radius: 5px;
+    border: groove;
+    width: 274px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+.posted {
+    display: flex;
+}
+.verifImage {
+    width: 23px;
+    margin: 14px;
+}
+.verificationYes {
+    display: flex;
+    align-items: center;
+}
+.verificationNo {
+    display: flex;
+    align-items: center;
+}
+.heart {
+    width: 23px;
+    margin-left: -89px;
+    margin-top: -5px;
+}
+.heartButton {
+    border-style: none;
+    background-color: white;
+    padding: fit-content;
+    background: none;
+    margin-left: -47px;
 
-.placeDetails button{
-    border-radius: 20px;
 }

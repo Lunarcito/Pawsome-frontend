@@ -1,0 +1,31 @@
+
+.search-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.Placeimage{
+    height: 120px;
+    width: 400px;
+    object-fit: cover; 
+    
+
+}
+.Placename{
+    position: absolute;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: 25px;
+    text-shadow: 0 0 3px #513f3f, 0 0 5px #4d7757;
+}
+
+.pplaces{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
