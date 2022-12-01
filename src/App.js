@@ -22,10 +22,15 @@ import Forgotpassword from './pages/auth/Forgotpassword';
 import ResetScreen from './pages/auth/ResetScreen';
 import EditPlace from './pages/places/EditPlace'
 import IsLoggedin from './components/authComponents/IsLoggedin';
+
 import { ChakraProvider } from '@chakra-ui/react'
+
+import Footer from './components/homeComponents/Footer'
+
 
 function App() {
   return (
+
 
     <ChakraProvider>
       <div className="App">
@@ -50,8 +55,10 @@ function App() {
           <Route path="/setNewPassword" element={<IsPrivate><ResetScreen /></IsPrivate>} />
           <Route path="/profile/MyPlaces/edit-place/:placeId" element={<IsPrivate><EditPlace /></IsPrivate>} />
         </Routes>  
+        <Footer />
       </div>
     </ChakraProvider>
+
 
   );
 }
