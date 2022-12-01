@@ -1,8 +1,49 @@
 .filter-container{
-    display:flex;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    color: #C3A05C;
+    justify-content: space-evenly;
+    color: black;
+    z-index: 9;
+    position: fixed;
+    top: 85px;
+    background-color: white;
+    width: 100vw;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-end;
+}
+
+.containerAll{
+    margin-top: 360px;
+
+}
+.filterSearch{
+    width: 73vw;
+    background-color: #d3d4d4;
+    border-radius: 6px;
+    font-size: 14px;
+    height: 36px;
+    margin-left: 54px;
+    position: fixed;
+    margin-top: -43px;
+    z-index: 99;
+    border-style: solid 5px;
+    border-color: black ;
+    border-width: 3px;
+  
+}
+   
+.filterSearch input{
+    font-size: 14px;
+}
+
+
+.search-container{
+    width: 100vw;;
 
 }
 
+
+.filterIcon{
+    font-size: 34px   
+}

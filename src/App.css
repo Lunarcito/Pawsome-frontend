@@ -1,8 +1,8 @@
 .App{
    display: flex;
-   min-height: 100vh;
+   min-height: 90vh;
    flex-direction: column;
-   justify-content: space-between;
+   justify-content: flex-start;
 }
 .selected {
    color: #E45A51

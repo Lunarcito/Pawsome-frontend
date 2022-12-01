@@ -30,9 +30,10 @@ import Footer from './components/homeComponents/Footer'
 function App() {
   return (
 
-
-    <ChakraProvider>
+ <ChakraProvider>
+   
       <div className="App">
+        
         <Toaster />
         <Navbar />
         <Routes>
@@ -54,10 +55,12 @@ function App() {
           <Route path="/setNewPassword" element={<IsPrivate><ResetScreen /></IsPrivate>} />
           <Route path="/profile/MyPlaces/edit-place/:placeId" element={<IsPrivate><EditPlace /></IsPrivate>} />
         </Routes>  
-        <Footer />
+       
+         <Footer />
       </div>
-    </ChakraProvider>
 
+
+         </ChakraProvider>
 
   );
 }
