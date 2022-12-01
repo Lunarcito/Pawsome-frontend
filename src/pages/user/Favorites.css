@@ -1,7 +1,7 @@
 .buittoni{
     display: flex;
     flex-direction: row-reverse;
-    color:rgb(255, 0, 0);
+    color:#E45A51;
     text-decoration: none;
     margin-left: 360px;
 }

@@ -1,0 +1,8 @@
+.filter-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #C3A05C;
+
+}
+
