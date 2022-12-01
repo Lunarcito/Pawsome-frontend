@@ -6,8 +6,16 @@
     --border-radius: 8px;
     --speed: 500ms;
 }
+
+body{
+    margin:0;
+    padding:0;
+    height:100%;  
+}
 header {
+    min-height:100%;
     position: relative;
+
 }
 .nav-con{
     border: #242526 1px solid;

@@ -8,8 +8,11 @@ import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faUser as farUser } from '@fortawesome/free-regular-svg-icons'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faPaw } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Navbar() {
@@ -49,9 +52,12 @@ export default function Navbar() {
             </div>
             {open &&<div className={`dropdown-menu ${open? 'active' : 'inactive'}`}>
                <ul>
-                  {isLoggedIn && <DropdownItem> <NavLink to="/profile"> <FontAwesomeIcon icon={ faCircleUser } />User Profile</NavLink></DropdownItem>}
                   {!isLoggedIn && <DropdownItem> <NavLink to="/signup"><FontAwesomeIcon icon={ faUserPlus } />Sign up</NavLink></DropdownItem>}
                   {!isLoggedIn && <DropdownItem> <NavLink to="/"><FontAwesomeIcon icon={ faRightToBracket } />Login</NavLink></DropdownItem>}
+                  {isLoggedIn && <DropdownItem> <NavLink to="/addPlace"><FontAwesomeIcon icon={ faPlus } />Add place</NavLink></DropdownItem>}
+                  {isLoggedIn && <DropdownItem> <NavLink to="/Favorites"><FontAwesomeIcon icon={ faHeart } />Favorites</NavLink></DropdownItem>}
+                  {isLoggedIn && <DropdownItem> <NavLink to="/profile/MyPlaces"><FontAwesomeIcon icon={ faMapLocationDot } />Created Places</NavLink></DropdownItem>}
+                  {isLoggedIn && <DropdownItem> <NavLink to="/pet-profile"><FontAwesomeIcon icon={ faPaw } />My Pets</NavLink></DropdownItem>}
                   {isLoggedIn && <DropdownItem> <NavLink onClick={() => logOutUser()}><FontAwesomeIcon icon={ faRightFromBracket } />Log out</NavLink></DropdownItem>}
                </ul>
             </div>}
