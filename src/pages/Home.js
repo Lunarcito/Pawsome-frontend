@@ -5,6 +5,8 @@ import Places from "../components/homeComponents/Places";
 import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import {
   Flex,
@@ -82,7 +84,7 @@ export default function Home() {
         })}
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
-      {showMap && <button  onClick={()=>setShowMap(false)}>List</button>}
+      {showMap && <button className="buttonList" onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/></button>}
       </Stack>
    </Flex>
   

@@ -21,6 +21,12 @@ function PlaceDetails() {
     const [step, setStep] = useState(0)
     const { user } = useContext(AuthContext);
     const [favorites, setFavorites] = useState(false)
+    const [main, setMain] = useState(true)
+    const [main1, setMain1] = useState(true)
+    const [main2, setMain2] = useState(true)
+    const [main3, setMain3] = useState(true)
+    const [main4, setMain4] = useState(true)
+    const [main5, setMain5] = useState(true)
     useEffect(() => {
         const countReviewHandler = async () => {
             try {
@@ -103,6 +109,36 @@ function PlaceDetails() {
             return prev -= 1
         })
     }
+
+
+    useEffect(() => {
+
+        if (place.pictures) {
+
+            if (place.pictures.length === 0 && place.type === "Restaurant") {
+                setMain(false)
+            }
+
+            if (place.pictures.length === 0 && place.type === "Cafeteria") {
+                setMain2(false)
+            }
+
+            if (place.pictures.length === 0 && place.type === "Museum") {
+                setMain3(false)
+            }
+            if (place.pictures.length === 0 && place.type === "Beach") {
+                setMain4(false)
+            }
+            if (place.pictures.length === 0 && place.type === "Other") {
+                setMain5(false)
+            }
+            if (!main || !main2 || !main3 || !main4 || !main5) {
+                setMain1(false)
+            }
+        }
+    }, [place.pictures, main, main1, main2, main3, main4, main5, place.type])
+
+
     return (
         <div className='placeDetails'>
             {place && <div className="placeDetails">
@@ -110,10 +146,15 @@ function PlaceDetails() {
                 <h2>{place.address}</h2>
                 {place.description !== null && place.description !== '' && <p>{place.description}</p>}
                 <div className='imagesDetails'>
-                    <img id="place" src={place.pictures[image]} alt=""></img>
+                    {main1 && <img id="place" src={place.pictures[image]} alt=""></img>}
+                    {!main && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' alt="place" />}
+                    {!main2 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735.jpg' alt="place" />}
+                    {!main3 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg' alt="place" />}
+                    {!main4 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836393/Pawsome/adorable-pomeranian-spitz-dog-having-fun-running-beach_1_a2m3j3.jpg' alt="place" />}
+                    {!main5 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/adorable-french-bulldog-with-colorful-shopping-bags-isolated-white-background_fnkp7p.jpg' alt="place" />}
                     <button className="heartButton" onClick={() => addFavoriteHandler()}>
-                        {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' alt=""/>}
-                        {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' alt=""/>}
+                        {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' alt="" />}
+                        {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' alt="" />}
                     </button>
                 </div>
                 <div className="buttonImages">
@@ -126,7 +167,6 @@ function PlaceDetails() {
                     })}
                 </div>
                 <p>Pet friendly {place.type}</p>
-                <h1>{place.socialMedia} </h1>
                 <div className="posted">
                     {place.User && <Link to={`/user-profile/${place.User._id}`}><h3>Posted by:</h3> {place.User.name} </Link>}
                 </div>
@@ -136,7 +176,7 @@ function PlaceDetails() {
                         <p>{goodReviews} %</p>
                     </div>
                     <div className="verificationNo">
-                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' alt=""/>
+                        <img className="verifImage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png' alt="" />
                         <p>{badReviews} %</p>
                     </div>
                 </div>

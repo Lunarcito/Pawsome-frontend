@@ -1,6 +1,8 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 const apiEndpoint = "http://localhost:8000/api/profile"
 const storedToken = localStorage.getItem('authToken')
@@ -50,8 +52,10 @@ function MyPlaces() {
                         <img className="Placeimage" src={images[Math.floor(Math.random()*4)]} alt="place" />
                         
                         </div>
+                        <div className='buttons2'>
                         <Link to={`edit-place/${place._id}`}>Edit</Link>
-                        <button onClick={() => deleteHandler(place._id)}>Remove Me</button>
+                        <button onClick={() => deleteHandler(place._id)}><FontAwesomeIcon icon={faTrashCan}/></button>
+                        </div>
                     </div>
                 )
             })}
