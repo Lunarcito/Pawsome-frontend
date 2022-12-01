@@ -12,6 +12,7 @@
 }
 .placeDetails h3 {
     font-size: 12px;
+    margin: 5px;
 }
 .placeDetails p {
     font-size: 14px;
@@ -65,6 +66,7 @@
 }
 .posted {
     display: flex;
+    align-items: center;
 }
 .verifImage {
     width: 23px;
@@ -78,10 +80,11 @@
     display: flex;
     align-items: center;
 }
-.heart {
-    width: 23px;
-    margin-left: -89px;
-    margin-top: -5px;
+.heart{
+    width: 25px;
+    margin-left: -54px;
+    margin-top: -2px;
+    position: absolute;
 }
 .heartButton {
     border-style: none;
@@ -89,4 +92,8 @@
     padding: fit-content;
     background: none;
     margin-left: -47px;
+}
+
+.placeDetails a{
+    margin-left: -66px;
 }

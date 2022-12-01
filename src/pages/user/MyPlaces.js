@@ -1,6 +1,13 @@
+import './MyPlaces.css';
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+
+import {
+    Button,
+} from "@chakra-ui/react";
 
 const apiEndpoint = "http://localhost:8000/api/profile"
 const storedToken = localStorage.getItem('authToken')
@@ -41,7 +48,7 @@ function MyPlaces() {
     console.log(places)
     return (
         <div>
-            <h1>My Places</h1>
+            <h1> My Places </h1>
             
             {places[0] && places.map((place) => {
                 return (
@@ -49,9 +56,19 @@ function MyPlaces() {
                         <h2 className="Placename">{place.name}</h2>
                         <img className="Placeimage" src={images[Math.floor(Math.random()*4)]} alt="place" />
                         
+                    </div>
+
+                    <div className ="edit-container">
+                        <div>
+                            <Link className= "edit" to={`edit-place/${place._id}`}>Edit</Link>
                         </div>
-                        <Link to={`edit-place/${place._id}`}>Edit</Link>
-                        <button onClick={() => deleteHandler(place._id)}>Remove Me</button>
+
+                        <Button h="1.75rem" size="sm" onClick={() => deleteHandler(place._id)}>
+                            Remove Me
+                        </Button>
+                        </div>
+
+
                     </div>
                 )
             })}
