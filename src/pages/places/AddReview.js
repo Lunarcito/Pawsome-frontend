@@ -80,6 +80,7 @@ function AddReview(props) {
     return (
         <div>
             <form onSubmit={submitHandler} >
+                <div className="Review">
                 <label for="veritifaction">Place verified?</label>
                 <br></br>
                 {!hideHappy && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/happy_xdpcvc.png" alt="yes"className="iconVerification" />}
@@ -95,6 +96,7 @@ function AddReview(props) {
                     <button type="submit" className="submitButton">Add review</button>
                 </div>
                 }
+                </div>
             </form>
         </div>
     )
