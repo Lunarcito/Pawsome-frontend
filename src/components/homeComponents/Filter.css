@@ -2,15 +2,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    color: black;
+    color: #E45A51;
     z-index: 9;
     position: fixed;
-    top: 85px;
+    top: 95px;
     background-color: white;
     width: 100vw;
     flex-wrap: wrap;
     align-items: stretch;
     align-content: flex-end;
+
 }
 
 .containerAll{
@@ -19,7 +20,7 @@
 }
 .filterSearch{
     width: 73vw;
-    background-color: #d3d4d4;
+    background-color: whitesmoke;
     border-radius: 6px;
     font-size: 14px;
     height: 36px;
@@ -27,8 +28,8 @@
     position: fixed;
     margin-top: -43px;
     z-index: 99;
-    border-style: solid 5px;
-    border-color: black ;
+    border-style:inherit;
+    border-color: rgb(21, 128, 124);
     border-width: 3px;
   
 }

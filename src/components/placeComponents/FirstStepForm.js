@@ -14,32 +14,32 @@ import {
 
 function FirstStepForm(props) {
     return (
-        <div className="addplace-container">
+        <div className="forms"  >
           
-          <FormControl>
+          <FormControl className="forms">
                 <InputGroup>
-                  <InputLeftElement
+                  <InputLeftElement className="forms"
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.300" />}                  
                   />
-               <Input type="text" name="name" placeholder="Place's name" value={props.name} onChange={(event) => props.onName(event.target.value)}/>
+               <Input className="forms"type="text" name="name" placeholder="Place's name" value={props.name} onChange={(event) => props.onName(event.target.value)}/>
                 </InputGroup>
               </FormControl>
 
               <FormControl>
                 <InputGroup>
-                  <InputLeftElement
+                  <InputLeftElement 
                     pointerEvents="none"                    
                   />
-               <Input type="text" name="address" placeholder="Address" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
+               <Input className="forms" type="text" name="address" placeholder="Address" value={props.address}  onChange={(event) => props.onAddress(event.target.value)}/>
                 </InputGroup>
               </FormControl>
             
             <hr></hr>
-            <select value={props.type} onChange={(event) => props.onType(event.target.value)}>
+            <select className="forms" value={props.type} onChange={(event) => props.onType(event.target.value)}>
                 {props.options.map((option) => (
                     
-                    <option key={option.value} value={option.value}>{option.label}</option>
+                    <option  key={option.value} value={option.value}>{option.label}</option>
                 
                 ))}
             </select>

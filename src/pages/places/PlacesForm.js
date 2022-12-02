@@ -6,6 +6,7 @@ import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
 import SecondStepForm from "../../components/placeComponents/SecondStepForm";
 import FirstStepForm from "../../components/placeComponents/FirstStepForm";
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
 import {
     Button,
@@ -131,7 +132,7 @@ function PlaceForm() {
                 />}
                 {step < 2 ? (
                     <Stack direction='row' spacing={3}>
-                        <Button onClick={nextStepHandler} rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
+                        <Button className="next" onClick={nextStepHandler} rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
                             Next
                         </Button>
                     </Stack>
@@ -141,16 +142,18 @@ function PlaceForm() {
                                     Create
                                 </Button>
                             </Stack>             
-                )} {error && <p className ="error">{error}</p>}
+                )}
 
             </form>
             {step > 0 &&
             <Stack direction='row' spacing={4}>
-                <Button onClick={prevStepHandler} colorScheme='teal' variant='outline'>
+                <Button className="previous" onClick={prevStepHandler} rightIcon={<ArrowBackIcon />}  colorScheme='teal' variant='outline'>
                     Previous
                 </Button>
             </Stack>
-}     
+            }
+            <br></br>
+             {error && <p className ="error">{error}</p>} 
                
         </div>
     )
