@@ -57,8 +57,8 @@ export default function Home() {
   return (
     <div className= "containerAll">
    
-      
-      {showMap && <Map places={filterPlaces} />}
+      <div className="mapita">
+      {showMap && <Map places={filterPlaces} />}</div>
       {!showMap && <div>
       <Search onSearch={searchHandler} />
       <div className="filter">
@@ -67,7 +67,7 @@ export default function Home() {
  
       <div className= "space">
         {filterPlaces.map((place) => {
-          return <Places key={place._id} place={place} />;
+          return <div className="placee"><Places key={place._id} place={place} /></div>;
         })}
       </div></div>}
       {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}

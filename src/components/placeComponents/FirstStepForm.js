@@ -16,7 +16,7 @@ function FirstStepForm(props) {
     return (
         <div className="addplace-container">
           
-          <FormControl>
+          <FormControl className="firstform">
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
