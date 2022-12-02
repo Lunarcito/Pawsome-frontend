@@ -1,7 +1,7 @@
 import {
     Stack,
     Button,
-  } from "@chakra-ui/react";
+} from "@chakra-ui/react";
 
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -61,8 +61,10 @@ function PlaceDetails() {
                         setHideReview(true)
                     }
                 });
-                if (res.data.User._id === user._id) {
-                    setHideReview(true)
+                if (res.data.User) {
+                    if (res.data.User._id === user._id) {
+                        setHideReview(true)
+                    }
                 }
             } catch (error) {
                 console.log(error)
@@ -190,20 +192,20 @@ function PlaceDetails() {
                     </div>
                 </div>
                 {!hideReview ? <Link to={`/addReview/${place._id}`}><button>Add review</button></Link> : null}
-                {step === 0 && 
-                
-                <Stack direction='row' spacing={3}>
-                <Button onClick={() => showComments()} colorScheme='teal' variant='outline'>
-                Show Comments
-                </Button>
-                </Stack>
+                {step === 0 &&
+
+                    <Stack direction='row' spacing={3}>
+                        <Button onClick={() => showComments()} colorScheme='teal' variant='outline'>
+                            Show Comments
+                        </Button>
+                    </Stack>
                 }
                 {step === 1 && <div><CommentList comment={place.Review} />
-                <Stack direction='row' spacing={3}>
-                <Button onClick={() => hideComments()} colorScheme='teal' variant='outline'>
-                Hide Comments
-                </Button>
-            </Stack>
+                    <Stack direction='row' spacing={3}>
+                        <Button onClick={() => hideComments()} colorScheme='teal' variant='outline'>
+                            Hide Comments
+                        </Button>
+                    </Stack>
                 </div>}
             </div>
             }

@@ -5,7 +5,7 @@
     color: #E45A51;
     z-index: 9;
     position: fixed;
-    top: 95px;
+    top: 85px;
     background-color: white;
     width: 100vw;
     flex-wrap: wrap;
@@ -26,12 +26,21 @@
     height: 36px;
     margin-left: 54px;
     position: fixed;
-    margin-top: -43px;
+    margin-top: -2px;
     z-index: 99;
-    border-style:inherit;
+    border-style: inherit;
     border-color: rgb(21, 128, 124);
     border-width: 3px;
-  
+}
+
+.filterBox{
+    position: fixed;
+    z-index: 99;
+    background-color: white;
+    height: 100px;
+    width: 100vw;
+    margin-top: -69px;
+    padding-top: 32px;
 }
    
 .filterSearch input{

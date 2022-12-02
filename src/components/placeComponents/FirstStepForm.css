@@ -1,11 +1,16 @@
-.map-container {
-    width: 200px;
-    height: 200px;
-}
+
 
 .addplace-container{
     align-items:center;
     text-align: center;
+
+
+    margin-top: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-right: 100px,
+
+
 }
 
 .forms {

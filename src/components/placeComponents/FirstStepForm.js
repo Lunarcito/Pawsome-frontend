@@ -14,9 +14,12 @@ import {
 
 function FirstStepForm(props) {
     return (
+
         <div >
          <h3> Create a pet friendly place </h3>
+
           <FormControl className="forms">
+
                 <InputGroup>
                   <InputLeftElement className="forms"
                     pointerEvents="none"
