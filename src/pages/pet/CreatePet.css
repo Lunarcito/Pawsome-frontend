@@ -26,7 +26,17 @@ border: 0ch;
 }
 .photoTitle{
 text-align: center;
+font-size:18px;
+font-weight:bold;
+align-self: left;
+color:#E45A51;
+margin-left: 20px;
 }
 .nameTitle{
 text-align: center;
+}
+
+.next{
+margin-top: 300px;
+margin-left: 115px;
 }

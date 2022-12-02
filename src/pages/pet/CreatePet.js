@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios"
 import './CreatePet.css';
+import {
+    InputGroup,
+    InputLeftElement,
+    Input,
+    FormControl,
+    Stack,
+    Button
+} from "@chakra-ui/react";
+
+import { ArrowForwardIcon } from '@chakra-ui/icons'
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,8 +21,7 @@ import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 const apiEndpoint = "http://localhost:8000/api/pet-profile/create"
 
 function CreatePet() {
-    // const [name, setName] = useState('')
-    // const [image, setImage] = useState('')
+ 
     const [namePet, setName] = useState("")
     const [file, setFile] = useState(null)
 
@@ -40,18 +50,30 @@ function CreatePet() {
         <div className="creation">
             <form className="info" onSubmit={submitHandler}>
                 <div>
-                <div className="name">
-                <label className="nameTitle">Name</label>
-                <input type="text" name="namePet" value={namePet} onChange={(event) => setName(event.target.value)} />
-                </div>
-                <br></br>
+                <div className="nameTitle">
+                <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"              
+                  />
+               <Input type="text" name="namePet" placeholder="Your pet name" value={namePet} onChange={(event) => setName(event.target.value)}/>
+                </InputGroup>
+              </FormControl>
+               </div>
+
                 <div className="photo">
+
                 <label className="photoTitle">Add Photo</label>
                 <input type="file" accept="image/png, image/jpeg, image/jpg"  name="image" placeholder="Upload one picture" onChange={event => setFile(event.target.files[0])} />
                 </div>
                 </div>
                 <br></br>
-                <button className="button" type="submit"><FontAwesomeIcon icon={faArrowRight} /></button>
+                <Stack direction='row' spacing={3}>
+                    <Button type="submit" className="next" rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
+                        Next
+                    </Button>
+                </Stack>
+           
             </form>
         </div>
     )

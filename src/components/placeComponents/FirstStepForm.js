@@ -6,6 +6,7 @@ import {
     FormControl,
   } from "@chakra-ui/react";
 
+  import "./FirstStepForm.css"
 
   import { FaUserAlt} from "react-icons/fa";
  
