@@ -14,8 +14,8 @@ import {
 
 function FirstStepForm(props) {
     return (
-        <div className="forms"  >
-          
+        <div >
+         <h3> Create a pet friendly place </h3>
           <FormControl className="forms">
                 <InputGroup>
                   <InputLeftElement className="forms"
@@ -39,7 +39,7 @@ function FirstStepForm(props) {
             <select className="forms" value={props.type} onChange={(event) => props.onType(event.target.value)}>
                 {props.options.map((option) => (
                     
-                    <option  key={option.value} value={option.value}>{option.label}</option>
+                    <option key={option.value} value={option.value}>{option.label}</option>
                 
                 ))}
             </select>

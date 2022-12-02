@@ -8,7 +8,7 @@ import {
 function SecondStepForm(props) {
 
     return (
-        <div>
+        <div className="forms">
             <FormControl>
                 <InputGroup>
                   <InputLeftElement
