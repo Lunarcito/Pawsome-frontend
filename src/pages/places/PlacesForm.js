@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ThirdStepForm from "../../components/placeComponents/ThirdStepForm";
 import SecondStepForm from "../../components/placeComponents/SecondStepForm";
 import FirstStepForm from "../../components/placeComponents/FirstStepForm";
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 
 import {
     Button,
@@ -130,7 +131,10 @@ function PlaceForm() {
                 />}
                 {step < 2 ? (
                     <Stack direction='row' spacing={3}>
-                        <Button onClick={nextStepHandler} colorScheme='teal' variant='outline'>
+
+
+
+                        <Button onClick={nextStepHandler} rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
                             Next
                         </Button>
                     </Stack>
