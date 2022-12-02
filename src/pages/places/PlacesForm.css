@@ -4,3 +4,19 @@ p{
     color:#E45A51;
     font-size: bold
 }
+
+.nameTitle{
+    text-align: center;
+    }
+    
+.next{
+    margin-top: 400px;
+    margin-left: 130px;
+}
+
+.previous{
+    margin-top: 20px;
+    margin-left: 115px;
+}
+
+   

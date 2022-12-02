@@ -1,9 +1,36 @@
-.addplace-container {
-    align-items: center;
+
+
+.addplace-container{
+    align-items:center;
+    text-align: center;
+
     margin-top: 100px;
     margin-left: 30px;
     margin-right: 30px;
     margin-right: 100px,
 
+}
+
+
+.forms {
+
+    text-align: center;
+    margin-top: 50px;
 
 }
+
+.places-name {
+
+    text-align: center;
+    margin-left: 50px;
+
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+    
+    
+
+   
