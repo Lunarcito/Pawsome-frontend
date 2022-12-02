@@ -1,0 +1,20 @@
+.submitButton{
+margin-top:20px;
+margin-left: 135px;
+align-self: center;
+align-items: center;
+}
+
+label{
+    font-size:16px;
+    align-self: center;
+    color:#E45A51;
+    font-size: bold
+}
+
+.editbox{
+margin-top:20px;
+margin-left: 135px;
+align-self: center;
+align-items: center;
+}

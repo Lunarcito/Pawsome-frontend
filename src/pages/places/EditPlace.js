@@ -4,18 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import './EditPlaces.css';
+import './EditPlace.css';
 
 import {
     Input,
     InputGroup,
     InputLeftElement,
-    chakra,
     FormControl,
+    Stack,
+    Button
   } from "@chakra-ui/react";
-
-
-//import './EditPlace.css'
 
 const apiEndpoint = "http://localhost:8000/api/places/"
 const storedToken = localStorage.getItem('authToken')
@@ -167,7 +165,8 @@ function EditPlace() {
               </FormControl>
     
 
-                <label>Upload one or more pictures</label>
+                <p>Upload one or more pictures</p>
+                <br></br>
                 <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
                 <br></br>
                 <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia} placeholder={socialMedia} />
@@ -177,7 +176,11 @@ function EditPlace() {
             </form>
             <Link to='/profile/MyPlaces'>
 
-            <button type="submit" className="submitButton">Cancel</button>
+            <Stack direction='row' spacing={3}>
+                    <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
+                       Cancel
+                    </Button>
+                </Stack>
             </Link>
         </div>
     )
