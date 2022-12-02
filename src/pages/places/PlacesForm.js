@@ -131,9 +131,6 @@ function PlaceForm() {
                 />}
                 {step < 2 ? (
                     <Stack direction='row' spacing={3}>
-
-
-
                         <Button onClick={nextStepHandler} rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
                             Next
                         </Button>
@@ -145,12 +142,16 @@ function PlaceForm() {
                                 </Button>
                             </Stack>             
                 )} {error && <p className ="error">{error}</p>}
-               
 
             </form>
-          
-            
-    
+            {step > 0 &&
+            <Stack direction='row' spacing={4}>
+                <Button onClick={prevStepHandler} colorScheme='teal' variant='outline'>
+                    Previous
+                </Button>
+            </Stack>
+}     
+               
         </div>
     )
 }

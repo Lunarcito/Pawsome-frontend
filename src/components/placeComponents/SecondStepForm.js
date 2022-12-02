@@ -14,9 +14,11 @@ function SecondStepForm(props) {
                   <InputLeftElement
                     pointerEvents="none"                  
                   />
-               <Input type="text" name="description" placeholder="Add a place's description" size="lg" value={props.description} onChange={(event) => props.onDescription(event.target.value)}/>
+               <Input type="text" name="description" placeholder="Add a place's description" size="lg" value={props.description} onChange={(event) => props.onDescription(event.target.value)}
+               />
                 </InputGroup>
               </FormControl>
+
         </div>
     )
 }
