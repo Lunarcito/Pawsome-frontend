@@ -9,6 +9,7 @@ left: 140px;
 }
 .space{
     margin-top: -255px;
+    margin-bottom: 100px;
 }
 
 .buttonList{
@@ -18,3 +19,10 @@ left: 140px;
     font-size: 50px;
 left: 180px;
 }
+
+.place{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
