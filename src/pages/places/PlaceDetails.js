@@ -82,9 +82,10 @@ function PlaceDetails() {
                     { headers: { Authorization: `Bearer ${storedToken}` } }
                 )
                 res.data.forEach(element => {
-                    if (element.place._id === placeId)
+                    if (element.place._id === placeId) {
                         setFavorites(element)
-                    setSelectedHeart(true)
+                        setSelectedHeart(true)
+                    }
                 })
             } catch (err) {
                 console.log(err)
@@ -93,8 +94,10 @@ function PlaceDetails() {
         apiCall()
     }, [placeId]);
     const addFavoriteHandler = async () => {
+        console.log ("LLegamos",selectedHeart)
         try {
             if (!selectedHeart) {
+                console.log( "Place ID es esteeeeeee ",placeId)
                 const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
                 setFavorites(res.data)
                 setSelectedHeart(!selectedHeart)
