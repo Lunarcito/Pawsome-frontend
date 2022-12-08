@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
 import Places from "../../components/homeComponents/Places";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +10,6 @@ function Favorites() {
     const [favorites, setFavorites] = useState([])
 
     const apiEndpoint = `${process.env.REACT_APP_API_URL}favorites`
-    
-    const { placeId } = useParams()
-    const navigate = useNavigate()
 
     useEffect(() => {
         const apiCall = async () => {
@@ -30,14 +26,13 @@ function Favorites() {
             }
         }
         apiCall()
-    }, []);
+    });
 
 
     const deleteFavorite = async (favoriteID) => {
 
         try {
             const storedToken = localStorage.getItem("authToken");
-            const res = await axios.delete(apiEndpoint + "/" + favoriteID, { headers: { Authorization: `Bearer ${storedToken}` } })
             const response = await axios.get(
                 apiEndpoint,
                 { headers: { Authorization: `Bearer ${storedToken}` } }

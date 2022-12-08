@@ -74,7 +74,7 @@ export default function Signup() {
       backgroundColor="gray.100"
       justifyContent="center"
       alignItems="center"
-    >/
+    >
     
 
       <Stack
@@ -89,7 +89,7 @@ export default function Signup() {
         src='../logoPaw.png' 
         alt='LogoPaw'/>
 
-        <Heading color="teal.400"> <h6>Sign in</h6></Heading>
+        <Heading color="teal.400"> <h6>Sign up</h6></Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
             <Stack
               spacing={4}
