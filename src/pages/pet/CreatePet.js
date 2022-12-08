@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const apiEndpoint = "http://localhost:8000/api/pet-profile/create"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}pet-profile/create`;
 
 function CreatePet() {
  

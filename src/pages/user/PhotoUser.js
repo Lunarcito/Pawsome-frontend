@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const apiEndpoint = "http://localhost:8000/api/user-profile/edit-photo"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}user-profile/edit-photo`
 
 function PhotoUser() {
     const [file, setFile] = useState("");

@@ -9,7 +9,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 
-const apiEndpoint = "http://localhost:8000/api/profile"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}profile`
 const storedToken = localStorage.getItem('authToken')
 
 const image1 = 'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669895036/Pawsome/pexels-samson-katt-5255258_fxn2bg.jpg'
@@ -38,7 +38,7 @@ function MyPlaces() {
     }, [])
 
     const deleteHandler = async (elementId) => {
-        await axios.delete(`http://localhost:8000/api/places/${elementId}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}places/${elementId}`, {
             headers: { Authorization: `Bearer ${storedToken}` },
         });
         apiCall()

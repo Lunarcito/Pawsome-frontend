@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 
 const storedToken = localStorage.getItem("authToken");
-const apiEndpoint = "http://localhost:8000/api/profile";
+const apiEndpoint = `${process.env.REACT_APP_API_URL}profile`;
 
 const UserProfile = () => {
 

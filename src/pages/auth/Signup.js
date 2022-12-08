@@ -56,7 +56,7 @@ export default function Signup() {
          setErrorMessage(undefined)
       }
       try {
-         await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { userName: user.username, name: user.name, email: user.email, password });
+         await axios.post(`${process.env.REACT_APP_API_URL}v1/auth/signup`, { userName: user.username, name: user.name, email: user.email, password });
          navigate('/');
       } catch (error) {
          setErrorMessage(error.response.data.error.message)

@@ -10,7 +10,7 @@ import './Favorites.css'
 function Favorites() {
     const [favorites, setFavorites] = useState([])
 
-    const apiEndpoint = "http://localhost:8000/api/favorites"
+    const apiEndpoint = `${process.env.REACT_APP_API_URL}favorites`
     
     const { placeId } = useParams()
     const navigate = useNavigate()

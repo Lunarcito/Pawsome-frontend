@@ -12,7 +12,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import './Home.css'
 
 
-const apiEndpoint = "http://localhost:8000/api/places";
+const apiEndpoint = `${process.env.REACT_APP_API_URL}places`;
 
 export default function Home() {
   const [searchLast, setSearchLast] = useState('');

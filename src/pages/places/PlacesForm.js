@@ -53,7 +53,7 @@ function PlaceForm() {
     const navigate = useNavigate()
 
     const storedToken = localStorage.getItem('authToken');
-    const API_ENDPOINT = "http://localhost:8000/api/addPlace"
+    const API_ENDPOINT =  `${process.env.REACT_APP_API_URL}addPlace`
 
     const nextStepHandler = () => {
         setStep((prev) => {

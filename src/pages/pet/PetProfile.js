@@ -10,7 +10,7 @@ import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const storedToken = localStorage.getItem("authToken");
-const apiEndpoint = "http://localhost:8000/api/pet-profile"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}pet-profile`;
 
 const PetProfile =() => {
   const [ pets, setPets] = useState([]) 
@@ -28,7 +28,7 @@ const PetProfile =() => {
   }, [])
   
   const deleteHandler = async (elementId) => {
-    await axios.delete(`http://localhost:8000/api/pet-profile/${elementId}`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}pet-profile/${elementId}`, {
       headers: { Authorization: `Bearer ${storedToken}` },
     });
     apiCall()

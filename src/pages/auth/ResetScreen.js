@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const storedToken = localStorage.getItem("authToken");
-const apiEndpoint = "http://localhost:8000/api/setNewPassword";
+const apiEndpoint = `${process.env.REACT_APP_API_URL}setNewPassword`;
 
 function ResetScreen(props) {
 

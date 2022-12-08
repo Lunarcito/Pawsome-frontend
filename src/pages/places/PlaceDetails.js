@@ -13,9 +13,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 
-const apiEndpoint = "http://localhost:8000/api/places/"
-const apiEndpoint2 = "http://localhost:8000/api/favorite/"
-const apiEndpoint3 = "http://localhost:8000/api/favorites/"
+const apiEndpoint =  `${process.env.REACT_APP_API_URL}places/`
+const apiEndpoint2 = `${process.env.REACT_APP_API_URL}favorite/`
+const apiEndpoint3 = `${process.env.REACT_APP_API_URL}favorites/`
 
 
 function PlaceDetails() {

@@ -15,7 +15,7 @@ import {
     Button
   } from "@chakra-ui/react";
 
-const apiEndpoint = "http://localhost:8000/api/places/"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}places/`
 const storedToken = localStorage.getItem('authToken')
 
 function EditPlace() {

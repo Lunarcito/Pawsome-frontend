@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./OtherUser.css"
 import {Link} from "react-router-dom"
 
-const apiEndpoint = "http://localhost:8000/api/user-profile/"
+const apiEndpoint = `${process.env.REACT_APP_API_URL}user-profile/`
 
 const image1 = 'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669895036/Pawsome/pexels-samson-katt-5255258_fxn2bg.jpg'
 const image2 = 'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669895006/Pawsome/pexels-cesar-mendez-5230141_wpacpr.jpg'

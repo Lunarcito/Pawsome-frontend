@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const storedToken = localStorage.getItem("authToken");
-const apiEndpoint = "http://localhost:8000/api/forgotPassword";
+const apiEndpoint = `${process.env.REACT_APP_API_URL}forgotPassword`;
 
 function Forgotpassword(props) {
 
