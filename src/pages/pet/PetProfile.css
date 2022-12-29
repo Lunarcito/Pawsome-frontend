@@ -1,52 +1,69 @@
 .petprofile{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
-.everyPet{
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    width: 100%
-  
-}
+
 .petito{
+    font-size:26px;
+    align-self:center;
+    color:#E45A51;
     text-align: center;
-    font-weight: bolder;
-    font-size: 25px;
-    margin-left: 20px;
+    margin-top: 10px;
+    font-weight:bold;
+    margin-bottom:20px ;
 }
-.petit{
-    height: 70px;
-    width: 90px;
-    border-radius: 50%
+
+.everyPet{
+    border-style: none;
+    background-color: white;
+    padding: fit-content;
+    background: none;
+    text-align: center;
+    
 }
-.petButton{
+
+.deleteButton{
     color: #E45A51;
+    margin-top: 0px;
+    margin-right:0px;
 }
 .createLink{
     align-self: center;
-    color:rgb(4, 95, 28);
+    color: rgb(21, 128, 124);
     text-decoration: none;
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 .designIcon{
-    height: 50px;
-    width: 50px;
+    height: 45px;
+    width: 45px;
 }
 body{
     height: 100%;
 }
 
 .petInfo{
+    width: 100vw;
     display: flex;
-    justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
+    margin:auto
+}
+
+.petprofile h3{
+    font-size:20px;
+    align-self: center;
+    color:#E45A51;
+    text-align: center;
+    margin-top: 30px;
+    font-weight:bold;
+    margin-bottom:20px ;
     
 }
+
+.petit{
+    display: flex;
+    width: 250px;
+    height: 250px;
+}
+

@@ -1,24 +1,11 @@
-.buttonMap{
 
-    position: fixed;
-    bottom: 100px;
 
-    height: 100px;
-    width: 100px;
-left: 140px;
-}
 .space{
-    margin-top: -255px;
+    margin-top: -235px;
     margin-bottom: 100px;
 }
 
-.buttonList{
-    position: fixed;
-    bottom: 100px;
 
-    font-size: 50px;
-left: 180px;
-}
 
 .place{
     display: flex;

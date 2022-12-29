@@ -1,0 +1,7 @@
+.buttonMap{
+    width: 50px;
+    display: flex;
+    height: 50px;
+    z-index: 9;
+    margin-left:20px;
+}

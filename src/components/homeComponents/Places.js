@@ -41,7 +41,7 @@ function Places({ place }) {
 
         <div className="search-container">
             {place.pictures &&
-                <Link to={`/places/${place._id}`}><div className="pplaces">
+                <Link to={`/places/${place._id}`}><div className="places">
                     <h2 className="Placename">{place.name}</h2>
                     {main1 && <img className="Placeimage" src={place.pictures[0]} alt="" />}
                     {!main && <img className="Placeimage" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' alt="place" />}

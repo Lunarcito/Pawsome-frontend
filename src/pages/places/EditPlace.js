@@ -122,7 +122,7 @@ function EditPlace() {
         }
     }
     return (
-        <div>
+        <div className="forms">
             <form onSubmit={submitHandler}>
 
                 <h3>Edit a Place</h3>
@@ -135,7 +135,7 @@ function EditPlace() {
                <Input type="text" name="name" placeholder="Name" value={name} onChange={(event) => setName(event.target.value)}/>
                 </InputGroup>
               </FormControl>
-
+              <div className="forms">
 
               <FormControl>
                 <InputGroup>
@@ -145,8 +145,9 @@ function EditPlace() {
                <Input type="text" name="address" placeholder="Address" value={address}  onChange={(event) => setAddress(event.target.value)}/>
                 </InputGroup>
               </FormControl>
-
-
+              
+              </div>
+              <div className="forms">
                 <select value={type} onChange={(event) => setType(event.target.value)}>
                     {options.map((option) => (
                         <option key={Math.random()} value={option.value} placeholder={type}>{option.label}</option>
@@ -154,7 +155,9 @@ function EditPlace() {
                 </select>
                 {type === 'Other' && <input type="text" name="type" value={typeOther} onChange={(event) => setTypeOther(event.target.value)}></input>}
                 <br></br>
+                </div>
 
+                <div className="forms">
                 <FormControl>
                 <InputGroup>
                   <InputLeftElement
@@ -164,7 +167,9 @@ function EditPlace() {
                 </InputGroup>
               </FormControl>
     
+              </div>
 
+              <div className="forms">
                 <p>Upload one or more pictures</p>
                 <br></br>
                 <input type="file" accept="image/png, image/jpeg, image/jpg" multiple="multiple" name="pictures" placeholder="Upload one or more pictures" onChange={event => setFiles(Array.from(event.target.files))} />
@@ -172,10 +177,17 @@ function EditPlace() {
                 <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia(event.target.value)} value={socialMedia} placeholder={socialMedia} />
                 <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia1(event.target.value)} value={socialMedia1} placeholder={socialMedia1} />
                 <input className="editbox" type="text" name="socialMedia" onChange={(event) => setSocialMedia2(event.target.value)} value={socialMedia2} placeholder={socialMedia2} />
-                <button className="editbox" type="submit">Save changes</button>
+            
+              </div>
+                <div className="forms">
+                <Stack direction='row' spacing={3}>
+                    <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
+                       Save
+                    </Button>
+                </Stack>
+                </div>
             </form>
             <Link to='/profile/MyPlaces'>
-
             <Stack direction='row' spacing={3}>
                     <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
                        Cancel

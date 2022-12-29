@@ -46,9 +46,11 @@ function CreatePet() {
 }
 
     return(
-        <div className="creation">
+        <div className="placeForm">
             <form className="info" onSubmit={submitHandler}>
                 <div>
+                    <h3> My pet info </h3>
+                    
                 <div className="nameTitle">
                 <FormControl>
                 <InputGroup>

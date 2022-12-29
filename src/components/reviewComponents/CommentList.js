@@ -2,8 +2,8 @@ function CommentList (props) {
     let data = props.comment
 
     return(
-        <div>
-            <h1>Comments</h1>
+        <div className="card-reviews">
+            <h3>Reviews</h3>
             {data.map((review) => {
                 return(
                     <div key={review._id}>

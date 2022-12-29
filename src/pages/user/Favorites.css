@@ -1,7 +1,28 @@
-.buittoni{
-    display: flex;
-    flex-direction: row-reverse;
+.deleteButton{
+    color:#E45A51; 
+    margin-top: 20px;
+    position:absolute;
+    padding: fit-content;
+    background: none;
+    margin-left: -47px;  
+   
+}
+
+
+.favorite h1 {
+    font-size: 26px;
+    align-self:center;
     color:#E45A51;
-    text-decoration: none;
-    margin-left: 360px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+}
+
+.favorite{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }

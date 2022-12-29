@@ -1,25 +1,40 @@
-.placeDetails {
+.placeCard {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.placeDetails h1 {
-    font-size: 28px;
+.placeCard h1 {
+    font-size: 26px;
+    align-self:center;
+    color:#E45A51;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
 }
-.placeDetails h2 {
+.placeCard h2 {
     font-size: 14px;
+    color: rgb(21, 128, 124);
+    font-size: italic
 }
-.placeDetails h3 {
-    font-size: 12px;
-    margin: 5px;
-}
-.placeDetails p {
+
+.placeCard h4 {
     font-size: 14px;
+    color: rgb(21, 128, 124);
+    font-size: italic
 }
-.placeDetails button {
+
+.placeCard p {
+    font-size: 14px;
+    color: rgb(21, 128, 124);
+    font-size: italic
+}
+
+
+.placeCard button {
     border-radius: 20px;
-    margin: 10px;
+  
 }
 .button-green {
     width: 20px;
@@ -43,18 +58,17 @@
 .imagesDetails {
     display: flex;
     align-items: flex-start;
-    margin-right: -31px;
+    margin-right: -25px;
 }
-.placeDetails a {
+.placeCard a {
     display: flex;
     width: 100vw;
     justify-content: flex-end;
-    margin-left: -35px;
+    flex-direction: column;
     align-items: center;
 }
 .verification {
     display: flex;
-    border-color: #1D733A;
     box-shadow: 0.5rem 0.5rem #C3A05C, -0.5rem -0.5rem #ccc;
     border-style: solid;
     border-radius: 5px;
@@ -80,10 +94,15 @@
     display: flex;
     align-items: center;
 }
+
+.verification p {
+    font-size: 18px;
+    color:#E45A51;
+    font-weight: bold;
+}
 .heart{
     width: 25px;
-    margin-left: -54px;
-    margin-top: -2px;
+    margin-top: 10px;
     position: absolute;
 }
 .heartButton {
@@ -94,6 +113,29 @@
     margin-left: -47px;
 }
 
-.placeDetails a{
-    margin-left: -66px;
+.posted{
+    font-size: 18px;
+    color: rgb(21, 128, 124);
+    font-size: bold
+}
+
+.card-reviews{
+    font-size: 14px;
+    align-self:center;
+    color:#E45A51;
+    font-size: bold;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+
+}
+
+.addReview{
+    font-size:18px;
+    align-self: center;
+    color:#E45A51;
+    font-size: bold;
+    text-align: center;
+    margin-top: 30px
+
 }

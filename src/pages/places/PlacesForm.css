@@ -1,22 +1,39 @@
-p{
-    font-size:16px;
+.placeForm h3{
+    font-size:20px;
     align-self: center;
     color:#E45A51;
-    font-size: bold
+    text-align: center;
+    margin-top: 30px;
+    font-weight:bold;
+    margin-bottom:20px ;
 }
 
-.nameTitle{
-    text-align: center;
-    }
-    
+.placeForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 .next{
-    margin-top: 200px;
-    margin-left: 130px;
+  
+    justify-content: flex-end;
+    margin-top: 285px;
+    margin-left: 90px;
+    
 }
 
 .previous{
+
     margin-top: 15px;
-    margin-left: 115px;
+    margin-left: 0px;
+    justify-content: flex-end; 
+}
+
+.create{
+    margin-top:155px;
+    margin-left: 110px;
+    justify-content: flex-end;  
 }
 
    

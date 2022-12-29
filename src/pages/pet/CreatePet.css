@@ -18,12 +18,9 @@ margin-right: 50px;
 display:flex;
 flex-direction: column;
 justify-content: space-between;
+margin-top: 20px;
 }
-.button{
-align-self: center;
-background-color: white;
-border: 0ch;
-}
+
 .photoTitle{
 text-align: center;
 font-size:18px;
@@ -32,11 +29,8 @@ align-self: left;
 color:#E45A51;
 margin-left: 20px;
 }
-.nameTitle{
-text-align: center;
-}
+
 
 .next{
-margin-top: 300px;
-margin-left: 115px;
+    justify-content: flex-end; 
 }

@@ -8,49 +8,44 @@
     top: 85px;
     background-color: white;
     width: 100vw;
-    flex-wrap: wrap;
-    align-items: stretch;
-    align-content: flex-end;
 
 }
 
 .containerAll{
+    
     margin-top: 360px;
 
 }
 .filterSearch{
-    width: 73vw;
+    width: 300px;
     background-color: whitesmoke;
     border-radius: 6px;
     font-size: 14px;
-    height: 36px;
-    margin-left: 54px;
-    position: fixed;
-    margin-top: -2px;
-    z-index: 99;
+    height: 36px;   
+    z-index: 9;
     border-style: inherit;
     border-color: rgb(21, 128, 124);
     border-width: 3px;
+    align-items: center
+         
 }
 
 .filterBox{
     position: fixed;
-    z-index: 99;
-    background-color: white;
-    height: 100px;
     width: 100vw;
-    margin-top: -69px;
-    padding-top: 32px;
+    margin-top: -50px;
+    align-items: flex-start;
+    display: flex;
+    justify-content:center;
 }
    
 .filterSearch input{
     font-size: 14px;
-}
-
-
-.search-container{
-    width: 100vw;;
-
+    display: flex;
+    align-items: flex-start;   
+    display: flex;
+    width: 100vw;
+    align-items: center;
 }
 
 

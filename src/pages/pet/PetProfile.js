@@ -36,13 +36,17 @@ const PetProfile =() => {
   
     return (
       <div className="petprofile">
+        <h3> My Pets </h3>
+        
         <div className="petInfo">
+        
           {pets.map((e) => {
+            console.log(e)
             return(
               <div className="everyPet "key={e._id}>
                 <img className="petit" src={e.image} alt="pet"/>
                 <p className="petito">{e.namePet}</p>
-                <button className="petButton"onClick={() => deleteHandler(e._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                <button onClick={() => deleteHandler(e._id)}><FontAwesomeIcon className="deleteButton" icon={faTrashCan} /></button>
               </div>
             )
           })}

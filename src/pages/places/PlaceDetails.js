@@ -1,17 +1,17 @@
 import {
-    Stack,
     Button,
+    Link
 } from "@chakra-ui/react";
 
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import './PlaceDetails.css'
+
 import CommentList from "../../components/reviewComponents/CommentList"
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+import './PlaceDetails.css'
 
 const apiEndpoint =  `${process.env.REACT_APP_API_URL}places/`
 const apiEndpoint2 = `${process.env.REACT_APP_API_URL}favorite/`
@@ -30,13 +30,10 @@ function PlaceDetails() {
     const [step, setStep] = useState(0)
     const { user } = useContext(AuthContext);
     const [favorites, setFavorites] = useState(false)
-    const [main, setMain] = useState(true)
-    const [main1, setMain1] = useState(true)
-    const [main2, setMain2] = useState(true)
-    const [main3, setMain3] = useState(true)
-    const [main4, setMain4] = useState(true)
-    const [main5, setMain5] = useState(true)
+ 
+    
     useEffect(() => {
+
         const countReviewHandler = async () => {
             try {
                 const res = await axios.get(apiEndpoint + placeId + "/reviews", { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -94,10 +91,8 @@ function PlaceDetails() {
         apiCall()
     }, [placeId]);
     const addFavoriteHandler = async () => {
-        console.log ("LLegamos",selectedHeart)
         try {
             if (!selectedHeart) {
-                console.log( "Place ID es esteeeeeee ",placeId)
                 const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
                 setFavorites(res.data)
                 setSelectedHeart(!selectedHeart)
@@ -123,49 +118,36 @@ function PlaceDetails() {
             return prev -= 1
         })
     }
+    const getDefaultImage = (place) => {
 
-
-    useEffect(() => {
-
-        if (place.pictures) {
-
-            if (place.pictures.length === 0 && place.type === "Restaurant") {
-                setMain(false)
-            }
-
-            if (place.pictures.length === 0 && place.type === "Cafeteria") {
-                setMain2(false)
-            }
-
-            if (place.pictures.length === 0 && place.type === "Museum") {
-                setMain3(false)
-            }
-            if (place.pictures.length === 0 && place.type === "Beach") {
-                setMain4(false)
-            }
-            if (place.pictures.length === 0 && place.type === "Other") {
-                setMain5(false)
-            }
-            if (!main || !main2 || !main3 || !main4 || !main5) {
-                setMain1(false)
-            }
+        if (place.type ==="Restaurant"){
+            return  'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg'
         }
-    }, [place.pictures, main, main1, main2, main3, main4, main5, place.type])
+        if (place.type ==="Cafeteria"){
+            return  'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735'
 
+        }
+        if (place.type ==="Museum"){
+            return  'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg'
+        }
+        if (place.type ==="Beach"){
+            return  'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836393/Pawsome/adorable-pomeranian-spitz-dog-having-fun-running-beach_1_a2m3j3.jpg'
+        }
+        if (place.type ==="Other"){
+            return  'https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/adorable-french-bulldog-with-colorful-shopping-bags-isolated-white-background_fnkp7p.jpg'
+        }
+    }
 
     return (
-        <div className='placeDetails'>
-            {place && <div className="placeDetails">
+        <div className='placeCard'>
+            
                 <h1>{place.name}</h1>
-                <h2>{place.address}</h2>
-                {place.description !== null && place.description !== '' && <p>{place.description}</p>}
+                <h4>{place.address}</h4>
+                <p>{place.description !== null && place.description !== ''}</p>                
+                <p><Link href={place.socialMedia}>{place.socialMedia}</Link></p>
+                <p><Link href={place.socialMedia1}>{place.socialMedia1}</Link></p>
                 <div className='imagesDetails'>
-                    {main1 && <img id="place" src={place.pictures[image]} alt=""></img>}
-                    {!main && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836239/Pawsome/white-interior-blur-blurred-chair_s7b2zj.jpg' alt="place" />}
-                    {!main2 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836161/Pawsome/cup-fresh-made-coffee-served-cup_1_rnb735.jpg' alt="place" />}
-                    {!main3 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/long-narrow-painting-art-exhibition_xsdyvx.jpg' alt="place" />}
-                    {!main4 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669836393/Pawsome/adorable-pomeranian-spitz-dog-having-fun-running-beach_1_a2m3j3.jpg' alt="place" />}
-                    {!main5 && <img id="place" src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669835759/Pawsome/adorable-french-bulldog-with-colorful-shopping-bags-isolated-white-background_fnkp7p.jpg' alt="place" />}
+                    <img id="place" src={(place.pictures && place.pictures.length !== 0) ? place.pictures[image] : getDefaultImage(place) } alt="place"></img>
                     <button className="heartButton" onClick={() => addFavoriteHandler()}>
                         {!favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669888197/Pawsome/like_2_h3ib1q.png' alt="" />}
                         {favorites && <img className='heart' src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669887369/Pawsome/like_1_bpibsd.png' alt="" />}
@@ -180,9 +162,9 @@ function PlaceDetails() {
                         )
                     })}
                 </div>
-                <p>Pet friendly {place.type}</p>
+                <h4>Type of place: {place.type}</h4>
                 <div className="posted">
-                    {place.User && <Link to={`/user-profile/${place.User._id}`}><h3>Posted by:</h3> {place.User.name} </Link>}
+                    {place.User && <Link to={`/user-profile/${place.User._id}`}><h5>Posted by:</h5> {place.User.name} </Link>}
                 </div>
                 <div className="verification">
                     <div className="verificationYes">
@@ -194,24 +176,31 @@ function PlaceDetails() {
                         <p>{badReviews} %</p>
                     </div>
                 </div>
-                {!hideReview ? <Link to={`/addReview/${place._id}`}><button>Add review</button></Link> : null}
-                {step === 0 &&
+                
+                <div className="addReview" >
+                                      
+                    {!hideReview ? <Link href={`/addReview/${place._id}`}>Add review</Link> : null}
 
-                    <Stack direction='row' spacing={3}>
-                        <Button onClick={() => showComments()} colorScheme='teal' variant='outline'>
-                            Show Comments
-                        </Button>
-                    </Stack>
-                }
-                {step === 1 && <div><CommentList comment={place.Review} />
-                    <Stack direction='row' spacing={3}>
-                        <Button onClick={() => hideComments()} colorScheme='teal' variant='outline'>
+                {step === 0 &&
+                
+                    <Button onClick={() => showComments()} colorScheme='teal' variant='outline'>
+                        Show Comments
+                    </Button>
+                    }
+                {step === 1 &&
+                
+                <div>
+                    <CommentList comment={place.Review} />
+               
+                    <div className="HideButton">
+                    <Button onClick={() => hideComments()} colorScheme='teal' variant='outline'>
                             Hide Comments
-                        </Button>
-                    </Stack>
+                    </Button>
+                    </div>         
                 </div>}
-            </div>
-            }
+                
+              
+                </div>
         </div>
     )
 }

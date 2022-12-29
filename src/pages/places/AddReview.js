@@ -4,6 +4,10 @@ import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddComment from "../../components/reviewComponents/AddComment";
 
+import {
+    Button
+  } from "@chakra-ui/react";
+
 import './AddReview.css';
 
 function AddReview(props) {
@@ -81,19 +85,24 @@ function AddReview(props) {
         <div>
             <form onSubmit={submitHandler} >
                 <div className="Review">
-                <label for="veritifaction">Place verified?</label>
+                <h3> Place verified?</h3>
                 <br></br>
-                {!hideHappy && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/happy_xdpcvc.png" alt="yes"className="iconVerification" />}
+                {!hideHappy && <img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/happiness_pdzvmw.png'  alt="yes"className="iconVerification" />}
                 {!hideHappy && <input type="checkbox" id="verificationPlace" name="verifiedYes" value={true} onChange={checkBoxHandler1} />}
                 <br></br>
 
-                {!hideSad && <img src="https://res.cloudinary.com/dfajfbnkr/image/upload/v1669632559/Pawsome/sad-face_lhbvxo.png" alt="no" className="iconVerification" />}
+                {!hideSad && <img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669885442/Pawsome/sad_iukrsb.png' alt="no" className="iconVerification" />}
                 {!hideSad && <input type="checkbox" id="verificationPlace" name="verifiedNo" value={false} onChange={checkBoxHandler2} />}
 
 
                 {check !== null && <div> <AddComment comment={comment} onComment={setComment} />
 
-                    <button type="submit" className="submitButton">Add review</button>
+                <div className="forms">
+                <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
+                 Add review
+                </Button>
+                </div>
+
                 </div>
                 }
                 </div>

@@ -13,7 +13,7 @@ export default function Footer() {
    
    return (
       <div className='fixed-bottom'>
-               <NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/home"><FontAwesomeIcon icon={ faMagnifyingGlass } /></NavLink>
+               <NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} onClick={() => window.location.href="/home"}> <FontAwesomeIcon icon={ faMagnifyingGlass } /></NavLink>
                {isLoggedIn && <NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/addPlace"><FontAwesomeIcon icon={ faPlus } /></NavLink>}
                {<NavLink className={(element) => element.isActive ? 'selected iconSize' : 'iconSize'} to="/Favorites"><FontAwesomeIcon icon={ faHeart } /></NavLink>}
       </div>

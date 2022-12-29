@@ -6,10 +6,10 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 import './Favorites.css'
 
+const apiEndpoint = `${process.env.REACT_APP_API_URL}favorites`
+
 function Favorites() {
     const [favorites, setFavorites] = useState([])
-
-    const apiEndpoint = `${process.env.REACT_APP_API_URL}favorites`
 
     useEffect(() => {
         const apiCall = async () => {
@@ -26,18 +26,20 @@ function Favorites() {
             }
         }
         apiCall()
-    });
+    }, []);
 
 
     const deleteFavorite = async (favoriteID) => {
 
         try {
             const storedToken = localStorage.getItem("authToken");
+            await axios.delete(apiEndpoint + "/" + favoriteID, { headers: { Authorization: `Bearer ${storedToken}` } })
             const response = await axios.get(
                 apiEndpoint,
                 { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             setFavorites(response.data)
+
 
         } catch (err) {
             console.log(err)
@@ -45,16 +47,23 @@ function Favorites() {
     }
 
     return (
-        <div>
+        <div className="favorite">
             <h1> My favorites </h1>
-            {favorites && favorites.map((fav) => {
+            <div>
+
+                {favorites && favorites.map((fav) => {
                 return (
-                    <div key={fav._id}>
-                        <button className="buittoni"onClick={event => deleteFavorite(fav._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                    
+                    <div id="place" key={fav._id}>
+                        <button className="deleteButton" onClick={event => deleteFavorite(fav._id)}><FontAwesomeIcon icon={faTrashCan} /></button>
                         <Places key={fav._id} place={fav.place} />
                     </div>
+                   
                 )
             })}
+            </div>
+          
+            
         </div>
     )
 }

@@ -1,7 +1,6 @@
 
 .search-container{
-    display:flex;
-    
+    display:flex;    
     justify-content: center;
     align-items: center;
     padding-top: 10px;
@@ -23,7 +22,7 @@
     text-shadow: 0 0 3px #513f3f, 0 0 5px #4d7757;
 }
 
-.pplaces{
+.places{
     display:flex;
     justify-content: center;
     align-items: center;

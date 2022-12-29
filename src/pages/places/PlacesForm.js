@@ -10,7 +10,7 @@ import { ArrowBackIcon } from '@chakra-ui/icons'
 
 import {
     Button,
-    Stack,
+    Stack
 } from "@chakra-ui/react";
 
 function PlaceForm() {
@@ -62,13 +62,14 @@ function PlaceForm() {
     }
     const prevStepHandler = () => {
         setStep((prev) => {
-            return prev = prev - 1
+            return prev -= 1
         })
     }
 
     const submitHandler = async (event) => {
         event.preventDefault()
         let formData = new FormData();
+        console.log("images : " + files)
         if (files !== null) {
             files.forEach(element => {
                 formData.append("pictures", element);
@@ -103,8 +104,9 @@ function PlaceForm() {
         }
     }
     return (
-        <div>
-            <form onSubmit={submitHandler} >
+        <div className="placeForm">
+
+            <form>
 
                 {step === 0 && <FirstStepForm
                     name={name}
@@ -135,10 +137,12 @@ function PlaceForm() {
                         <Button className="next" onClick={nextStepHandler} rightIcon={<ArrowForwardIcon />}colorScheme='teal' variant='outline'>
                             Next
                         </Button>
+
+                     
                     </Stack>
                             ) : (
                                 <Stack direction='row' spacing={4}>
-                                <Button type="submit" className="submitButton" colorScheme='teal' variant='outline'>
+                                <Button className="create" onClick={submitHandler} colorScheme='teal' variant='outline'>
                                     Create
                                 </Button>
                             </Stack>             

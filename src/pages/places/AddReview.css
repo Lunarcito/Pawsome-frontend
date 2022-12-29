@@ -1,23 +1,28 @@
 .iconVerification{
     width: 30px;
-    height: 30px
+    height: 30px;
 }
 .Review{
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     color: #E45A51;
     z-index: 9;
-    /* position: fixed; */
-    /* top: 85px; */
-    background-color: white;
-    /* width: 100vw; */
-    /* flex-wrap: wrap; */
-    /* align-items: stretch; */
-    /* align-content: flex-end; */
-    margin-top: 43px;
-    font-size: 20px;
-    margin-left: 40px;
+    text-align: center;
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+   
+}
+
+.Review h3{
+    font-size:20px;
+    align-self: center;
+    color:#E45A51;
+    text-align: center;
+    margin-top: 10px;
+    font-weight:bold;
+    margin-bottom:20px ;
 }
 
 #verificationPlace{

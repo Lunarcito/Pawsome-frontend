@@ -123,7 +123,7 @@ export default function Login() {
                 </InputGroup>
                 <FormHelperText textAlign="right">
                   <Link href='/forgotPassword' color="teal.500">
-                  forgot password?
+                  Forgot password?
                     </Link>
                 </FormHelperText>
               </FormControl>

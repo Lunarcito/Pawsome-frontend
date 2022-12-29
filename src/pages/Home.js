@@ -5,9 +5,6 @@ import Places from "../components/homeComponents/Places";
 import Search from "../components/homeComponents/Search";
 import Filter from "../components/homeComponents/Filter";
 import Map from "../components/mapComponents/Map";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-
 
 import './Home.css'
 
@@ -29,6 +26,7 @@ export default function Home() {
       setFilterPlaces(res.data);
     };
     apiCall();
+    setShowMap(false);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -54,27 +52,28 @@ export default function Home() {
     setFilterPlaces(searchThis);
   };
 
+  const mapClickHandler = () => {
+    setShowMap(true);
+  };
+
   return (
     <div className= "containerAll">
    
       <div className="mapita">
       {showMap && <Map places={filterPlaces} />}</div>
       {!showMap && <div>
-      <Search onSearch={searchHandler} />
+      <Search onSearch={searchHandler} onMapClick={mapClickHandler}/>
       <div className="filter">
       <Filter setActiveType={setActiveType} />
       </div>
  
       <div className= "space">
         {filterPlaces.map((place) => {
-          return <div className="placee"><Places key={place._id} place={place} /></div>;
+          return <Places key={place._id} place={place} />;
         })}
-      </div></div>}
-      {!showMap && <button className="buttonMap" onClick={()=>setShowMap(true)}><img src='https://res.cloudinary.com/dfajfbnkr/image/upload/v1669896702/Pawsome/veterinary_elubfi.png' alt="icon" className="imgMap"/></button>}
-
-      {showMap && <button className="buttonList" onClick={()=>setShowMap(false)}><FontAwesomeIcon icon={faBars}/></button>}
-   
-
+     
+       </div>
+      </div>}
 
    
     </div>
