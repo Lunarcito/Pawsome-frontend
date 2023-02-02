@@ -8,7 +8,6 @@ function AddComment(props) {
     return (
         <div className="forms">
             <label>Comments are appreciated!</label>
-         
                 <Input type="text" name="description" placeholder="Add a place's description" size="lg" value={props.comment} onChange={(event) => props.onComment(event.target.value)}
             />
         </div>

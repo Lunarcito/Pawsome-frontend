@@ -92,15 +92,9 @@ function PlaceDetails() {
     }, [placeId]);
     const addFavoriteHandler = async () => {
         try {
-            if (!selectedHeart) {
-                const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
+            const res = await axios.post(apiEndpoint2 + placeId, {}, { headers: { Authorization: `Bearer ${storedToken}` } })
                 setFavorites(res.data)
                 setSelectedHeart(!selectedHeart)
-            } else {
-                await axios.delete(apiEndpoint3 + favorites._id, { headers: { Authorization: `Bearer ${storedToken}` } })
-                setFavorites(false)
-                setSelectedHeart(!selectedHeart)
-            }
         } catch (err) {
             console.log(err)
         }
